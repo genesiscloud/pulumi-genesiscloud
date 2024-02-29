@@ -1,0 +1,141 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "genesiscloud_filesystem": {
+                "current": "genesiscloud:index/filesystem:Filesystem",
+                "fields": {
+                    "mount_endpoint_range": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "genesiscloud_floating_ip": {
+                "current": "genesiscloud:index/floatingIp:FloatingIp"
+            },
+            "genesiscloud_instance": {
+                "current": "genesiscloud:index/instance:Instance",
+                "fields": {
+                    "security_group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "ssh_key_ids": {
+                        "maxItemsOne": false
+                    },
+                    "volume_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "genesiscloud_security_group": {
+                "current": "genesiscloud:index/securityGroup:SecurityGroup",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "genesiscloud_snapshot": {
+                "current": "genesiscloud:index/snapshot:Snapshot"
+            },
+            "genesiscloud_ssh_key": {
+                "current": "genesiscloud:index/sSHKey:SSHKey"
+            },
+            "genesiscloud_volume": {
+                "current": "genesiscloud:index/volume:Volume"
+            }
+        },
+        "datasources": {
+            "genesiscloud_images": {
+                "current": "genesiscloud:index/images:Images",
+                "fields": {
+                    "images": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "regions": {
+                                    "maxItemsOne": false
+                                },
+                                "versions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {},
+    "renames": {
+        "resources": {
+            "genesiscloud:index/filesystem:Filesystem": "genesiscloud_filesystem",
+            "genesiscloud:index/floatingIp:FloatingIp": "genesiscloud_floating_ip",
+            "genesiscloud:index/instance:Instance": "genesiscloud_instance",
+            "genesiscloud:index/sSHKey:SSHKey": "genesiscloud_ssh_key",
+            "genesiscloud:index/securityGroup:SecurityGroup": "genesiscloud_security_group",
+            "genesiscloud:index/snapshot:Snapshot": "genesiscloud_snapshot",
+            "genesiscloud:index/volume:Volume": "genesiscloud_volume"
+        },
+        "functions": {
+            "genesiscloud:index/images:Images": "genesiscloud_images"
+        },
+        "renamedProperties": {
+            "genesiscloud:index/ImagesImage:ImagesImage": {
+                "createdAt": "created_at"
+            },
+            "genesiscloud:index/InstanceMetadata:InstanceMetadata": {
+                "startupScript": "startup_script"
+            },
+            "genesiscloud:index/SecurityGroupRule:SecurityGroupRule": {
+                "portRangeMax": "port_range_max",
+                "portRangeMin": "port_range_min"
+            },
+            "genesiscloud:index/filesystem:Filesystem": {
+                "createdAt": "created_at",
+                "mountBasePath": "mount_base_path",
+                "mountEndpointRanges": "mount_endpoint_range",
+                "retainOnDelete": "retain_on_delete"
+            },
+            "genesiscloud:index/floatingIp:FloatingIp": {
+                "createdAt": "created_at",
+                "ipAddress": "ip_address",
+                "isPublic": "is_public",
+                "updatedAt": "updated_at"
+            },
+            "genesiscloud:index/instance:Instance": {
+                "createdAt": "created_at",
+                "floatingIpId": "floating_ip_id",
+                "imageId": "image_id",
+                "placementOption": "placement_option",
+                "privateIp": "private_ip",
+                "publicIp": "public_ip",
+                "securityGroupIds": "security_group_ids",
+                "sshKeyIds": "ssh_key_ids",
+                "updatedAt": "updated_at",
+                "volumeIds": "volume_ids"
+            },
+            "genesiscloud:index/sSHKey:SSHKey": {
+                "createdAt": "created_at",
+                "publicKey": "public_key"
+            },
+            "genesiscloud:index/securityGroup:SecurityGroup": {
+                "createdAt": "created_at"
+            },
+            "genesiscloud:index/snapshot:Snapshot": {
+                "createdAt": "created_at",
+                "instanceId": "instance_id",
+                "retainOnDelete": "retain_on_delete"
+            },
+            "genesiscloud:index/volume:Volume": {
+                "createdAt": "created_at",
+                "retainOnDelete": "retain_on_delete"
+            },
+            "genesiscloud:index:Provider": {
+                "pollingInterval": "polling_interval"
+            }
+        },
+        "renamedConfigProperties": {
+            "pollingInterval": "polling_interval"
+        }
+    }
+}

@@ -25,6 +25,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 
+	"github.com/genesiscloud/pulumi-genesiscloud/provider/pkg/version"
 	"github.com/genesiscloud/terraform-provider-genesiscloud/genesiscloudshim"
 )
 
@@ -50,17 +51,17 @@ var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	Version := "0.0.1"
+	// Version := "0.0.1"
+	Version := version.Version
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		// Instantiate the Terraform provider
-		// P:    tfpf.ShimProvider(genesiscloudshim.NewProvider(version.Version)()),
 		P:       tfpf.ShimProvider(genesiscloudshim.NewProvider(Version)),
 		Name:    "genesiscloud",
 		Version: Version,
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
-		DisplayName: "",
+		// DisplayName: "",
 		// The default publisher for all packages is Pulumi.
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published

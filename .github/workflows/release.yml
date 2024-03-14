@@ -120,20 +120,20 @@ jobs:
       - name: Publish SDKs
         uses: pulumi/pulumi-package-publisher@v0.0.14
         with:
-          sdk: nodejs
+          sdk: all,!dotnet
     strategy:
       fail-fast: true
       matrix:
         language:
           - nodejs
-          # - python
+          - python
           # - dotnet
-          # - go
-        # dotnetversion:
-        #   - 3.1.301
-        # goversion:
-        #   - 1.21.x
+          - go
+        dotnetversion:
+          - 3.1.301
+        goversion:
+          - 1.21.x
         nodeversion:
           - 20.x
-        # pythonversion:
-        #   - "3.9"
+        pythonversion:
+          - "3.9"

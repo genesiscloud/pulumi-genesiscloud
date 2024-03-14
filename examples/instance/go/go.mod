@@ -4,7 +4,7 @@ go 1.20
 
 require github.com/pulumi/pulumi/sdk/v3 v3.108.1
 
-require github.com/genesiscloud/pulumi-genesiscloud/sdk/go v0.0.1
+require github.com/genesiscloud/pulumi-genesiscloud/sdk/go v0.0.2
 
 require (
 	dario.cat/mergo v1.0.0 // indirect

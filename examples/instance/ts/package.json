@@ -2,10 +2,10 @@
   "name": "ts",
   "main": "index.ts",
   "devDependencies": {
-    "@types/node": "^18"
+    "@types/node": "^20"
   },
   "dependencies": {
     "@pulumi/pulumi": "^3.0.0",
-    "@genesiscloud/pulumi-genesiscloud": "^0.0.2"
+    "@genesiscloud/pulumi-genesiscloud": "^0.0.3"
   }
 }

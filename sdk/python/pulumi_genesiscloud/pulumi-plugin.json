@@ -1,4 +1,5 @@
 {
   "resource": true,
-  "name": "genesiscloud"
+  "name": "genesiscloud",
+  "server": "https://github.com/genesiscloud/pulumi-genesiscloud/releases/"
 }

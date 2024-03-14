@@ -118,9 +118,10 @@ jobs:
       #     dotnet nuget push ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg -s ${{ env.NUGET_FEED_URL }} -k ${{ env.NUGET_PUBLISH_KEY }}
       #     echo "done publishing packages"
       - name: Publish SDKs
+        if: ${{ matrix.language }} != 'go'
         uses: pulumi/pulumi-package-publisher@v0.0.14
         with:
-          sdk: all,!dotnet
+          sdk: ${{ matrix.language }}
     strategy:
       fail-fast: true
       matrix:

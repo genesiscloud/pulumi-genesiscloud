@@ -1,27 +1,28 @@
 {
-  "name": "@pulumi/genesiscloud",
-  "version": "0.0.1",
-  "description": "A Pulumi package for creating and managing genesiscloud cloud resources.",
-  "keywords": [
-    "pulumi",
-    "genesiscloud",
-    "category/cloud"
-  ],
-  "homepage": "https://www.genesiscloud.com",
-  "repository": "https://github.com/genesiscloud/pulumi-genesiscloud",
-  "license": "Apache-2.0",
-  "scripts": {
-    "build": "tsc"
-  },
-  "dependencies": {
-    "@pulumi/pulumi": "^3.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "^10.0.0",
-    "typescript": "^4.3.5"
-  },
-  "pulumi": {
-    "resource": true,
-    "name": "genesiscloud"
-  }
+    "name": "@pulumi/genesiscloud",
+    "version": "${VERSION}",
+    "description": "A Pulumi package for creating and managing genesiscloud cloud resources.",
+    "keywords": [
+        "pulumi",
+        "genesiscloud",
+        "category/cloud"
+    ],
+    "homepage": "https://www.genesiscloud.com",
+    "repository": "https://github.com/genesiscloud/pulumi-genesiscloud",
+    "license": "Apache-2.0",
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^10.0.0",
+        "typescript": "^4.3.5"
+    },
+    "pulumi": {
+        "resource": true,
+        "name": "genesiscloud",
+        "server": "https://github.com/genesiscloud/pulumi-genesiscloud/releases/"
+    }
 }

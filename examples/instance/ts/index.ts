@@ -1,11 +1,9 @@
-import * as pulumi from "@pulumi/pulumi";
-
 import {
   SecurityGroup,
   SSHKey,
   Instance,
   FloatingIp,
-} from "@pulumi/genesiscloud";
+} from "@genesiscloud/pulumi-genesiscloud";
 
 const region = "ARC-IS-HAF-1";
 
@@ -15,9 +13,9 @@ const sshKey = new SSHKey("philip", {
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG0EyNBL6fu1IPhWLvO6njP6/cEWYCMCv/uTBQgdSM7Q barista@roastery",
 });
 
-const floatingIP = new FloatingIp("floating-ip", {
-  name: "floating-ip",
-  description: "floating-ip",
+const floatingIP = new FloatingIp("my-pulumi-floating-ip", {
+  name: "my-pulumi-floating-ip",
+  description: "my-pulumi-floating-ip",
   region,
   version: "ipv4",
 });
@@ -75,5 +73,3 @@ const firstPulumiInstance = new Instance("first-pulumi-instance", {
   },
   floatingIpId: floatingIP.id,
 });
-
-// TODO: create output using the ssh as output to connect to the instance

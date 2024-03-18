@@ -25,7 +25,6 @@ floating_ip = gc.FloatingIp(
     version="ipv4",
 )
 
-
 allow_ssh = gc.SecurityGroup(
     "allow-ssh",
     name="allow-ssh",

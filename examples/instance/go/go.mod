@@ -1,10 +1,12 @@
 module github.com/genesiscloud/pulumi-genesiscloud/examples/instance/go
 
-go 1.20
+go 1.22
 
-require github.com/pulumi/pulumi/sdk/v3 v3.108.1
+require github.com/pulumi/pulumi/sdk/v3 v3.111.1
 
-require github.com/genesiscloud/pulumi-genesiscloud/sdk/go v0.0.2
+require github.com/genesiscloud/pulumi-genesiscloud/sdk/go v0.0.3
+
+replace github.com/genesiscloud/pulumi-genesiscloud/sdk/go => ../../../sdk/go
 
 require (
 	dario.cat/mergo v1.0.0 // indirect
@@ -66,6 +68,7 @@ require (
 	github.com/skeema/knownhosts v1.2.1 // indirect
 	github.com/spf13/cobra v1.7.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/stretchr/objx v0.5.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/tweekmonster/luser v0.0.0-20161003172636-3fa38070dbd7 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect

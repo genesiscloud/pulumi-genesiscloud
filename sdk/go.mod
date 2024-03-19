@@ -1,10 +1,10 @@
 module github.com/genesiscloud/pulumi-genesiscloud/sdk
 
-go 1.21
+go 1.22.1
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi/sdk/v3 v3.108.1
+	github.com/pulumi/pulumi/sdk/v3 v3.111.1
 )
 
 require (

@@ -1,6 +1,6 @@
 {
   "name": "genesiscloud",
-  "version": "v0.0.5",
+  "version": "v0.0.6",
   "description": "A Pulumi package for creating and managing genesiscloud cloud resources.",
   "keywords": ["pulumi", "genesiscloud", "category/cloud"],
   "homepage": "https://www.genesiscloud.com",
@@ -8,7 +8,6 @@
   "attribution": "This Pulumi package is based on the [`genesiscloud` Terraform Provider](https://github.com/genesiscloud/terraform-provider-genesiscloud).",
   "repository": "https://github.com/genesiscloud/pulumi-genesiscloud",
   "pluginDownloadURL": "https://github.com/genesiscloud/pulumi-genesiscloud/releases/",
-  "publisher": "Genesis Cloud",
   "meta": { "moduleFormat": "(.*)(?:/[^/]*)" },
   "language": {
     "csharp": {

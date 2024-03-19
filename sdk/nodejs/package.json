@@ -7,7 +7,7 @@
         "genesiscloud",
         "category/cloud"
     ],
-    "homepage": "https://www.genesiscloud.com",
+    "homepage": "https://www.pulumi.io",
     "repository": "https://github.com/genesiscloud/pulumi-genesiscloud",
     "license": "Apache-2.0",
     "scripts": {
@@ -23,6 +23,6 @@
     "pulumi": {
         "resource": true,
         "name": "genesiscloud",
-        "server": "https://github.com/genesiscloud/pulumi-genesiscloud/releases/"
+        "server": "github://api.github.com/genesiscloud"
     }
 }

@@ -1,4 +1,4 @@
-# Foo Resource Provider
+# Genesis Cloud Resource Provider
 
 The Genesis Cloud Resource Provider lets you manage [Genesis Cloud](http://genesiscloud.com) resources.
 
@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @pulumi/genesiscloud
+npm install @genesiscloud/pulumi-genesiscloud
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @pulumi/genesiscloud
+yarn add @genesiscloud/pulumi-genesiscloud
 ```
 
 ### Python
@@ -25,7 +25,7 @@ yarn add @pulumi/genesiscloud
 To use from Python, install using `pip`:
 
 ```bash
-pip install pulumi_genesiscloud
+pip install pulumi-genesiscloud
 ```
 
 ### Go
@@ -36,20 +36,13 @@ To use from Go, use `go get` to grab the latest version of the library:
 go get github.com/genesiscloud/pulumi-genesiscloud/sdk/go/...
 ```
 
-### .NET
+## Configuration
 
-NOTE: Not yet supported.
+The following configuration points are available:
 
-To use from .NET, install using `dotnet add package`:
-
-```bash
-dotnet add package Pulumi.GenesisCloud
-```
+- `genesiscloud:token` - (Required) This is the Genesis Cloud API Token, can also be specified with the `GENESISCLOUD_TOKEN` environment variable.
+- `genesiscloud:endpoint` - (Optional) Genesis Cloud API endpoint, can be used to override the default API Endpoint `https://api.genesiscloud.com`.
 
 ## Reference
 
 For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/genesiscloud/api-docs/).
-
-## Developing the provider
-
-TODO: add information on how to develop the provider.

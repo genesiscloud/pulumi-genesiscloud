@@ -25,7 +25,7 @@ setup(name='pulumi_genesiscloud',
       long_description=readme(),
       long_description_content_type='text/markdown',
       keywords='pulumi genesiscloud category/cloud',
-      url='https://www.genesiscloud.com',
+      url='https://www.pulumi.io',
       project_urls={
           'Repository': 'https://github.com/genesiscloud/pulumi-genesiscloud'
       },

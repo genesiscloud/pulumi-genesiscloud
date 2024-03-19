@@ -1,7 +1,7 @@
 ---
 title: Genesis Cloud
 meta_desc: Provides an overview of the Genesis Cloud Provider for Pulumi.
-layout: overview
+layout: package
 ---
 
 The Genesis Cloud provider for Pulumi can be used to provision any of the cloud resources available in [Genesis Cloud](https://www.genesiscloud.com).

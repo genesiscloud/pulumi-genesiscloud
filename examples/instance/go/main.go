@@ -9,8 +9,8 @@ func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		region := "ARC-IS-HAF-1"
 
-		sshKey, sshKeyErr := genesiscloud.NewSSHKey(ctx, "philip", &genesiscloud.SSHKeyArgs{
-			PublicKey: pulumi.String("ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG0EyNBL6fu1IPhWLvO6njP6/cEWYCMCv/uTBQgdSM7Q barista@roastery"),
+		sshKey, sshKeyErr := genesiscloud.NewSSHKey(ctx, "ssh-key", &genesiscloud.SSHKeyArgs{
+			PublicKey: pulumi.String("<your SSH public key>"),
 		})
 		if sshKeyErr != nil {
 			return sshKeyErr

@@ -5,16 +5,10 @@ import pulumi_genesiscloud as gc
 
 region = "ARC-IS-HAF-1"
 
-# const sshKey = new SSHKey("philip", {
-#   name: "philip",
-#   publicKey:
-#     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG0EyNBL6fu1IPhWLvO6njP6/cEWYCMCv/uTBQgdSM7Q barista@roastery",
-# });
-
 ssh_key = gc.SSHKey(
-    "philip",
-    name="philip",
-    public_key="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG0EyNBL6fu1IPhWLvO6njP6/cEWYCMCv/uTBQgdSM7Q barista@roastery",
+    "ssh-key",
+    name="ssh-key",
+    public_key="<your SSH public key>",
 )
 
 floating_ip = gc.FloatingIp(
@@ -80,5 +74,3 @@ instance = gc.Instance(
     floating_ip_id=floating_ip.id,
 )
 
-# pulumi.export("ssh_key", ssh_key.public_key)
-# pulumi.export("floating_ip", floating_ip.ip_address)

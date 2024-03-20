@@ -1,6 +1,6 @@
 module github.com/genesiscloud/pulumi-genesiscloud/provider
 
-go 1.21
+go 1.22.1
 
 replace github.com/genesiscloud/terraform-provider-genesiscloud/genesiscloudshim => ../genesiscloudshim
 

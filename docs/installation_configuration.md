@@ -8,7 +8,7 @@ layout: installation
 
 The Pulumi Genesis Cloud provider is available as a package in the following languages:
 
-- JavaScript/TypeScript: [`@pulumi/genesiscloud`](https://www.npmjs.com/package/@genesiscloud/pulumi-genesiscloud)
+- JavaScript/TypeScript: [`@genesiscloud/pulumi-genesiscloud`](https://www.npmjs.com/package/@genesiscloud/pulumi-genesiscloud)
 - Python: [`pulumi-genesiscloud`](https://pypi.org/project/pulumi-genesiscloud/)
 - Go: [`github.com/genesiscloud/pulumi-genesiscloud/sdk/go/genesiscloud`](https://pkg.go.dev/github.com/pulumi/pulumi-genesiscloud/sdk)
 

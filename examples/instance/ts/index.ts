@@ -7,10 +7,9 @@ import {
 
 const region = "ARC-IS-HAF-1";
 
-const sshKey = new SSHKey("philip", {
-  name: "philip",
-  publicKey:
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG0EyNBL6fu1IPhWLvO6njP6/cEWYCMCv/uTBQgdSM7Q barista@roastery",
+const sshKey = new SSHKey("ssh-key", {
+  name: "ssh-key",
+  publicKey: "<your SSH public key>",
 });
 
 const floatingIP = new FloatingIp("my-pulumi-floating-ip", {

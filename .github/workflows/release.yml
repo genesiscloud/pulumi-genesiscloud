@@ -131,7 +131,7 @@ jobs:
           - go
           # - dotnet
         goversion:
-          - 1.21.x
+          - 1.22.x
         nodeversion:
           - 20.x
         pythonversion:

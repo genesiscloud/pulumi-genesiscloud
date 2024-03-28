@@ -27,7 +27,7 @@ class FloatingIpArgs:
                value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] version: The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
                resource. - The value must be one of: ["ipv4"].
-        :param pulumi.Input[str] description: The human-readable description set for the floating IP.
+        :param pulumi.Input[str] description: The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the floating IP.
         """
         pulumi.set(__self__, "region", region)
@@ -69,7 +69,7 @@ class FloatingIpArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The human-readable description set for the floating IP.
+        The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
         """
         return pulumi.get(self, "description")
 
@@ -115,7 +115,7 @@ class _FloatingIpState:
         """
         Input properties used for looking up and filtering FloatingIp resources.
         :param pulumi.Input[str] created_at: The timestamp when this floating IP was created in RFC 3339.
-        :param pulumi.Input[str] description: The human-readable description set for the floating IP.
+        :param pulumi.Input[str] description: The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] ip_address: The IP address of the floating IP.
         :param pulumi.Input[bool] is_public: Whether the floating IP is public or private. - Sets the default value "true" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the floating IP.
@@ -163,7 +163,7 @@ class _FloatingIpState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The human-readable description set for the floating IP.
+        The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
         """
         return pulumi.get(self, "description")
 
@@ -301,7 +301,7 @@ class FloatingIp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The human-readable description set for the floating IP.
+        :param pulumi.Input[str] description: The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the floating IP.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
                value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
@@ -406,7 +406,7 @@ class FloatingIp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The timestamp when this floating IP was created in RFC 3339.
-        :param pulumi.Input[str] description: The human-readable description set for the floating IP.
+        :param pulumi.Input[str] description: The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] ip_address: The IP address of the floating IP.
         :param pulumi.Input[bool] is_public: Whether the floating IP is public or private. - Sets the default value "true" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the floating IP.
@@ -443,9 +443,9 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
-        The human-readable description set for the floating IP.
+        The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
         """
         return pulumi.get(self, "description")
 

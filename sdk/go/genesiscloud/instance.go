@@ -57,12 +57,16 @@ type Instance struct {
 
 	// The timestamp when this image was created in RFC 3339.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The disk size of the instance in GB.
+	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
 	// The floating IP attached to the instance.
 	FloatingIpId pulumi.StringPtrOutput `pulumi:"floatingIpId"`
 	// The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
 	// attribute is configured and changes, Terraform will destroy and recreate the resource.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
-	// The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+	// The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+	// image slug in this format `<image-slug>:<version>`. Learn more about images
+	// [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
 	// recreate the resource.
 	Image pulumi.StringOutput `pulumi:"image"`
 	// The resulting image ID of the instance.
@@ -152,12 +156,16 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// The timestamp when this image was created in RFC 3339.
 	CreatedAt *string `pulumi:"createdAt"`
+	// The disk size of the instance in GB.
+	DiskSize *int `pulumi:"diskSize"`
 	// The floating IP attached to the instance.
 	FloatingIpId *string `pulumi:"floatingIpId"`
 	// The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
 	// attribute is configured and changes, Terraform will destroy and recreate the resource.
 	Hostname *string `pulumi:"hostname"`
-	// The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+	// The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+	// image slug in this format `<image-slug>:<version>`. Learn more about images
+	// [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
 	// recreate the resource.
 	Image *string `pulumi:"image"`
 	// The resulting image ID of the instance.
@@ -202,12 +210,16 @@ type instanceState struct {
 type InstanceState struct {
 	// The timestamp when this image was created in RFC 3339.
 	CreatedAt pulumi.StringPtrInput
+	// The disk size of the instance in GB.
+	DiskSize pulumi.IntPtrInput
 	// The floating IP attached to the instance.
 	FloatingIpId pulumi.StringPtrInput
 	// The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
 	// attribute is configured and changes, Terraform will destroy and recreate the resource.
 	Hostname pulumi.StringPtrInput
-	// The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+	// The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+	// image slug in this format `<image-slug>:<version>`. Learn more about images
+	// [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
 	// recreate the resource.
 	Image pulumi.StringPtrInput
 	// The resulting image ID of the instance.
@@ -254,12 +266,16 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// The disk size of the instance in GB.
+	DiskSize *int `pulumi:"diskSize"`
 	// The floating IP attached to the instance.
 	FloatingIpId *string `pulumi:"floatingIpId"`
 	// The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
 	// attribute is configured and changes, Terraform will destroy and recreate the resource.
 	Hostname *string `pulumi:"hostname"`
-	// The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+	// The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+	// image slug in this format `<image-slug>:<version>`. Learn more about images
+	// [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
 	// recreate the resource.
 	Image string `pulumi:"image"`
 	// Option to provide metadata. Currently supported is `startup_script`.
@@ -293,12 +309,16 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// The disk size of the instance in GB.
+	DiskSize pulumi.IntPtrInput
 	// The floating IP attached to the instance.
 	FloatingIpId pulumi.StringPtrInput
 	// The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
 	// attribute is configured and changes, Terraform will destroy and recreate the resource.
 	Hostname pulumi.StringPtrInput
-	// The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+	// The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+	// image slug in this format `<image-slug>:<version>`. Learn more about images
+	// [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
 	// recreate the resource.
 	Image pulumi.StringInput
 	// Option to provide metadata. Currently supported is `startup_script`.
@@ -422,6 +442,11 @@ func (o InstanceOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The disk size of the instance in GB.
+func (o InstanceOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DiskSize }).(pulumi.IntOutput)
+}
+
 // The floating IP attached to the instance.
 func (o InstanceOutput) FloatingIpId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.FloatingIpId }).(pulumi.StringPtrOutput)
@@ -433,7 +458,9 @@ func (o InstanceOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+// The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+// image slug in this format `<image-slug>:<version>`. Learn more about images
+// [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
 // recreate the resource.
 func (o InstanceOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Image }).(pulumi.StringOutput)

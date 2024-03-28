@@ -62,6 +62,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * The disk size of the instance in GB.
+     */
+    public readonly diskSize!: pulumi.Output<number>;
+    /**
      * The floating IP attached to the instance.
      */
     public readonly floatingIpId!: pulumi.Output<string | undefined>;
@@ -71,7 +75,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly hostname!: pulumi.Output<string>;
     /**
-     * The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+     * The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+     * image slug in this format `<image-slug>:<version>`. Learn more about images
+     * [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
      * recreate the resource.
      */
     public readonly image!: pulumi.Output<string>;
@@ -155,6 +161,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
             resourceInputs["floatingIpId"] = state ? state.floatingIpId : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["image"] = state ? state.image : undefined;
@@ -184,6 +191,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
             resourceInputs["floatingIpId"] = args ? args.floatingIpId : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["image"] = args ? args.image : undefined;
@@ -220,6 +228,10 @@ export interface InstanceState {
      */
     createdAt?: pulumi.Input<string>;
     /**
+     * The disk size of the instance in GB.
+     */
+    diskSize?: pulumi.Input<number>;
+    /**
      * The floating IP attached to the instance.
      */
     floatingIpId?: pulumi.Input<string>;
@@ -229,7 +241,9 @@ export interface InstanceState {
      */
     hostname?: pulumi.Input<string>;
     /**
-     * The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+     * The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+     * image slug in this format `<image-slug>:<version>`. Learn more about images
+     * [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
      * recreate the resource.
      */
     image?: pulumi.Input<string>;
@@ -305,6 +319,10 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
+     * The disk size of the instance in GB.
+     */
+    diskSize?: pulumi.Input<number>;
+    /**
      * The floating IP attached to the instance.
      */
     floatingIpId?: pulumi.Input<string>;
@@ -314,7 +332,9 @@ export interface InstanceArgs {
      */
     hostname?: pulumi.Input<string>;
     /**
-     * The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+     * The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+     * image slug in this format `<image-slug>:<version>`. Learn more about images
+     * [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
      * recreate the resource.
      */
     image: pulumi.Input<string>;

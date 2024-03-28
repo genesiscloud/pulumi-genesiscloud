@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := genesiscloud.Images(ctx, &genesiscloud.ImagesArgs{
 //				Filter: genesiscloud.ImagesFilter{
-//					Type: "base-os",
+//					Type: "cloud-image",
 //				},
 //			}, nil)
 //			if err != nil {

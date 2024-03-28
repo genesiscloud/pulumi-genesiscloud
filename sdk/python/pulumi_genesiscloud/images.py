@@ -82,8 +82,8 @@ def images(filter: Optional[pulumi.InputType['ImagesFilterArgs']] = None,
     import pulumi
     import pulumi_genesiscloud as genesiscloud
 
-    base_os_images = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
-        type="base-os",
+    cloud_images = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
+        type="cloud-image",
     ))
     snapshots = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
         region="ARC-IS-HAF-1",
@@ -120,8 +120,8 @@ def images_output(filter: Optional[pulumi.Input[pulumi.InputType['ImagesFilterAr
     import pulumi
     import pulumi_genesiscloud as genesiscloud
 
-    base_os_images = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
-        type="base-os",
+    cloud_images = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
+        type="cloud-image",
     ))
     snapshots = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
         region="ARC-IS-HAF-1",

@@ -14,8 +14,9 @@ linters:
     - unconvert
     - unused
   enable-all: false
-run:
-  skip-files:
+issues:
+  exclude:
     - schema.go
     - pulumiManifest.go
+run:
   timeout: 20m

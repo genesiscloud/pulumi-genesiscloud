@@ -104,6 +104,7 @@
             },
             "genesiscloud:index/instance:Instance": {
                 "createdAt": "created_at",
+                "diskSize": "disk_size",
                 "floatingIpId": "floating_ip_id",
                 "imageId": "image_id",
                 "placementOption": "placement_option",

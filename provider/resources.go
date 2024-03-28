@@ -38,7 +38,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:           "Apache-2.0",
 		Homepage:          "https://www.pulumi.io",
 		Repository:        "https://github.com/genesiscloud/pulumi-genesiscloud",
-		PluginDownloadURL: "github://api.github.com/genesiscloud", //"https://github.com/genesiscloud/pulumi-genesiscloud/releases/download/" + Version,
+		PluginDownloadURL: "github://api.github.com/genesiscloud",
 		LogoURL:           "https://avatars.githubusercontent.com/u/38134186?s=200&v=4",
 		Version:           Version,
 		GitHubOrg:         "genesiscloud",

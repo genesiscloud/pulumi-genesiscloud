@@ -61,9 +61,9 @@ export class FloatingIp extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The human-readable description set for the floating IP.
+     * The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The IP address of the floating IP.
      */
@@ -152,7 +152,7 @@ export interface FloatingIpState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The human-readable description set for the floating IP.
+     * The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
      */
     description?: pulumi.Input<string>;
     /**
@@ -193,7 +193,7 @@ export interface FloatingIpState {
  */
 export interface FloatingIpArgs {
     /**
-     * The human-readable description set for the floating IP.
+     * The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
      */
     description?: pulumi.Input<string>;
     /**

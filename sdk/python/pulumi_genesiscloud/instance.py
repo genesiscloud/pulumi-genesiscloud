@@ -19,6 +19,7 @@ class InstanceArgs:
                  image: pulumi.Input[str],
                  region: pulumi.Input[str],
                  type: pulumi.Input[str],
+                 disk_size: Optional[pulumi.Input[int]] = None,
                  floating_ip_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input['InstanceMetadataArgs']] = None,
@@ -31,13 +32,16 @@ class InstanceArgs:
                  volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] image: The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+        :param pulumi.Input[str] image: The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+               image slug in this format `<image-slug>:<version>`. Learn more about images
+               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
                recreate the resource.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
                value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] type: The instance type identifier. Learn more about instance types
                [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
                Terraform will destroy and recreate the resource.
+        :param pulumi.Input[int] disk_size: The disk size of the instance in GB.
         :param pulumi.Input[str] floating_ip_id: The floating IP attached to the instance.
         :param pulumi.Input[str] hostname: The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
                attribute is configured and changes, Terraform will destroy and recreate the resource.
@@ -57,6 +61,8 @@ class InstanceArgs:
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "type", type)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
         if floating_ip_id is not None:
             pulumi.set(__self__, "floating_ip_id", floating_ip_id)
         if hostname is not None:
@@ -82,7 +88,9 @@ class InstanceArgs:
     @pulumi.getter
     def image(self) -> pulumi.Input[str]:
         """
-        The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+        The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+        image slug in this format `<image-slug>:<version>`. Learn more about images
+        [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
         recreate the resource.
         """
         return pulumi.get(self, "image")
@@ -117,6 +125,18 @@ class InstanceArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The disk size of the instance in GB.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_size", value)
 
     @property
     @pulumi.getter(name="floatingIpId")
@@ -246,6 +266,7 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
                  floating_ip_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -267,10 +288,13 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] created_at: The timestamp when this image was created in RFC 3339.
+        :param pulumi.Input[int] disk_size: The disk size of the instance in GB.
         :param pulumi.Input[str] floating_ip_id: The floating IP attached to the instance.
         :param pulumi.Input[str] hostname: The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
                attribute is configured and changes, Terraform will destroy and recreate the resource.
-        :param pulumi.Input[str] image: The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+        :param pulumi.Input[str] image: The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+               image slug in this format `<image-slug>:<version>`. Learn more about images
+               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
                recreate the resource.
         :param pulumi.Input[str] image_id: The resulting image ID of the instance.
         :param pulumi.Input['InstanceMetadataArgs'] metadata: Option to provide metadata. Currently supported is `startup_script`.
@@ -297,6 +321,8 @@ class _InstanceState:
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
         if floating_ip_id is not None:
             pulumi.set(__self__, "floating_ip_id", floating_ip_id)
         if hostname is not None:
@@ -347,6 +373,18 @@ class _InstanceState:
         pulumi.set(self, "created_at", value)
 
     @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The disk size of the instance in GB.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_size", value)
+
+    @property
     @pulumi.getter(name="floatingIpId")
     def floating_ip_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -375,7 +413,9 @@ class _InstanceState:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
         """
-        The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+        The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+        image slug in this format `<image-slug>:<version>`. Learn more about images
+        [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
         recreate the resource.
         """
         return pulumi.get(self, "image")
@@ -575,6 +615,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
                  floating_ip_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -613,10 +654,13 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] disk_size: The disk size of the instance in GB.
         :param pulumi.Input[str] floating_ip_id: The floating IP attached to the instance.
         :param pulumi.Input[str] hostname: The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
                attribute is configured and changes, Terraform will destroy and recreate the resource.
-        :param pulumi.Input[str] image: The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+        :param pulumi.Input[str] image: The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+               image slug in this format `<image-slug>:<version>`. Learn more about images
+               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
                recreate the resource.
         :param pulumi.Input[pulumi.InputType['InstanceMetadataArgs']] metadata: Option to provide metadata. Currently supported is `startup_script`.
         :param pulumi.Input[str] name: The human-readable name for the instance.
@@ -679,6 +723,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
                  floating_ip_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -701,6 +746,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["disk_size"] = disk_size
             __props__.__dict__["floating_ip_id"] = floating_ip_id
             __props__.__dict__["hostname"] = hostname
             if image is None and not opts.urn:
@@ -739,6 +785,7 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            disk_size: Optional[pulumi.Input[int]] = None,
             floating_ip_id: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             image: Optional[pulumi.Input[str]] = None,
@@ -765,10 +812,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The timestamp when this image was created in RFC 3339.
+        :param pulumi.Input[int] disk_size: The disk size of the instance in GB.
         :param pulumi.Input[str] floating_ip_id: The floating IP attached to the instance.
         :param pulumi.Input[str] hostname: The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
                attribute is configured and changes, Terraform will destroy and recreate the resource.
-        :param pulumi.Input[str] image: The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+        :param pulumi.Input[str] image: The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+               image slug in this format `<image-slug>:<version>`. Learn more about images
+               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
                recreate the resource.
         :param pulumi.Input[str] image_id: The resulting image ID of the instance.
         :param pulumi.Input[pulumi.InputType['InstanceMetadataArgs']] metadata: Option to provide metadata. Currently supported is `startup_script`.
@@ -798,6 +848,7 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["disk_size"] = disk_size
         __props__.__dict__["floating_ip_id"] = floating_ip_id
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["image"] = image
@@ -827,6 +878,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "created_at")
 
     @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> pulumi.Output[int]:
+        """
+        The disk size of the instance in GB.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
     @pulumi.getter(name="floatingIpId")
     def floating_ip_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -847,7 +906,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def image(self) -> pulumi.Output[str]:
         """
-        The source image or snapshot of the instance. - If the value of this attribute changes, Terraform will destroy and
+        The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
+        image slug in this format `<image-slug>:<version>`. Learn more about images
+        [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
         recreate the resource.
         """
         return pulumi.get(self, "image")

@@ -54,8 +54,8 @@ type FloatingIp struct {
 
 	// The timestamp when this floating IP was created in RFC 3339.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The human-readable description set for the floating IP.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The IP address of the floating IP.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// Whether the floating IP is public or private. - Sets the default value "true" if the attribute is not set.
@@ -113,7 +113,7 @@ func GetFloatingIp(ctx *pulumi.Context,
 type floatingIpState struct {
 	// The timestamp when this floating IP was created in RFC 3339.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The human-readable description set for the floating IP.
+	// The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
 	Description *string `pulumi:"description"`
 	// The IP address of the floating IP.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -137,7 +137,7 @@ type floatingIpState struct {
 type FloatingIpState struct {
 	// The timestamp when this floating IP was created in RFC 3339.
 	CreatedAt pulumi.StringPtrInput
-	// The human-readable description set for the floating IP.
+	// The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
 	Description pulumi.StringPtrInput
 	// The IP address of the floating IP.
 	IpAddress pulumi.StringPtrInput
@@ -163,7 +163,7 @@ func (FloatingIpState) ElementType() reflect.Type {
 }
 
 type floatingIpArgs struct {
-	// The human-readable description set for the floating IP.
+	// The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
 	Description *string `pulumi:"description"`
 	// The human-readable name for the floating IP.
 	Name *string `pulumi:"name"`
@@ -178,7 +178,7 @@ type floatingIpArgs struct {
 
 // The set of arguments for constructing a FloatingIp resource.
 type FloatingIpArgs struct {
-	// The human-readable description set for the floating IP.
+	// The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
 	Description pulumi.StringPtrInput
 	// The human-readable name for the floating IP.
 	Name pulumi.StringPtrInput
@@ -283,9 +283,9 @@ func (o FloatingIpOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FloatingIp) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The human-readable description set for the floating IP.
-func (o FloatingIpOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FloatingIp) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+// The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
+func (o FloatingIpOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIp) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The IP address of the floating IP.

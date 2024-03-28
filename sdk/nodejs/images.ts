@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as genesiscloud from "@pulumi/genesiscloud";
  *
- * const base-os-images = genesiscloud.Images({
+ * const cloud-images = genesiscloud.Images({
  *     filter: {
- *         type: "base-os",
+ *         type: "cloud-image",
  *     },
  * });
  * const snapshots = genesiscloud.Images({
@@ -68,9 +68,9 @@ export interface ImagesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as genesiscloud from "@pulumi/genesiscloud";
  *
- * const base-os-images = genesiscloud.Images({
+ * const cloud-images = genesiscloud.Images({
  *     filter: {
- *         type: "base-os",
+ *         type: "cloud-image",
  *     },
  * });
  * const snapshots = genesiscloud.Images({

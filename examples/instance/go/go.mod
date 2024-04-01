@@ -3,7 +3,7 @@ module github.com/genesiscloud/pulumi-genesiscloud/examples/instance/go
 go 1.22.1
 
 require (
-	github.com/genesiscloud/pulumi-genesiscloud/sdk v0.0.7
+	github.com/genesiscloud/pulumi-genesiscloud/sdk v0.0.9
 	github.com/pulumi/pulumi/sdk/v3 v3.111.1
 )
 

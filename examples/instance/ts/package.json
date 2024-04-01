@@ -6,6 +6,6 @@
   },
   "dependencies": {
     "@pulumi/pulumi": "^3.0.0",
-    "@genesiscloud/pulumi-genesiscloud": "^0.0.7"
+    "@genesiscloud/pulumi-genesiscloud": "^0.0.9"
   }
 }

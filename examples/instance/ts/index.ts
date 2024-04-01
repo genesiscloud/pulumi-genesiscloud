@@ -9,7 +9,7 @@ const region = "ARC-IS-HAF-1";
 
 const sshKey = new SSHKey("ssh-key", {
   name: "ssh-key",
-  publicKey: "<your SSH public key>",
+  publicKey: "<YOUR_SSH_PUBLIC_KEY>",
 });
 
 const floatingIP = new FloatingIp("my-pulumi-floating-ip", {
@@ -65,6 +65,7 @@ const firstPulumiInstance = new Instance("first-pulumi-instance", {
   image: imageId,
   placementOption: "AUTO",
   type: "vcpu-4_memory-12g_disk-80g_nvidia3080-1",
+  diskSize: 128,
   sshKeyIds: [sshKey.id],
   securityGroupIds: [allowSSH.id, allowHTTP.id],
   metadata: {

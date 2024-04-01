@@ -10,7 +10,7 @@ func main() {
 		region := "ARC-IS-HAF-1"
 
 		sshKey, sshKeyErr := genesiscloud.NewSSHKey(ctx, "ssh-key", &genesiscloud.SSHKeyArgs{
-			PublicKey: pulumi.String("<your SSH public key>"),
+			PublicKey: pulumi.String("<YOUR_SSH_PUBLIC>"),
 		})
 		if sshKeyErr != nil {
 			return sshKeyErr
@@ -32,6 +32,7 @@ func main() {
 			Image:            pulumi.String(imageId),
 			Name:             pulumi.String("my-pulumi-instance"),
 			PlacementOption:  pulumi.String("AUTO"),
+			DiskSize:         pulumi.Int(128),
 			Type:             pulumi.String("vcpu-4_memory-12g_disk-80g_nvidia3080-1"),
 			SshKeyIds:        pulumi.StringArray{sshKey.ID()},
 			SecurityGroupIds: pulumi.StringArray(nil),

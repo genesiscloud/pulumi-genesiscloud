@@ -9,7 +9,7 @@ The Genesis Cloud provider must be configured with credentials to deploy and upd
 
 ## Example
 
-{{< chooser language "typescript,python,go" >}}
+{{< chooser language "typescript,python,go,dotnet" >}}
 {{% choosable language typescript %}}
 
 ```typescript
@@ -63,6 +63,13 @@ func main() {
     return nil
   })
 }
+```
+
+{{% /choosable %}}
+{{% choosable language dotnet %}}
+
+```dotnet
+TODO: add this
 ```
 
 {{% /choosable %}}

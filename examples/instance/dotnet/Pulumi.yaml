@@ -1,0 +1,7 @@
+name: dotnet
+runtime: dotnet
+description: Create an Instance on Genesis Cloud using the Pulumi SDK.
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/6b4efbcd-a7ab-4ce8-a454-5f879102427f.zip

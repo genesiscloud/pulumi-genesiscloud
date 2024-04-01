@@ -12,13 +12,13 @@ VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 
-VERSION         := v0.0.9
+VERSION         := v0.0.10
 
 TESTPARALLELISM := 4
 
 WORKING_DIR     := $(shell pwd)
 
-.PHONY: development provider build_sdks build_nodejs build_go build_python cleanup # build_dotnet
+.PHONY: development provider build_sdks build_nodejs build_go build_python build_dotnet cleanup 
 
 development:: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
 
@@ -58,13 +58,13 @@ build_python:: install_plugins tfgen # build the python sdk
         rm ./bin/setup.py.bak && \
         cd ./bin && python3 setup.py build sdist
 
-# build_dotnet:: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
-# build_dotnet:: install_plugins tfgen # build the dotnet sdk
-# 	pulumictl get version --language dotnet
-# 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
-# 	cd sdk/dotnet/ && \
-# 		echo "${DOTNET_VERSION}" >version.txt && \
-#         dotnet build /p:Version=${DOTNET_VERSION}
+build_dotnet:: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
+build_dotnet:: install_plugins tfgen # build the dotnet sdk
+	pulumictl get version --language dotnet
+	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
+	cd sdk/dotnet/ && \
+		echo "${DOTNET_VERSION}" >version.txt && \
+        dotnet build /p:Version=${DOTNET_VERSION}
 
 build_go:: install_plugins tfgen # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/

@@ -36,6 +36,14 @@ To use from Go, use `go get` to grab the latest version of the library:
 go get github.com/genesiscloud/pulumi-genesiscloud/sdk/go/...
 ```
 
+### .NET
+
+To use from .NET, install using `dotnet add package`:
+
+```
+dotnet add package GenesisCloud.PulumiGenesisCloud
+```
+
 ## Configuration
 
 The following configuration points are available:

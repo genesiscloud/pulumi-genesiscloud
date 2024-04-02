@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as genesiscloud from "@pulumi/genesiscloud";
+ * import * as genesiscloud from "@genesiscloud/pulumi-genesiscloud";
  *
  * const example = new genesiscloud.SSHKey("example", {publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOpdKM8wSI07+PO4xLDL7zW/kNWGbdFXeHyBU1TRlBn alice@example.com"});
  * ```

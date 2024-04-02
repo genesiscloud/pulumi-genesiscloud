@@ -43,8 +43,7 @@ build_nodejs:: install_plugins tfgen # build the node sdk
         yarn install && \
         yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
-		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json && \
-		sed -i 's/"name": "@pulumi\/genesiscloud"/"name": "@genesiscloud\/pulumi-genesiscloud"/' ./bin/package.json # TODO: when provider is published under pulumi org
+				sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
 
 build_python:: PYPI_VERSION := $(shell pulumictl get version --language python)

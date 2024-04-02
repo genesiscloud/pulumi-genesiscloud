@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as genesiscloud from "@pulumi/genesiscloud";
+ * import * as genesiscloud from "@genesiscloud/pulumi-genesiscloud";
  *
  * const example = new genesiscloud.Volume("example", {
  *     region: "ARC-IS-HAF-1",

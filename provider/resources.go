@@ -66,6 +66,7 @@ func Provider() tfbridge.ProviderInfo {
 			"genesiscloud_images": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "Images")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			PackageName: "@genesiscloud/pulumi-genesiscloud",
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
 			},

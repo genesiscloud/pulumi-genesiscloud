@@ -129,7 +129,7 @@ jobs:
           - nodejs
           - python
           - go
-          - dotnet
+          # - dotnet
         goversion:
           - 1.22.x
         nodeversion:

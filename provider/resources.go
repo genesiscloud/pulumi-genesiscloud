@@ -43,7 +43,12 @@ func Provider() tfbridge.ProviderInfo {
 		Version:           Version,
 		GitHubOrg:         "genesiscloud",
 		MetadataInfo:      tfbridge.NewProviderMetadata(metadata),
-		Config:            map[string]*tfbridge.SchemaInfo{
+		Config: map[string]*tfbridge.SchemaInfo{
+			"token": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"GENESISCLOUD_TOKEN"},
+				},
+			},
 			// Add any rquired configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {

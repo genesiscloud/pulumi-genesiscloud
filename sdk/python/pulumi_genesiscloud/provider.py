@@ -29,6 +29,8 @@ class ProviderArgs:
             pulumi.set(__self__, "endpoint", endpoint)
         if polling_interval is not None:
             pulumi.set(__self__, "polling_interval", polling_interval)
+        if token is None:
+            token = _utilities.get_env('GENESISCLOUD_TOKEN')
         if token is not None:
             pulumi.set(__self__, "token", token)
 
@@ -135,6 +137,8 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["polling_interval"] = polling_interval
+            if token is None:
+                token = _utilities.get_env('GENESISCLOUD_TOKEN')
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)

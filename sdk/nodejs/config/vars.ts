@@ -37,7 +37,7 @@ Object.defineProperty(exports, "pollingInterval", {
 export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {
     get() {
-        return __config.get("token");
+        return __config.get("token") ?? utilities.getEnv("GENESISCLOUD_TOKEN");
     },
     enumerable: true,
 });

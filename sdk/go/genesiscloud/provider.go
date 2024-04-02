@@ -35,6 +35,11 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
+	if args.Token == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "GENESISCLOUD_TOKEN"); d != nil {
+			args.Token = pulumi.StringPtr(d.(string))
+		}
+	}
 	if args.Token != nil {
 		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
 	}

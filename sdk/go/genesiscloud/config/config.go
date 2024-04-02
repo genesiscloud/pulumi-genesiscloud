@@ -25,5 +25,13 @@ func GetPollingInterval(ctx *pulumi.Context) string {
 
 // Genesis Cloud API token. May also be provided via `GENESISCLOUD_TOKEN` environment variable.
 func GetToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "genesiscloud:token")
+	v, err := config.Try(ctx, "genesiscloud:token")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "GENESISCLOUD_TOKEN"); d != nil {
+		value = d.(string)
+	}
+	return value
 }

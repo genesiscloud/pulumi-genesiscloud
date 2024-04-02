@@ -49,7 +49,7 @@ dotnet add package GenesisCloud.PulumiGenesisCloud
 The following configuration points are available:
 
 - `genesiscloud:token` - (Required) This is the Genesis Cloud API Token, can also be specified with the `GENESISCLOUD_TOKEN` environment variable.
-- `genesiscloud:endpoint` - (Optional) Genesis Cloud API endpoint, can be used to override the default API Endpoint `https://api.genesiscloud.com`.
+- `genesiscloud:endpoint` - (Optional) This is the Genesis Cloud API endpoint, can be used to override the default API Endpoint `https://api.genesiscloud.com`. It can also be specified with the `GENESISCLOUD_ENDPOINT` environment variable.
 
 ## Reference
 

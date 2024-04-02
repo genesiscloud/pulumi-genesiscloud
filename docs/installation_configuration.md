@@ -1,7 +1,7 @@
 ---
 title: Genesis Cloud Installation & Configuration
 meta_desc: Information on how to install the Genesis Cloud provider.
-layout: installation
+layout: package
 ---
 
 ## Installation

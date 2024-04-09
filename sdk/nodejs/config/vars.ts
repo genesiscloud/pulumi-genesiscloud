@@ -14,7 +14,7 @@ const __config = new pulumi.Config("genesiscloud");
 export declare const endpoint: string | undefined;
 Object.defineProperty(exports, "endpoint", {
     get() {
-        return __config.get("endpoint");
+        return __config.get("endpoint") ?? utilities.getEnv("GENESISCLOUD_ENDPOINT");
     },
     enumerable: true,
 });

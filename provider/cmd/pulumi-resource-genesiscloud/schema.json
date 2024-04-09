@@ -1,7 +1,7 @@
 {
   "name": "genesiscloud",
   "displayName": "Genesis Cloud",
-  "version": "v0.0.11",
+  "version": "v0.0.12",
   "description": "A Pulumi package for creating and managing genesiscloud cloud resources.",
   "keywords": ["pulumi", "genesiscloud", "category/cloud"],
   "homepage": "https://www.pulumi.io",
@@ -42,7 +42,8 @@
     "variables": {
       "endpoint": {
         "type": "string",
-        "description": "Genesis Cloud API endpoint. May also be provided via `GENESISCLOUD_ENDPOINT` environment variable. If neither is\nprovided, defaults to `https://api.genesiscloud.com/compute/v1`.\n"
+        "description": "Genesis Cloud API endpoint. May also be provided via `GENESISCLOUD_ENDPOINT` environment variable. If neither is\nprovided, defaults to `https://api.genesiscloud.com/compute/v1`.\n",
+        "defaultInfo": { "environment": ["GENESISCLOUD_ENDPOINT"] }
       },
       "pollingInterval": {
         "type": "string",
@@ -316,7 +317,8 @@
     "inputProperties": {
       "endpoint": {
         "type": "string",
-        "description": "Genesis Cloud API endpoint. May also be provided via `GENESISCLOUD_ENDPOINT` environment variable. If neither is\nprovided, defaults to `https://api.genesiscloud.com/compute/v1`.\n"
+        "description": "Genesis Cloud API endpoint. May also be provided via `GENESISCLOUD_ENDPOINT` environment variable. If neither is\nprovided, defaults to `https://api.genesiscloud.com/compute/v1`.\n",
+        "defaultInfo": { "environment": ["GENESISCLOUD_ENDPOINT"] }
       },
       "pollingInterval": {
         "type": "string",

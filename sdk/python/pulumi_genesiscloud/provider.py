@@ -25,6 +25,8 @@ class ProviderArgs:
                example "10s".
         :param pulumi.Input[str] token: Genesis Cloud API token. May also be provided via `GENESISCLOUD_TOKEN` environment variable.
         """
+        if endpoint is None:
+            endpoint = _utilities.get_env('GENESISCLOUD_ENDPOINT')
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if polling_interval is not None:
@@ -135,6 +137,8 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            if endpoint is None:
+                endpoint = _utilities.get_env('GENESISCLOUD_ENDPOINT')
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["polling_interval"] = polling_interval
             if token is None:

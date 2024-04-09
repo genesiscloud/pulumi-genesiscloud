@@ -49,6 +49,11 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"GENESISCLOUD_TOKEN"},
 				},
 			},
+			"endpoint": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"GENESISCLOUD_ENDPOINT"},
+				},
+			},
 			// Add any rquired configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {

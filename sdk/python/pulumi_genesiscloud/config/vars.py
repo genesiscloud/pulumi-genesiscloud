@@ -21,7 +21,7 @@ class _ExportableConfig(types.ModuleType):
         Genesis Cloud API endpoint. May also be provided via `GENESISCLOUD_ENDPOINT` environment variable. If neither is
         provided, defaults to `https://api.genesiscloud.com/compute/v1`.
         """
-        return __config__.get('endpoint')
+        return __config__.get('endpoint') or _utilities.get_env('GENESISCLOUD_ENDPOINT')
 
     @property
     def polling_interval(self) -> Optional[str]:

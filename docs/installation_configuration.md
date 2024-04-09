@@ -11,6 +11,17 @@ The Pulumi Genesis Cloud provider is available as a package in the following lan
 - JavaScript/TypeScript: [`@genesiscloud/pulumi-genesiscloud`](https://www.npmjs.com/package/@genesiscloud/pulumi-genesiscloud)
 - Python: [`pulumi-genesiscloud`](https://pypi.org/project/pulumi-genesiscloud/)
 - Go: [`github.com/genesiscloud/pulumi-genesiscloud/sdk/go/genesiscloud`](https://pkg.go.dev/github.com/pulumi/pulumi-genesiscloud/sdk)
+- Dotnet: ...
+
+### Provider Binary
+
+The Genesis Cloud provider binary is a third party binary. It can be installed using the pulumi plugin command.
+
+```bash
+pulumi plugin install resource genesiscloud <version> --server https://github.com/genesiscloud/pulumi-genesiscloud/releases/download/<version>
+```
+
+Replace the version string with your desired version.
 
 ## Setup
 

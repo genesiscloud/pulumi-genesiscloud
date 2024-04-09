@@ -51,7 +51,7 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["endpoint"] = (args ? args.endpoint : undefined) ?? utilities.getEnv("GENESISCLOUD_ENDPOINT");
             resourceInputs["pollingInterval"] = args ? args.pollingInterval : undefined;
             resourceInputs["token"] = (args?.token ? pulumi.secret(args.token) : undefined) ?? utilities.getEnv("GENESISCLOUD_TOKEN");
         }

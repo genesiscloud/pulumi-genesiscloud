@@ -14,7 +14,15 @@ var _ = internal.GetEnvOrDefault
 // Genesis Cloud API endpoint. May also be provided via `GENESISCLOUD_ENDPOINT` environment variable. If neither is
 // provided, defaults to `https://api.genesiscloud.com/compute/v1`.
 func GetEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "genesiscloud:endpoint")
+	v, err := config.Try(ctx, "genesiscloud:endpoint")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "GENESISCLOUD_ENDPOINT"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The polling interval. - The string must be a positive [time duration](https://pkg.go.dev/time#ParseDuration), for

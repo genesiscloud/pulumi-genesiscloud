@@ -57,13 +57,10 @@ set -eo pipefail
 EOF
 `;
 
-const imageId = "2cd0e25f-a39e-4bc6-aa78-b4c40b87072a";
-
 const firstPulumiInstance = new Instance("first-pulumi-instance", {
   name: "first-pulumi-instance",
   region,
-  image: imageId,
-  placementOption: "AUTO",
+  image: "ubuntu-ml-nvidia-pytorch",
   type: "vcpu-4_memory-12g_disk-80g_nvidia3080-1",
   diskSize: 128,
   sshKeyIds: [sshKey.id],

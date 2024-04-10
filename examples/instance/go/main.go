@@ -25,13 +25,10 @@ func main() {
 			return floatingIPErr
 		}
 
-		imageId := "2cd0e25f-a39e-4bc6-aa78-b4c40b87072a"
-
 		_, instanceErr := genesiscloud.NewInstance(ctx, "my-pulumi-instance", &genesiscloud.InstanceArgs{
 			Region:           pulumi.String(region),
-			Image:            pulumi.String(imageId),
+			Image:            pulumi.String("ubuntu-ml-nvidia-pytorch"),
 			Name:             pulumi.String("my-pulumi-instance"),
-			PlacementOption:  pulumi.String("AUTO"),
 			DiskSize:         pulumi.Int(128),
 			Type:             pulumi.String("vcpu-4_memory-12g_disk-80g_nvidia3080-1"),
 			SshKeyIds:        pulumi.StringArray{sshKey.ID()},

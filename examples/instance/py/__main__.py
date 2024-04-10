@@ -5,7 +5,7 @@ import pulumi_genesiscloud as gc
 
 region = "ARC-IS-HAF-1"
 
-ssh_key = gc.SSHKey("ssh-key", name="ssh-key", public_key="<YOUR_SSH_PUBLIC>")
+ssh_key = gc.SSHKey("ssh-key", name="ssh-key", public_key="<YOUR_SSH_PUBLIC_KEY>")
 
 floating_ip = gc.FloatingIp(
     resource_name="my-pulumi-floating-ip",
@@ -55,14 +55,11 @@ set -eo pipefail
 EOF
 """
 
-image_id = "2cd0e25f-a39e-4bc6-aa78-b4c40b87072a"
-
 instance = gc.Instance(
     "my-pulumi-instance",
     name="my-pulumi-instance",
     region=region,
-    image=image_id,
-    placement_option="AUTO",
+    image="ubuntu-ml-nvidia-pytorch",
     disk_size=128,
     type="vcpu-4_memory-12g_disk-80g_nvidia3080-1",
     ssh_key_ids=[ssh_key.id],

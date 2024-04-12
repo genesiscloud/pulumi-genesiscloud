@@ -10,7 +10,7 @@ class GenesisCloudInstance : Stack
         var ssh_key = new SSHKey("ssh-key", new SSHKeyArgs
         {
             Name = "ssh-key",
-            PublicKey = "<YOUR_SSH_PUBLIC>"
+            PublicKey = "<YOUR_SSH_PUBLIC_KEY>"
         });
 
         var floating_ip = new FloatingIp("floating-ip", new FloatingIpArgs

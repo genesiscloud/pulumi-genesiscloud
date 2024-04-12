@@ -10,7 +10,7 @@ func main() {
 		region := "ARC-IS-HAF-1"
 
 		sshKey, sshKeyErr := genesiscloud.NewSSHKey(ctx, "ssh-key", &genesiscloud.SSHKeyArgs{
-			PublicKey: pulumi.String("<YOUR_SSH_PUBLIC>"),
+			PublicKey: pulumi.String("<YOUR_SSH_PUBLIC_KEY>"),
 		})
 		if sshKeyErr != nil {
 			return sshKeyErr

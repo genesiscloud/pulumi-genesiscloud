@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+<PackageReference Include="GenesisCloud.PulumiGenesisCloud" Version="*" />
 
 <PropertyGroup>
   <OutputType>Exe</OutputType>
@@ -6,9 +7,9 @@
   <Nullable>enable</Nullable>
 </PropertyGroup>
 
-<ItemGroup>
+-ItemGroup>
+w <PackageReference Include="GenesisCloud.Genesiscloud" Version="0.0.17" />
   <PackageReference Include="Pulumi" Version="3.*" />
-<PackageReference Include="GenesisCloud.PulumiGenesisCloud" Version="*" />
 </ItemGroup>
 
 </Project>

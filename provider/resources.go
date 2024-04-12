@@ -54,6 +54,7 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"GENESISCLOUD_ENDPOINT"},
 				},
 			},
+
 			// Add any rquired configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -99,11 +100,9 @@ func Provider() tfbridge.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RootNamespace: "GenesisCloud",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
-			},
-			Namespaces: map[string]string{
-				"genesiscloud": "genesiscloud",
 			},
 		},
 	}

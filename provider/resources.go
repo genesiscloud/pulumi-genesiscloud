@@ -103,7 +103,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: map[string]string{
-				"genesiscloud": "GenesisCloud",
+				"genesiscloud": "genesiscloud",
 			},
 		},
 	}

@@ -9,7 +9,7 @@ The Genesis Cloud provider must be configured with credentials to deploy and upd
 
 ## Example
 
-{{< chooser language "typescript,python,go,dotnet" >}}
+{{< chooser language "typescript,python,go,csharp" >}}
 {{% choosable language typescript %}}
 
 ```typescript
@@ -17,10 +17,10 @@ import * as pulumi from "@pulumi/pulumi";
 import { Instance } from "@genesiscloud/pulumi-genesiscloud";
 
 const example = new Instance("example", {
-  image: "my-image-id",
+  image: "ubuntu-ml-nvidia-pytorch",
   region: "ARC-IS-HAF-1",
   sshKeyIds: ["my-ssh-key-id"],
-  type: "vcpu-2_memory-4g_disk-80g",
+  type: "vcpu-4_memory-12g_disk-80g_nvidia3080-1",
 });
 ```
 
@@ -32,10 +32,10 @@ import pulumi
 import pulumi_genesiscloud as genesiscloud
 
 example = genesiscloud.Instance("example",
-  image="my-image-id",
+  image="ubuntu-ml-nvidia-pytorch",
   region="ARC-IS-HAF-1",
   ssh_key_ids=["my-ssh-key-id"],
-  type="vcpu-2_memory-4g_disk-80g")
+  type="vcpu-4_memory-12g_disk-80g_nvidia3080-1")
 ```
 
 {{% /choosable %}}
@@ -50,12 +50,12 @@ import (
 func main() {
   pulumi.Run(func(ctx *pulumi.Context) error {
     _, err := genesiscloud.NewInstance(ctx, "example", &genesiscloud.InstanceArgs{
-      Image:  pulumi.String("my-image-id"),
+      Image:  pulumi.String("ubuntu-ml-nvidia-pytorch"),
       Region: pulumi.String("ARC-IS-HAF-1"),
       SshKeyIds: pulumi.StringArray{
         pulumi.String("my-ssh-key-id"),
       },
-      Type: pulumi.String("vcpu-2_memory-4g_disk-80g"),
+      Type: pulumi.String("vcpu-4_memory-12g_disk-80g_nvidia3080-1"),
     })
     if err != nil {
       return err
@@ -66,10 +66,32 @@ func main() {
 ```
 
 {{% /choosable %}}
-{{% choosable language dotnet %}}
+{{% choosable language csharp %}}
 
-```dotnet
-TODO: add this
+```csharp
+using Pulumi;
+using GenesisCloud.PulumiPackage.Genesiscloud;
+using System.Threading.Tasks;
+
+class GenesisCloudInstance : Stack
+{
+    public GenesisCloudInstance()
+    {
+        var instance = new Instance("my-pulumi-instance", new InstanceArgs
+        {
+            Name = "my-pulumi-instance",
+            Region = region,
+            Image = "ubuntu-ml-nvidia-pytorch",
+            Type = "vcpu-4_memory-12g_disk-80g_nvidia3080-1",
+            SshKeyIds = { "my-ssh-key-id" },
+        });
+    }
+}
+
+class Program
+{
+    static Task<int> Main(string[] args) => Deployment.RunAsync<GenesisCloudInstance>();
+}
 ```
 
 {{% /choosable %}}

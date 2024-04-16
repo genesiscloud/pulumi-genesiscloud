@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.GenesisCloud
+namespace GenesisCloud.PulumiPackage.Genesiscloud
 {
     public static class Config
     {
@@ -32,7 +32,7 @@ namespace Pulumi.GenesisCloud
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("genesiscloud");
 
-        private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint"));
+        private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint") ?? Utilities.GetEnv("GENESISCLOUD_ENDPOINT"));
         /// <summary>
         /// Genesis Cloud API endpoint. May also be provided via `GENESISCLOUD_ENDPOINT` environment variable. If neither is
         /// provided, defaults to `https://api.genesiscloud.com/compute/v1`.
@@ -54,7 +54,7 @@ namespace Pulumi.GenesisCloud
             set => _pollingInterval.Set(value);
         }
 
-        private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
+        private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token") ?? Utilities.GetEnv("GENESISCLOUD_TOKEN"));
         /// <summary>
         /// Genesis Cloud API token. May also be provided via `GENESISCLOUD_TOKEN` environment variable.
         /// </summary>

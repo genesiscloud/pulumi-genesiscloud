@@ -41,7 +41,7 @@ go get github.com/genesiscloud/pulumi-genesiscloud/sdk/go/...
 To use from .NET, install using `dotnet add package`:
 
 ```
-dotnet add package GenesisCloud.PulumiGenesisCloud
+dotnet add package GenesisCloud.PulumiPackage.Genesiscloud
 ```
 
 ## Configuration

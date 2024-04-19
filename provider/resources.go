@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"path"
 
-	_ "embed"
+	_ "embed" // used by the //go:embed directive
 
 	tfpf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"

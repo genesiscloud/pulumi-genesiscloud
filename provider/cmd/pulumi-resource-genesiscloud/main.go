@@ -18,7 +18,7 @@ package main
 
 import (
 	"context"
-	_ "embed"
+	_ "embed" // used by the //go:embed directive
 
 	genesiscloud "github.com/genesiscloud/pulumi-genesiscloud/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"

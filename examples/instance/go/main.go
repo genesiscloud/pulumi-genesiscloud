@@ -7,7 +7,7 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		region := "ARC-IS-HAF-1"
+		region := pulumi.String("ARC-IS-HAF-1")
 
 		sshKey, sshKeyErr := genesiscloud.NewSSHKey(ctx, "ssh-key", &genesiscloud.SSHKeyArgs{
 			PublicKey: pulumi.String("<YOUR_SSH_PUBLIC_KEY>"),
@@ -15,7 +15,6 @@ func main() {
 		if sshKeyErr != nil {
 			return sshKeyErr
 		}
-
 		floatingIP, floatingIPErr := genesiscloud.NewFloatingIp(ctx, "my-pulumi-floating-ip", &genesiscloud.FloatingIpArgs{
 			Description: pulumi.String("My pulumi floating IP"),
 			Region:      pulumi.String(region),
@@ -25,14 +24,50 @@ func main() {
 			return floatingIPErr
 		}
 
+		allowSSH, allowSSHErr := genesiscloud.NewSecurityGroup(ctx, "allow-ssh",
+			&genesiscloud.SecurityGroupArgs{
+				Name:        pulumi.String("allow-ssh"),
+				Description: pulumi.String("Allow SSH"),
+				Region:      region,
+				Rules: genesiscloud.SecurityGroupRuleArray{
+					genesiscloud.SecurityGroupRuleArgs{
+						Direction:    pulumi.String("ingress"),
+						Protocol:     pulumi.String("tcp"),
+						PortRangeMin: pulumi.Int(22),
+						PortRangeMax: pulumi.Int(22),
+					},
+				},
+			})
+		if allowSSHErr != nil {
+			return allowSSHErr
+		}
+
+		allowHTTP, allowHTTPErr := genesiscloud.NewSecurityGroup(ctx, "allow-http",
+			&genesiscloud.SecurityGroupArgs{
+				Name:        pulumi.String("allow-http"),
+				Description: pulumi.String("Allow HTTP"),
+				Region:      region,
+				Rules: genesiscloud.SecurityGroupRuleArray{
+					genesiscloud.SecurityGroupRuleArgs{
+						Direction:    pulumi.String("ingress"),
+						Protocol:     pulumi.String("tcp"),
+						PortRangeMin: pulumi.Int(80),
+						PortRangeMax: pulumi.Int(80),
+					},
+				},
+			})
+		if allowHTTPErr != nil {
+			return allowHTTPErr
+		}
+
 		_, instanceErr := genesiscloud.NewInstance(ctx, "my-pulumi-instance", &genesiscloud.InstanceArgs{
-			Region:           pulumi.String(region),
+			Region:           region,
 			Image:            pulumi.String("ubuntu-ml-nvidia-pytorch"),
 			Name:             pulumi.String("my-pulumi-instance"),
 			DiskSize:         pulumi.Int(128),
 			Type:             pulumi.String("vcpu-4_memory-12g_disk-80g_nvidia3080-1"),
 			SshKeyIds:        pulumi.StringArray{sshKey.ID()},
-			SecurityGroupIds: pulumi.StringArray(nil),
+			SecurityGroupIds: pulumi.StringArray{allowSSH.ID(), allowHTTP.ID()},
 			FloatingIpId:     floatingIP.ID(),
 		})
 		if instanceErr != nil {

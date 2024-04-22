@@ -54,15 +54,6 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"GENESISCLOUD_ENDPOINT"},
 				},
 			},
-
-			// Add any rquired configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: tfbridge.MakeType("regionu", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"genesiscloud_instance":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Instance")},

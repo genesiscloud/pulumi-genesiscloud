@@ -63,7 +63,7 @@ class GenesisCloudInstance : Stack
             DiskSize = 128,
             Type = "vcpu-4_memory-12g_disk-80g_nvidia3080-1",
             SshKeyIds = { ssh_key.Id },
-            FloatingIpId = floating_ip.Id
+            FloatingIpId = floating_ip.Id,
             SecurityGroupIds = { allow_ssh.Id, allow_http.Id },
         });
     }

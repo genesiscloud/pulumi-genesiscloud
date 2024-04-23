@@ -5,7 +5,7 @@
     "@types/node": "^20"
   },
   "dependencies": {
-    "@pulumi/pulumi": "^3.0.0",
-    "@genesiscloud/pulumi-genesiscloud": "^0.0.23"
+    "@pulumi/pulumi": "latest",
+    "@genesiscloud/pulumi-genesiscloud": "latest"
   }
 }

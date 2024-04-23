@@ -1,6 +1,3 @@
-"""A Python Pulumi program"""
-
-import pulumi
 import pulumi_genesiscloud as gc
 
 region = "ARC-IS-HAF-1"

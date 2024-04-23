@@ -1,5 +1,6 @@
 using Pulumi;
 using GenesisCloud.PulumiPackage.Genesiscloud;
+using GenesisCloud.PulumiPackage.Genesiscloud.Inputs;
 using System.Threading.Tasks;
 
 class GenesisCloudInstance : Stack
@@ -22,16 +23,48 @@ class GenesisCloudInstance : Stack
             Version = "ipv4"
         });
 
+        var allow_ssh = new SecurityGroup("allow_ssh", new SecurityGroupArgs
+        {
+            Name = "allow-ssh",
+            Description = "Allow SSH",
+            Region = region,
+            Rules = {
+              new SecurityGroupRuleArgs
+              {
+                Direction = "ingress",
+                Protocol = "tcp",
+                PortRangeMin = 22,
+                PortRangeMax = 22,
+              }
+            }
+        });
+
+        var allow_http = new SecurityGroup("allow_http", new SecurityGroupArgs
+        {
+            Name = "allow-http",
+            Description = "Allow HTTP",
+            Region = region,
+            Rules = {
+              new SecurityGroupRuleArgs
+              {
+                Direction = "ingress",
+                Protocol = "tcp",
+                PortRangeMin = 80,
+                PortRangeMax = 80,
+              }
+            }
+        });
+
         var instance = new Instance("my-pulumi-instance", new InstanceArgs
         {
             Name = "my-pulumi-instance",
             Region = region,
             Image = "ubuntu-ml-nvidia-pytorch",
-            PlacementOption = "AUTO",
             DiskSize = 128,
             Type = "vcpu-4_memory-12g_disk-80g_nvidia3080-1",
             SshKeyIds = { ssh_key.Id },
             FloatingIpId = floating_ip.Id
+            SecurityGroupIds = { allow_ssh.Id, allow_http.Id },
         });
     }
 }

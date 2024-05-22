@@ -31,7 +31,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     ///         {
     ///             "my-ssh-key-id",
     ///         },
-    ///         Type = "vcpu-2_memory-4g_disk-80g",
+    ///         Type = "vcpu-2_memory-4g",
     ///     });
     /// 
     /// });
@@ -132,6 +132,12 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the reservation the instance is associated with.
+        /// </summary>
+        [Output("reservationId")]
+        public Output<string?> ReservationId { get; private set; } = null!;
 
         /// <summary>
         /// The security groups of the instance. If not provided will be set to the default security group.
@@ -299,6 +305,12 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        /// <summary>
+        /// The id of the reservation the instance is associated with.
+        /// </summary>
+        [Input("reservationId")]
+        public Input<string>? ReservationId { get; set; }
+
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
 
@@ -451,6 +463,12 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The id of the reservation the instance is associated with.
+        /// </summary>
+        [Input("reservationId")]
+        public Input<string>? ReservationId { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;

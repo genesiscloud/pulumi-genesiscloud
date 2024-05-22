@@ -87,8 +87,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Output<bool> RetainOnDelete { get; private set; } = null!;
 
         /// <summary>
-        /// The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-        /// recreate the resource. - The value must be at least 1.
+        /// The storage size of this filesystem given in GiB. - The value must be at least 1.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
@@ -182,8 +181,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Input<bool>? RetainOnDelete { get; set; }
 
         /// <summary>
-        /// The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-        /// recreate the resource. - The value must be at least 1.
+        /// The storage size of this filesystem given in GiB. - The value must be at least 1.
         /// </summary>
         [Input("size", required: true)]
         public Input<int> Size { get; set; } = null!;
@@ -256,8 +254,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Input<bool>? RetainOnDelete { get; set; }
 
         /// <summary>
-        /// The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-        /// recreate the resource. - The value must be at least 1.
+        /// The storage size of this filesystem given in GiB. - The value must be at least 1.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

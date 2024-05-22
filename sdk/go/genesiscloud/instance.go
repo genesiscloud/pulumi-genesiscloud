@@ -34,7 +34,7 @@ import (
 //				SshKeyIds: pulumi.StringArray{
 //					pulumi.String("my-ssh-key-id"),
 //				},
-//				Type: pulumi.String("vcpu-2_memory-4g_disk-80g"),
+//				Type: pulumi.String("vcpu-2_memory-4g"),
 //			})
 //			if err != nil {
 //				return err
@@ -90,6 +90,8 @@ type Instance struct {
 	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
 	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The id of the reservation the instance is associated with.
+	ReservationId pulumi.StringPtrOutput `pulumi:"reservationId"`
 	// The security groups of the instance. If not provided will be set to the default security group.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
@@ -189,6 +191,8 @@ type instanceState struct {
 	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
 	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region *string `pulumi:"region"`
+	// The id of the reservation the instance is associated with.
+	ReservationId *string `pulumi:"reservationId"`
 	// The security groups of the instance. If not provided will be set to the default security group.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
@@ -243,6 +247,8 @@ type InstanceState struct {
 	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
 	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringPtrInput
+	// The id of the reservation the instance is associated with.
+	ReservationId pulumi.StringPtrInput
 	// The security groups of the instance. If not provided will be set to the default security group.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
@@ -293,6 +299,8 @@ type instanceArgs struct {
 	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
 	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region string `pulumi:"region"`
+	// The id of the reservation the instance is associated with.
+	ReservationId *string `pulumi:"reservationId"`
 	// The security groups of the instance. If not provided will be set to the default security group.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
@@ -336,6 +344,8 @@ type InstanceArgs struct {
 	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
 	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringInput
+	// The id of the reservation the instance is associated with.
+	ReservationId pulumi.StringPtrInput
 	// The security groups of the instance. If not provided will be set to the default security group.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
@@ -509,6 +519,11 @@ func (o InstanceOutput) PublicIp() pulumi.StringOutput {
 // value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The id of the reservation the instance is associated with.
+func (o InstanceOutput) ReservationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ReservationId }).(pulumi.StringPtrOutput)
 }
 
 // The security groups of the instance. If not provided will be set to the default security group.

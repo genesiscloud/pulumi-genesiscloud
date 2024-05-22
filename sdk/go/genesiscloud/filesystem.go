@@ -68,8 +68,7 @@ type Filesystem struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolOutput `pulumi:"retainOnDelete"`
-	// The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-	// recreate the resource. - The value must be at least 1.
+	// The storage size of this filesystem given in GiB. - The value must be at least 1.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The filesystem status.
 	Status   pulumi.StringOutput         `pulumi:"status"`
@@ -133,8 +132,7 @@ type filesystemState struct {
 	Region *string `pulumi:"region"`
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
-	// The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-	// recreate the resource. - The value must be at least 1.
+	// The storage size of this filesystem given in GiB. - The value must be at least 1.
 	Size *int `pulumi:"size"`
 	// The filesystem status.
 	Status   *string             `pulumi:"status"`
@@ -160,8 +158,7 @@ type FilesystemState struct {
 	Region pulumi.StringPtrInput
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
-	// The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-	// recreate the resource. - The value must be at least 1.
+	// The storage size of this filesystem given in GiB. - The value must be at least 1.
 	Size pulumi.IntPtrInput
 	// The filesystem status.
 	Status   pulumi.StringPtrInput
@@ -185,8 +182,7 @@ type filesystemArgs struct {
 	Region string `pulumi:"region"`
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
-	// The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-	// recreate the resource. - The value must be at least 1.
+	// The storage size of this filesystem given in GiB. - The value must be at least 1.
 	Size     int                 `pulumi:"size"`
 	Timeouts *FilesystemTimeouts `pulumi:"timeouts"`
 	// The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
@@ -205,8 +201,7 @@ type FilesystemArgs struct {
 	Region pulumi.StringInput
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
-	// The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-	// recreate the resource. - The value must be at least 1.
+	// The storage size of this filesystem given in GiB. - The value must be at least 1.
 	Size     pulumi.IntInput
 	Timeouts FilesystemTimeoutsPtrInput
 	// The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
@@ -337,8 +332,7 @@ func (o FilesystemOutput) RetainOnDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Filesystem) pulumi.BoolOutput { return v.RetainOnDelete }).(pulumi.BoolOutput)
 }
 
-// The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-// recreate the resource. - The value must be at least 1.
+// The storage size of this filesystem given in GiB. - The value must be at least 1.
 func (o FilesystemOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Filesystem) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }

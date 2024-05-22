@@ -87,8 +87,7 @@ export class Filesystem extends pulumi.CustomResource {
      */
     public readonly retainOnDelete!: pulumi.Output<boolean>;
     /**
-     * The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-     * recreate the resource. - The value must be at least 1.
+     * The storage size of this filesystem given in GiB. - The value must be at least 1.
      */
     public readonly size!: pulumi.Output<number>;
     /**
@@ -188,8 +187,7 @@ export interface FilesystemState {
      */
     retainOnDelete?: pulumi.Input<boolean>;
     /**
-     * The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-     * recreate the resource. - The value must be at least 1.
+     * The storage size of this filesystem given in GiB. - The value must be at least 1.
      */
     size?: pulumi.Input<number>;
     /**
@@ -226,8 +224,7 @@ export interface FilesystemArgs {
      */
     retainOnDelete?: pulumi.Input<boolean>;
     /**
-     * The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and
-     * recreate the resource. - The value must be at least 1.
+     * The storage size of this filesystem given in GiB. - The value must be at least 1.
      */
     size: pulumi.Input<number>;
     timeouts?: pulumi.Input<inputs.FilesystemTimeouts>;

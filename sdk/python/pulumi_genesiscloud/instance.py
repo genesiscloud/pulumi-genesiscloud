@@ -26,6 +26,7 @@ class InstanceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  placement_option: Optional[pulumi.Input[str]] = None,
+                 reservation_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeouts: Optional[pulumi.Input['InstanceTimeoutsArgs']] = None,
@@ -53,6 +54,7 @@ class InstanceArgs:
                length must be at least 16.
         :param pulumi.Input[str] placement_option: The placement option identifier in which instances are physically located relative to each other within a zone. For
                example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+        :param pulumi.Input[str] reservation_id: The id of the reservation the instance is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security groups of the instance. If not provided will be set to the default security group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
                resource.
@@ -75,6 +77,8 @@ class InstanceArgs:
             pulumi.set(__self__, "password", password)
         if placement_option is not None:
             pulumi.set(__self__, "placement_option", placement_option)
+        if reservation_id is not None:
+            pulumi.set(__self__, "reservation_id", reservation_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if ssh_key_ids is not None:
@@ -216,6 +220,18 @@ class InstanceArgs:
         pulumi.set(self, "placement_option", value)
 
     @property
+    @pulumi.getter(name="reservationId")
+    def reservation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the reservation the instance is associated with.
+        """
+        return pulumi.get(self, "reservation_id")
+
+    @reservation_id.setter
+    def reservation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reservation_id", value)
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -278,6 +294,7 @@ class _InstanceState:
                  private_ip: Optional[pulumi.Input[str]] = None,
                  public_ip: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reservation_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -309,6 +326,7 @@ class _InstanceState:
         :param pulumi.Input[str] public_ip: The public IPv4 IP-Address (IPv4 address).
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
                value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] reservation_id: The id of the reservation the instance is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security groups of the instance. If not provided will be set to the default security group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
                resource.
@@ -345,6 +363,8 @@ class _InstanceState:
             pulumi.set(__self__, "public_ip", public_ip)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if reservation_id is not None:
+            pulumi.set(__self__, "reservation_id", reservation_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if ssh_key_ids is not None:
@@ -526,6 +546,18 @@ class _InstanceState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="reservationId")
+    def reservation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the reservation the instance is associated with.
+        """
+        return pulumi.get(self, "reservation_id")
+
+    @reservation_id.setter
+    def reservation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reservation_id", value)
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -624,6 +656,7 @@ class Instance(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  placement_option: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reservation_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeouts: Optional[pulumi.Input[pulumi.InputType['InstanceTimeoutsArgs']]] = None,
@@ -643,7 +676,7 @@ class Instance(pulumi.CustomResource):
             image="my-image-id",
             region="ARC-IS-HAF-1",
             ssh_key_ids=["my-ssh-key-id"],
-            type="vcpu-2_memory-4g_disk-80g")
+            type="vcpu-2_memory-4g")
         ```
 
         ## Import
@@ -672,6 +705,7 @@ class Instance(pulumi.CustomResource):
                example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
                value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] reservation_id: The id of the reservation the instance is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security groups of the instance. If not provided will be set to the default security group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
                resource.
@@ -699,7 +733,7 @@ class Instance(pulumi.CustomResource):
             image="my-image-id",
             region="ARC-IS-HAF-1",
             ssh_key_ids=["my-ssh-key-id"],
-            type="vcpu-2_memory-4g_disk-80g")
+            type="vcpu-2_memory-4g")
         ```
 
         ## Import
@@ -732,6 +766,7 @@ class Instance(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  placement_option: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 reservation_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeouts: Optional[pulumi.Input[pulumi.InputType['InstanceTimeoutsArgs']]] = None,
@@ -759,6 +794,7 @@ class Instance(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["reservation_id"] = reservation_id
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["ssh_key_ids"] = ssh_key_ids
             __props__.__dict__["timeouts"] = timeouts
@@ -797,6 +833,7 @@ class Instance(pulumi.CustomResource):
             private_ip: Optional[pulumi.Input[str]] = None,
             public_ip: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            reservation_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -833,6 +870,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] public_ip: The public IPv4 IP-Address (IPv4 address).
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
                value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] reservation_id: The id of the reservation the instance is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security groups of the instance. If not provided will be set to the default security group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
                resource.
@@ -860,6 +898,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["private_ip"] = private_ip
         __props__.__dict__["public_ip"] = public_ip
         __props__.__dict__["region"] = region
+        __props__.__dict__["reservation_id"] = reservation_id
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["ssh_key_ids"] = ssh_key_ids
         __props__.__dict__["status"] = status
@@ -981,6 +1020,14 @@ class Instance(pulumi.CustomResource):
         value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="reservationId")
+    def reservation_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The id of the reservation the instance is associated with.
+        """
+        return pulumi.get(self, "reservation_id")
 
     @property
     @pulumi.getter(name="securityGroupIds")

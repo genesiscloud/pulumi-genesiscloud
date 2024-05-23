@@ -1,7 +1,7 @@
 {
   "name": "genesiscloud",
   "displayName": "Genesis Cloud",
-  "version": "v0.0.24",
+  "version": "v0.0.25",
   "description": "A Pulumi package for creating and managing genesiscloud cloud resources.",
   "keywords": ["pulumi", "genesiscloud", "category/cloud"],
   "homepage": "https://www.pulumi.io",
@@ -116,28 +116,19 @@
     },
     "genesiscloud:index/ImagesImage:ImagesImage": {
       "properties": {
-        "createdAt": {
-          "type": "string",
-          "description": "The timestamp when this image was created in RFC 3339.\n"
-        },
+        "createdAt": { "type": "string", "description": "The timestamp when this image was created in RFC 3339.\n" },
         "id": {
           "type": "string",
           "description": "A unique number that can be used to identify and reference a specific image.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The display name that has been given to an image.\n"
-        },
+        "name": { "type": "string", "description": "The display name that has been given to an image.\n" },
         "regions": {
           "type": "array",
           "items": { "type": "string" },
           "description": "The list of regions in which this image can be used in.\n"
         },
         "slug": { "type": "string", "description": "The image slug.\n" },
-        "type": {
-          "type": "string",
-          "description": "Describes the kind of image.\n"
-        },
+        "type": { "type": "string", "description": "Describes the kind of image.\n" },
         "versions": {
           "type": "array",
           "items": { "type": "string" },
@@ -145,15 +136,7 @@
         }
       },
       "type": "object",
-      "required": [
-        "createdAt",
-        "id",
-        "name",
-        "regions",
-        "slug",
-        "type",
-        "versions"
-      ],
+      "required": ["createdAt", "id", "name", "regions", "slug", "type", "versions"],
       "language": { "nodejs": { "requiredInputs": [] } }
     },
     "genesiscloud:index/ImagesTimeouts:ImagesTimeouts": {
@@ -353,10 +336,7 @@
           "items": { "type": "string" },
           "description": "The start and end IP of the mount endpoint range. Expressed as a array with two entries.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the filesystem.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the filesystem.\n" },
         "region": {
           "type": "string",
           "description": "The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will\ndestroy and recreate the resource. - The value must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
@@ -367,15 +347,10 @@
         },
         "size": {
           "type": "integer",
-          "description": "The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and\nrecreate the resource. - The value must be at least 1.\n"
+          "description": "The storage size of this filesystem given in GiB. - The value must be at least 1.\n"
         },
-        "status": {
-          "type": "string",
-          "description": "The filesystem status.\n"
-        },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/FilesystemTimeouts:FilesystemTimeouts"
-        },
+        "status": { "type": "string", "description": "The filesystem status.\n" },
+        "timeouts": { "$ref": "#/types/genesiscloud:index/FilesystemTimeouts:FilesystemTimeouts" },
         "type": {
           "type": "string",
           "description": "The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource. - The value must be one of: [\"vast\"].\n"
@@ -398,10 +373,7 @@
           "type": "string",
           "description": "The human-readable description for the filesystem. - Sets the default value \"\" if the attribute is not set.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the filesystem.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the filesystem.\n" },
         "region": {
           "type": "string",
           "description": "The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will\ndestroy and recreate the resource. - The value must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
@@ -412,11 +384,9 @@
         },
         "size": {
           "type": "integer",
-          "description": "The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and\nrecreate the resource. - The value must be at least 1.\n"
+          "description": "The storage size of this filesystem given in GiB. - The value must be at least 1.\n"
         },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/FilesystemTimeouts:FilesystemTimeouts"
-        },
+        "timeouts": { "$ref": "#/types/genesiscloud:index/FilesystemTimeouts:FilesystemTimeouts" },
         "type": {
           "type": "string",
           "description": "The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource. - The value must be one of: [\"vast\"].\n"
@@ -443,10 +413,7 @@
             "items": { "type": "string" },
             "description": "The start and end IP of the mount endpoint range. Expressed as a array with two entries.\n"
           },
-          "name": {
-            "type": "string",
-            "description": "The human-readable name for the filesystem.\n"
-          },
+          "name": { "type": "string", "description": "The human-readable name for the filesystem.\n" },
           "region": {
             "type": "string",
             "description": "The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will\ndestroy and recreate the resource. - The value must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
@@ -457,15 +424,10 @@
           },
           "size": {
             "type": "integer",
-            "description": "The storage size of this filesystem given in GiB. - If the value of this attribute changes, Terraform will destroy and\nrecreate the resource. - The value must be at least 1.\n"
+            "description": "The storage size of this filesystem given in GiB. - The value must be at least 1.\n"
           },
-          "status": {
-            "type": "string",
-            "description": "The filesystem status.\n"
-          },
-          "timeouts": {
-            "$ref": "#/types/genesiscloud:index/FilesystemTimeouts:FilesystemTimeouts"
-          },
+          "status": { "type": "string", "description": "The filesystem status.\n" },
+          "timeouts": { "$ref": "#/types/genesiscloud:index/FilesystemTimeouts:FilesystemTimeouts" },
           "type": {
             "type": "string",
             "description": "The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource. - The value must be one of: [\"vast\"].\n"
@@ -485,29 +447,18 @@
           "type": "string",
           "description": "The human-readable description set for the floating IP. - Sets the default value \"\" if the attribute is not set.\n"
         },
-        "ipAddress": {
-          "type": "string",
-          "description": "The IP address of the floating IP.\n"
-        },
+        "ipAddress": { "type": "string", "description": "The IP address of the floating IP.\n" },
         "isPublic": {
           "type": "boolean",
           "description": "Whether the floating IP is public or private. - Sets the default value \"true\" if the attribute is not set.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the floating IP.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the floating IP.\n" },
         "region": {
           "type": "string",
           "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
         },
-        "status": {
-          "type": "string",
-          "description": "The floating IP status.\n"
-        },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/FloatingIpTimeouts:FloatingIpTimeouts"
-        },
+        "status": { "type": "string", "description": "The floating IP status.\n" },
+        "timeouts": { "$ref": "#/types/genesiscloud:index/FloatingIpTimeouts:FloatingIpTimeouts" },
         "updatedAt": {
           "type": "string",
           "description": "The timestamp when this image was last updated in RFC 3339.\n"
@@ -533,17 +484,12 @@
           "type": "string",
           "description": "The human-readable description set for the floating IP. - Sets the default value \"\" if the attribute is not set.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the floating IP.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the floating IP.\n" },
         "region": {
           "type": "string",
           "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
         },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/FloatingIpTimeouts:FloatingIpTimeouts"
-        },
+        "timeouts": { "$ref": "#/types/genesiscloud:index/FloatingIpTimeouts:FloatingIpTimeouts" },
         "version": {
           "type": "string",
           "description": "The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource. - The value must be one of: [\"ipv4\"].\n"
@@ -561,29 +507,18 @@
             "type": "string",
             "description": "The human-readable description set for the floating IP. - Sets the default value \"\" if the attribute is not set.\n"
           },
-          "ipAddress": {
-            "type": "string",
-            "description": "The IP address of the floating IP.\n"
-          },
+          "ipAddress": { "type": "string", "description": "The IP address of the floating IP.\n" },
           "isPublic": {
             "type": "boolean",
             "description": "Whether the floating IP is public or private. - Sets the default value \"true\" if the attribute is not set.\n"
           },
-          "name": {
-            "type": "string",
-            "description": "The human-readable name for the floating IP.\n"
-          },
+          "name": { "type": "string", "description": "The human-readable name for the floating IP.\n" },
           "region": {
             "type": "string",
             "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
           },
-          "status": {
-            "type": "string",
-            "description": "The floating IP status.\n"
-          },
-          "timeouts": {
-            "$ref": "#/types/genesiscloud:index/FloatingIpTimeouts:FloatingIpTimeouts"
-          },
+          "status": { "type": "string", "description": "The floating IP status.\n" },
+          "timeouts": { "$ref": "#/types/genesiscloud:index/FloatingIpTimeouts:FloatingIpTimeouts" },
           "updatedAt": {
             "type": "string",
             "description": "The timestamp when this image was last updated in RFC 3339.\n"
@@ -597,20 +532,11 @@
       }
     },
     "genesiscloud:index/instance:Instance": {
-      "description": "Instance resource\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as genesiscloud from \"@genesiscloud/pulumi-genesiscloud\";\n\nconst example = new genesiscloud.Instance(\"example\", {\n    image: \"my-image-id\",\n    region: \"ARC-IS-HAF-1\",\n    sshKeyIds: [\"my-ssh-key-id\"],\n    type: \"vcpu-2_memory-4g_disk-80g\",\n});\n```\n```python\nimport pulumi\nimport pulumi_genesiscloud as genesiscloud\n\nexample = genesiscloud.Instance(\"example\",\n    image=\"my-image-id\",\n    region=\"ARC-IS-HAF-1\",\n    ssh_key_ids=[\"my-ssh-key-id\"],\n    type=\"vcpu-2_memory-4g_disk-80g\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Genesiscloud = GenesisCloud.PulumiPackage.Genesiscloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Genesiscloud.Instance(\"example\", new()\n    {\n        Image = \"my-image-id\",\n        Region = \"ARC-IS-HAF-1\",\n        SshKeyIds = new[]\n        {\n            \"my-ssh-key-id\",\n        },\n        Type = \"vcpu-2_memory-4g_disk-80g\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/genesiscloud/pulumi-genesiscloud/sdk/go/genesiscloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := genesiscloud.NewInstance(ctx, \"example\", \u0026genesiscloud.InstanceArgs{\n\t\t\tImage:  pulumi.String(\"my-image-id\"),\n\t\t\tRegion: pulumi.String(\"ARC-IS-HAF-1\"),\n\t\t\tSshKeyIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"my-ssh-key-id\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"vcpu-2_memory-4g_disk-80g\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.genesiscloud.Instance;\nimport com.pulumi.genesiscloud.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Instance(\"example\", InstanceArgs.builder()        \n            .image(\"my-image-id\")\n            .region(\"ARC-IS-HAF-1\")\n            .sshKeyIds(\"my-ssh-key-id\")\n            .type(\"vcpu-2_memory-4g_disk-80g\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: genesiscloud:Instance\n    properties:\n      image: my-image-id\n      region: ARC-IS-HAF-1\n      sshKeyIds:\n        - my-ssh-key-id\n      type: vcpu-2_memory-4g_disk-80g\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import genesiscloud:index/instance:Instance example 18efeec8-94f0-4776-8ff2-5e9b49c74608\n```\n\n ",
+      "description": "Instance resource\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as genesiscloud from \"@genesiscloud/pulumi-genesiscloud\";\n\nconst example = new genesiscloud.Instance(\"example\", {\n    image: \"my-image-id\",\n    region: \"ARC-IS-HAF-1\",\n    sshKeyIds: [\"my-ssh-key-id\"],\n    type: \"vcpu-2_memory-4g\",\n});\n```\n```python\nimport pulumi\nimport pulumi_genesiscloud as genesiscloud\n\nexample = genesiscloud.Instance(\"example\",\n    image=\"my-image-id\",\n    region=\"ARC-IS-HAF-1\",\n    ssh_key_ids=[\"my-ssh-key-id\"],\n    type=\"vcpu-2_memory-4g\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Genesiscloud = GenesisCloud.PulumiPackage.Genesiscloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Genesiscloud.Instance(\"example\", new()\n    {\n        Image = \"my-image-id\",\n        Region = \"ARC-IS-HAF-1\",\n        SshKeyIds = new[]\n        {\n            \"my-ssh-key-id\",\n        },\n        Type = \"vcpu-2_memory-4g\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/genesiscloud/pulumi-genesiscloud/sdk/go/genesiscloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := genesiscloud.NewInstance(ctx, \"example\", \u0026genesiscloud.InstanceArgs{\n\t\t\tImage:  pulumi.String(\"my-image-id\"),\n\t\t\tRegion: pulumi.String(\"ARC-IS-HAF-1\"),\n\t\t\tSshKeyIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"my-ssh-key-id\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"vcpu-2_memory-4g\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.genesiscloud.Instance;\nimport com.pulumi.genesiscloud.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Instance(\"example\", InstanceArgs.builder()        \n            .image(\"my-image-id\")\n            .region(\"ARC-IS-HAF-1\")\n            .sshKeyIds(\"my-ssh-key-id\")\n            .type(\"vcpu-2_memory-4g\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: genesiscloud:Instance\n    properties:\n      image: my-image-id\n      region: ARC-IS-HAF-1\n      sshKeyIds:\n        - my-ssh-key-id\n      type: vcpu-2_memory-4g\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import genesiscloud:index/instance:Instance example 18efeec8-94f0-4776-8ff2-5e9b49c74608\n```\n\n ",
       "properties": {
-        "createdAt": {
-          "type": "string",
-          "description": "The timestamp when this image was created in RFC 3339.\n"
-        },
-        "diskSize": {
-          "type": "integer",
-          "description": "The disk size of the instance in GB.\n"
-        },
-        "floatingIpId": {
-          "type": "string",
-          "description": "The floating IP attached to the instance.\n"
-        },
+        "createdAt": { "type": "string", "description": "The timestamp when this image was created in RFC 3339.\n" },
+        "diskSize": { "type": "integer", "description": "The disk size of the instance in GB.\n" },
+        "floatingIpId": { "type": "string", "description": "The floating IP attached to the instance.\n" },
         "hostname": {
           "type": "string",
           "description": "The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this\nattribute is configured and changes, Terraform will destroy and recreate the resource.\n"
@@ -619,18 +545,12 @@
           "type": "string",
           "description": "The source image id, image slug or snapshot id of the instance. The image version can also specified together with the\nimage slug in this format `\u003cimage-slug\u003e:\u003cversion\u003e`. Learn more about images\n[here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and\nrecreate the resource.\n"
         },
-        "imageId": {
-          "type": "string",
-          "description": "The resulting image ID of the instance.\n"
-        },
+        "imageId": { "type": "string", "description": "The resulting image ID of the instance.\n" },
         "metadata": {
           "$ref": "#/types/genesiscloud:index/InstanceMetadata:InstanceMetadata",
           "description": "Option to provide metadata. Currently supported is `startup_script`.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the instance.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the instance.\n" },
         "password": {
           "type": "string",
           "description": "The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.\n**Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an\nSSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string\nlength must be at least 16.\n",
@@ -640,17 +560,15 @@
           "type": "string",
           "description": "The placement option identifier in which instances are physically located relative to each other within a zone. For\nexample A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.\n"
         },
-        "privateIp": {
-          "type": "string",
-          "description": "The private IPv4 IP-Address (IPv4 address).\n"
-        },
-        "publicIp": {
-          "type": "string",
-          "description": "The public IPv4 IP-Address (IPv4 address).\n"
-        },
+        "privateIp": { "type": "string", "description": "The private IPv4 IP-Address (IPv4 address).\n" },
+        "publicIp": { "type": "string", "description": "The public IPv4 IP-Address (IPv4 address).\n" },
         "region": {
           "type": "string",
           "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
+        },
+        "reservationId": {
+          "type": "string",
+          "description": "The id of the reservation the instance is associated with.\n"
         },
         "securityGroupIds": {
           "type": "array",
@@ -663,9 +581,7 @@
           "description": "The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource.\n"
         },
         "status": { "type": "string", "description": "The instance status.\n" },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/InstanceTimeouts:InstanceTimeouts"
-        },
+        "timeouts": { "$ref": "#/types/genesiscloud:index/InstanceTimeouts:InstanceTimeouts" },
         "type": {
           "type": "string",
           "description": "The instance type identifier. Learn more about instance types\n[here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,\nTerraform will destroy and recreate the resource.\n"
@@ -674,11 +590,7 @@
           "type": "string",
           "description": "The timestamp when this image was last updated in RFC 3339.\n"
         },
-        "volumeIds": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "The volumes of the instance.\n"
-        }
+        "volumeIds": { "type": "array", "items": { "type": "string" }, "description": "The volumes of the instance.\n" }
       },
       "required": [
         "createdAt",
@@ -698,14 +610,8 @@
         "volumeIds"
       ],
       "inputProperties": {
-        "diskSize": {
-          "type": "integer",
-          "description": "The disk size of the instance in GB.\n"
-        },
-        "floatingIpId": {
-          "type": "string",
-          "description": "The floating IP attached to the instance.\n"
-        },
+        "diskSize": { "type": "integer", "description": "The disk size of the instance in GB.\n" },
+        "floatingIpId": { "type": "string", "description": "The floating IP attached to the instance.\n" },
         "hostname": {
           "type": "string",
           "description": "The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this\nattribute is configured and changes, Terraform will destroy and recreate the resource.\n"
@@ -718,10 +624,7 @@
           "$ref": "#/types/genesiscloud:index/InstanceMetadata:InstanceMetadata",
           "description": "Option to provide metadata. Currently supported is `startup_script`.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the instance.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the instance.\n" },
         "password": {
           "type": "string",
           "description": "The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.\n**Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an\nSSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string\nlength must be at least 16.\n",
@@ -735,6 +638,10 @@
           "type": "string",
           "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
         },
+        "reservationId": {
+          "type": "string",
+          "description": "The id of the reservation the instance is associated with.\n"
+        },
         "securityGroupIds": {
           "type": "array",
           "items": { "type": "string" },
@@ -745,35 +652,20 @@
           "items": { "type": "string" },
           "description": "The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource.\n"
         },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/InstanceTimeouts:InstanceTimeouts"
-        },
+        "timeouts": { "$ref": "#/types/genesiscloud:index/InstanceTimeouts:InstanceTimeouts" },
         "type": {
           "type": "string",
           "description": "The instance type identifier. Learn more about instance types\n[here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,\nTerraform will destroy and recreate the resource.\n"
         },
-        "volumeIds": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "The volumes of the instance.\n"
-        }
+        "volumeIds": { "type": "array", "items": { "type": "string" }, "description": "The volumes of the instance.\n" }
       },
       "requiredInputs": ["image", "region", "type"],
       "stateInputs": {
         "description": "Input properties used for looking up and filtering Instance resources.\n",
         "properties": {
-          "createdAt": {
-            "type": "string",
-            "description": "The timestamp when this image was created in RFC 3339.\n"
-          },
-          "diskSize": {
-            "type": "integer",
-            "description": "The disk size of the instance in GB.\n"
-          },
-          "floatingIpId": {
-            "type": "string",
-            "description": "The floating IP attached to the instance.\n"
-          },
+          "createdAt": { "type": "string", "description": "The timestamp when this image was created in RFC 3339.\n" },
+          "diskSize": { "type": "integer", "description": "The disk size of the instance in GB.\n" },
+          "floatingIpId": { "type": "string", "description": "The floating IP attached to the instance.\n" },
           "hostname": {
             "type": "string",
             "description": "The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this\nattribute is configured and changes, Terraform will destroy and recreate the resource.\n"
@@ -782,18 +674,12 @@
             "type": "string",
             "description": "The source image id, image slug or snapshot id of the instance. The image version can also specified together with the\nimage slug in this format `\u003cimage-slug\u003e:\u003cversion\u003e`. Learn more about images\n[here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and\nrecreate the resource.\n"
           },
-          "imageId": {
-            "type": "string",
-            "description": "The resulting image ID of the instance.\n"
-          },
+          "imageId": { "type": "string", "description": "The resulting image ID of the instance.\n" },
           "metadata": {
             "$ref": "#/types/genesiscloud:index/InstanceMetadata:InstanceMetadata",
             "description": "Option to provide metadata. Currently supported is `startup_script`.\n"
           },
-          "name": {
-            "type": "string",
-            "description": "The human-readable name for the instance.\n"
-          },
+          "name": { "type": "string", "description": "The human-readable name for the instance.\n" },
           "password": {
             "type": "string",
             "description": "The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.\n**Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an\nSSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string\nlength must be at least 16.\n",
@@ -803,17 +689,15 @@
             "type": "string",
             "description": "The placement option identifier in which instances are physically located relative to each other within a zone. For\nexample A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.\n"
           },
-          "privateIp": {
-            "type": "string",
-            "description": "The private IPv4 IP-Address (IPv4 address).\n"
-          },
-          "publicIp": {
-            "type": "string",
-            "description": "The public IPv4 IP-Address (IPv4 address).\n"
-          },
+          "privateIp": { "type": "string", "description": "The private IPv4 IP-Address (IPv4 address).\n" },
+          "publicIp": { "type": "string", "description": "The public IPv4 IP-Address (IPv4 address).\n" },
           "region": {
             "type": "string",
             "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
+          },
+          "reservationId": {
+            "type": "string",
+            "description": "The id of the reservation the instance is associated with.\n"
           },
           "securityGroupIds": {
             "type": "array",
@@ -825,13 +709,8 @@
             "items": { "type": "string" },
             "description": "The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource.\n"
           },
-          "status": {
-            "type": "string",
-            "description": "The instance status.\n"
-          },
-          "timeouts": {
-            "$ref": "#/types/genesiscloud:index/InstanceTimeouts:InstanceTimeouts"
-          },
+          "status": { "type": "string", "description": "The instance status.\n" },
+          "timeouts": { "$ref": "#/types/genesiscloud:index/InstanceTimeouts:InstanceTimeouts" },
           "type": {
             "type": "string",
             "description": "The instance type identifier. Learn more about instance types\n[here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,\nTerraform will destroy and recreate the resource.\n"
@@ -852,39 +731,23 @@
     "genesiscloud:index/sSHKey:SSHKey": {
       "description": "SSH key resource\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as genesiscloud from \"@genesiscloud/pulumi-genesiscloud\";\n\nconst example = new genesiscloud.SSHKey(\"example\", {publicKey: \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOpdKM8wSI07+PO4xLDL7zW/kNWGbdFXeHyBU1TRlBn alice@example.com\"});\n```\n```python\nimport pulumi\nimport pulumi_genesiscloud as genesiscloud\n\nexample = genesiscloud.SSHKey(\"example\", public_key=\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOpdKM8wSI07+PO4xLDL7zW/kNWGbdFXeHyBU1TRlBn alice@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Genesiscloud = GenesisCloud.PulumiPackage.Genesiscloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Genesiscloud.SSHKey(\"example\", new()\n    {\n        PublicKey = \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOpdKM8wSI07+PO4xLDL7zW/kNWGbdFXeHyBU1TRlBn alice@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/genesiscloud/pulumi-genesiscloud/sdk/go/genesiscloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := genesiscloud.NewSSHKey(ctx, \"example\", \u0026genesiscloud.SSHKeyArgs{\n\t\t\tPublicKey: pulumi.String(\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOpdKM8wSI07+PO4xLDL7zW/kNWGbdFXeHyBU1TRlBn alice@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.genesiscloud.SSHKey;\nimport com.pulumi.genesiscloud.SSHKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new SSHKey(\"example\", SSHKeyArgs.builder()        \n            .publicKey(\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOpdKM8wSI07+PO4xLDL7zW/kNWGbdFXeHyBU1TRlBn alice@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: genesiscloud:SSHKey\n    properties:\n      publicKey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOpdKM8wSI07+PO4xLDL7zW/kNWGbdFXeHyBU1TRlBn alice@example.com\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import genesiscloud:index/sSHKey:SSHKey example 18efeec8-94f0-4776-8ff2-5e9b49c74608\n```\n\n ",
       "properties": {
-        "createdAt": {
-          "type": "string",
-          "description": "The timestamp when this SSH key was created in RFC 3339.\n"
-        },
-        "fingerprint": {
-          "type": "string",
-          "description": "The fingerprint of the SSH key.\n"
-        },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the SSH key.\n"
-        },
+        "createdAt": { "type": "string", "description": "The timestamp when this SSH key was created in RFC 3339.\n" },
+        "fingerprint": { "type": "string", "description": "The fingerprint of the SSH key.\n" },
+        "name": { "type": "string", "description": "The human-readable name for the SSH key.\n" },
         "publicKey": {
           "type": "string",
           "description": "SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.\n"
         },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/SSHKeyTimeouts:SSHKeyTimeouts"
-        }
+        "timeouts": { "$ref": "#/types/genesiscloud:index/SSHKeyTimeouts:SSHKeyTimeouts" }
       },
       "required": ["createdAt", "fingerprint", "name", "publicKey"],
       "inputProperties": {
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the SSH key.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the SSH key.\n" },
         "publicKey": {
           "type": "string",
           "description": "SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.\n"
         },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/SSHKeyTimeouts:SSHKeyTimeouts"
-        }
+        "timeouts": { "$ref": "#/types/genesiscloud:index/SSHKeyTimeouts:SSHKeyTimeouts" }
       },
       "requiredInputs": ["publicKey"],
       "stateInputs": {
@@ -894,21 +757,13 @@
             "type": "string",
             "description": "The timestamp when this SSH key was created in RFC 3339.\n"
           },
-          "fingerprint": {
-            "type": "string",
-            "description": "The fingerprint of the SSH key.\n"
-          },
-          "name": {
-            "type": "string",
-            "description": "The human-readable name for the SSH key.\n"
-          },
+          "fingerprint": { "type": "string", "description": "The fingerprint of the SSH key.\n" },
+          "name": { "type": "string", "description": "The human-readable name for the SSH key.\n" },
           "publicKey": {
             "type": "string",
             "description": "SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.\n"
           },
-          "timeouts": {
-            "$ref": "#/types/genesiscloud:index/SSHKeyTimeouts:SSHKeyTimeouts"
-          }
+          "timeouts": { "$ref": "#/types/genesiscloud:index/SSHKeyTimeouts:SSHKeyTimeouts" }
         },
         "type": "object"
       }
@@ -924,58 +779,34 @@
           "type": "string",
           "description": "The human-readable description for the security group. - Sets the default value \"\" if the attribute is not set.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the security group.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the security group.\n" },
         "region": {
           "type": "string",
           "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
         },
         "rules": {
           "type": "array",
-          "items": {
-            "$ref": "#/types/genesiscloud:index/SecurityGroupRule:SecurityGroupRule"
-          }
+          "items": { "$ref": "#/types/genesiscloud:index/SecurityGroupRule:SecurityGroupRule" }
         },
-        "status": {
-          "type": "string",
-          "description": "The security group status.\n"
-        },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/SecurityGroupTimeouts:SecurityGroupTimeouts"
-        }
+        "status": { "type": "string", "description": "The security group status.\n" },
+        "timeouts": { "$ref": "#/types/genesiscloud:index/SecurityGroupTimeouts:SecurityGroupTimeouts" }
       },
-      "required": [
-        "createdAt",
-        "description",
-        "name",
-        "region",
-        "rules",
-        "status"
-      ],
+      "required": ["createdAt", "description", "name", "region", "rules", "status"],
       "inputProperties": {
         "description": {
           "type": "string",
           "description": "The human-readable description for the security group. - Sets the default value \"\" if the attribute is not set.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the security group.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the security group.\n" },
         "region": {
           "type": "string",
           "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
         },
         "rules": {
           "type": "array",
-          "items": {
-            "$ref": "#/types/genesiscloud:index/SecurityGroupRule:SecurityGroupRule"
-          }
+          "items": { "$ref": "#/types/genesiscloud:index/SecurityGroupRule:SecurityGroupRule" }
         },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/SecurityGroupTimeouts:SecurityGroupTimeouts"
-        }
+        "timeouts": { "$ref": "#/types/genesiscloud:index/SecurityGroupTimeouts:SecurityGroupTimeouts" }
       },
       "requiredInputs": ["region", "rules"],
       "stateInputs": {
@@ -989,27 +820,17 @@
             "type": "string",
             "description": "The human-readable description for the security group. - Sets the default value \"\" if the attribute is not set.\n"
           },
-          "name": {
-            "type": "string",
-            "description": "The human-readable name for the security group.\n"
-          },
+          "name": { "type": "string", "description": "The human-readable name for the security group.\n" },
           "region": {
             "type": "string",
             "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
           },
           "rules": {
             "type": "array",
-            "items": {
-              "$ref": "#/types/genesiscloud:index/SecurityGroupRule:SecurityGroupRule"
-            }
+            "items": { "$ref": "#/types/genesiscloud:index/SecurityGroupRule:SecurityGroupRule" }
           },
-          "status": {
-            "type": "string",
-            "description": "The security group status.\n"
-          },
-          "timeouts": {
-            "$ref": "#/types/genesiscloud:index/SecurityGroupTimeouts:SecurityGroupTimeouts"
-          }
+          "status": { "type": "string", "description": "The security group status.\n" },
+          "timeouts": { "$ref": "#/types/genesiscloud:index/SecurityGroupTimeouts:SecurityGroupTimeouts" }
         },
         "type": "object"
       }
@@ -1017,60 +838,33 @@
     "genesiscloud:index/snapshot:Snapshot": {
       "description": "Snapshot resource\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as genesiscloud from \"@genesiscloud/pulumi-genesiscloud\";\n\nconst target = new genesiscloud.Instance(\"target\", {});\n// ...\nconst example = new genesiscloud.Snapshot(\"example\", {\n    instanceId: target.id,\n    retainOnDelete: true,\n});\n// optional\n```\n```python\nimport pulumi\nimport pulumi_genesiscloud as genesiscloud\n\ntarget = genesiscloud.Instance(\"target\")\n# ...\nexample = genesiscloud.Snapshot(\"example\",\n    instance_id=target.id,\n    retain_on_delete=True)\n# optional\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Genesiscloud = GenesisCloud.PulumiPackage.Genesiscloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var target = new Genesiscloud.Instance(\"target\");\n\n    // ...\n    var example = new Genesiscloud.Snapshot(\"example\", new()\n    {\n        InstanceId = target.Id,\n        RetainOnDelete = true,\n    });\n\n    // optional\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/genesiscloud/pulumi-genesiscloud/sdk/go/genesiscloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttarget, err := genesiscloud.NewInstance(ctx, \"target\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = genesiscloud.NewSnapshot(ctx, \"example\", \u0026genesiscloud.SnapshotArgs{\n\t\t\tInstanceId:     target.ID(),\n\t\t\tRetainOnDelete: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.genesiscloud.Instance;\nimport com.pulumi.genesiscloud.Snapshot;\nimport com.pulumi.genesiscloud.SnapshotArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var target = new Instance(\"target\");\n\n        var example = new Snapshot(\"example\", SnapshotArgs.builder()        \n            .instanceId(target.id())\n            .retainOnDelete(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  target:\n    type: genesiscloud:Instance\n  example:\n    type: genesiscloud:Snapshot\n    properties:\n      instanceId: ${target.id}\n      retainOnDelete: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608\n```\n\n ",
       "properties": {
-        "createdAt": {
-          "type": "string",
-          "description": "The timestamp when this snapshot was created in RFC 3339.\n"
-        },
+        "createdAt": { "type": "string", "description": "The timestamp when this snapshot was created in RFC 3339.\n" },
         "instanceId": {
           "type": "string",
           "description": "The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the snapshot.\n"
-        },
-        "region": {
-          "type": "string",
-          "description": "The region identifier.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the snapshot.\n" },
+        "region": { "type": "string", "description": "The region identifier.\n" },
         "retainOnDelete": {
           "type": "boolean",
           "description": "Flag to retain the snapshot when the resource is deleted. - Sets the default value \"false\" if the attribute is not set.\n"
         },
-        "size": {
-          "type": "integer",
-          "description": "The storage size of this snapshot given in bytes.\n"
-        },
+        "size": { "type": "integer", "description": "The storage size of this snapshot given in bytes.\n" },
         "status": { "type": "string", "description": "The snapshot status.\n" },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/SnapshotTimeouts:SnapshotTimeouts"
-        }
+        "timeouts": { "$ref": "#/types/genesiscloud:index/SnapshotTimeouts:SnapshotTimeouts" }
       },
-      "required": [
-        "createdAt",
-        "instanceId",
-        "name",
-        "region",
-        "retainOnDelete",
-        "size",
-        "status"
-      ],
+      "required": ["createdAt", "instanceId", "name", "region", "retainOnDelete", "size", "status"],
       "inputProperties": {
         "instanceId": {
           "type": "string",
           "description": "The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the snapshot.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the snapshot.\n" },
         "retainOnDelete": {
           "type": "boolean",
           "description": "Flag to retain the snapshot when the resource is deleted. - Sets the default value \"false\" if the attribute is not set.\n"
         },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/SnapshotTimeouts:SnapshotTimeouts"
-        }
+        "timeouts": { "$ref": "#/types/genesiscloud:index/SnapshotTimeouts:SnapshotTimeouts" }
       },
       "requiredInputs": ["instanceId"],
       "stateInputs": {
@@ -1084,29 +878,15 @@
             "type": "string",
             "description": "The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource.\n"
           },
-          "name": {
-            "type": "string",
-            "description": "The human-readable name for the snapshot.\n"
-          },
-          "region": {
-            "type": "string",
-            "description": "The region identifier.\n"
-          },
+          "name": { "type": "string", "description": "The human-readable name for the snapshot.\n" },
+          "region": { "type": "string", "description": "The region identifier.\n" },
           "retainOnDelete": {
             "type": "boolean",
             "description": "Flag to retain the snapshot when the resource is deleted. - Sets the default value \"false\" if the attribute is not set.\n"
           },
-          "size": {
-            "type": "integer",
-            "description": "The storage size of this snapshot given in bytes.\n"
-          },
-          "status": {
-            "type": "string",
-            "description": "The snapshot status.\n"
-          },
-          "timeouts": {
-            "$ref": "#/types/genesiscloud:index/SnapshotTimeouts:SnapshotTimeouts"
-          }
+          "size": { "type": "integer", "description": "The storage size of this snapshot given in bytes.\n" },
+          "status": { "type": "string", "description": "The snapshot status.\n" },
+          "timeouts": { "$ref": "#/types/genesiscloud:index/SnapshotTimeouts:SnapshotTimeouts" }
         },
         "type": "object"
       }
@@ -1114,18 +894,12 @@
     "genesiscloud:index/volume:Volume": {
       "description": "Volume resource\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as genesiscloud from \"@genesiscloud/pulumi-genesiscloud\";\n\nconst example = new genesiscloud.Volume(\"example\", {\n    region: \"ARC-IS-HAF-1\",\n    size: 50,\n    type: \"hdd\",\n});\n```\n```python\nimport pulumi\nimport pulumi_genesiscloud as genesiscloud\n\nexample = genesiscloud.Volume(\"example\",\n    region=\"ARC-IS-HAF-1\",\n    size=50,\n    type=\"hdd\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Genesiscloud = GenesisCloud.PulumiPackage.Genesiscloud;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Genesiscloud.Volume(\"example\", new()\n    {\n        Region = \"ARC-IS-HAF-1\",\n        Size = 50,\n        Type = \"hdd\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/genesiscloud/pulumi-genesiscloud/sdk/go/genesiscloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := genesiscloud.NewVolume(ctx, \"example\", \u0026genesiscloud.VolumeArgs{\n\t\t\tRegion: pulumi.String(\"ARC-IS-HAF-1\"),\n\t\t\tSize:   pulumi.Int(50),\n\t\t\tType:   pulumi.String(\"hdd\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.genesiscloud.Volume;\nimport com.pulumi.genesiscloud.VolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Volume(\"example\", VolumeArgs.builder()        \n            .region(\"ARC-IS-HAF-1\")\n            .size(50)\n            .type(\"hdd\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: genesiscloud:Volume\n    properties:\n      region: ARC-IS-HAF-1\n      size: 50\n      type: hdd\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import genesiscloud:index/volume:Volume example 18efeec8-94f0-4776-8ff2-5e9b49c74608\n```\n\n ",
       "properties": {
-        "createdAt": {
-          "type": "string",
-          "description": "The timestamp when this volume was created in RFC 3339.\n"
-        },
+        "createdAt": { "type": "string", "description": "The timestamp when this volume was created in RFC 3339.\n" },
         "description": {
           "type": "string",
           "description": "The human-readable description for the volume. - Sets the default value \"\" if the attribute is not set.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the volume.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the volume.\n" },
         "region": {
           "type": "string",
           "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
@@ -1139,33 +913,19 @@
           "description": "The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and\nrecreate the resource. - The value must be at least 1.\n"
         },
         "status": { "type": "string", "description": "The volume status.\n" },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/VolumeTimeouts:VolumeTimeouts"
-        },
+        "timeouts": { "$ref": "#/types/genesiscloud:index/VolumeTimeouts:VolumeTimeouts" },
         "type": {
           "type": "string",
           "description": "The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource. - The value must be one of: [\"hdd\" \"ssd\"].\n"
         }
       },
-      "required": [
-        "createdAt",
-        "description",
-        "name",
-        "region",
-        "retainOnDelete",
-        "size",
-        "status",
-        "type"
-      ],
+      "required": ["createdAt", "description", "name", "region", "retainOnDelete", "size", "status", "type"],
       "inputProperties": {
         "description": {
           "type": "string",
           "description": "The human-readable description for the volume. - Sets the default value \"\" if the attribute is not set.\n"
         },
-        "name": {
-          "type": "string",
-          "description": "The human-readable name for the volume.\n"
-        },
+        "name": { "type": "string", "description": "The human-readable name for the volume.\n" },
         "region": {
           "type": "string",
           "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
@@ -1178,9 +938,7 @@
           "type": "integer",
           "description": "The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and\nrecreate the resource. - The value must be at least 1.\n"
         },
-        "timeouts": {
-          "$ref": "#/types/genesiscloud:index/VolumeTimeouts:VolumeTimeouts"
-        },
+        "timeouts": { "$ref": "#/types/genesiscloud:index/VolumeTimeouts:VolumeTimeouts" },
         "type": {
           "type": "string",
           "description": "The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource. - The value must be one of: [\"hdd\" \"ssd\"].\n"
@@ -1190,18 +948,12 @@
       "stateInputs": {
         "description": "Input properties used for looking up and filtering Volume resources.\n",
         "properties": {
-          "createdAt": {
-            "type": "string",
-            "description": "The timestamp when this volume was created in RFC 3339.\n"
-          },
+          "createdAt": { "type": "string", "description": "The timestamp when this volume was created in RFC 3339.\n" },
           "description": {
             "type": "string",
             "description": "The human-readable description for the volume. - Sets the default value \"\" if the attribute is not set.\n"
           },
-          "name": {
-            "type": "string",
-            "description": "The human-readable name for the volume.\n"
-          },
+          "name": { "type": "string", "description": "The human-readable name for the volume.\n" },
           "region": {
             "type": "string",
             "description": "The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The\nvalue must be one of: [\"ARC-IS-HAF-1\" \"EUC-DE-MUC-1\" \"NORD-NO-KRS-1\"].\n"
@@ -1215,9 +967,7 @@
             "description": "The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and\nrecreate the resource. - The value must be at least 1.\n"
           },
           "status": { "type": "string", "description": "The volume status.\n" },
-          "timeouts": {
-            "$ref": "#/types/genesiscloud:index/VolumeTimeouts:VolumeTimeouts"
-          },
+          "timeouts": { "$ref": "#/types/genesiscloud:index/VolumeTimeouts:VolumeTimeouts" },
           "type": {
             "type": "string",
             "description": "The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the\nresource. - The value must be one of: [\"hdd\" \"ssd\"].\n"
@@ -1233,12 +983,8 @@
       "inputs": {
         "description": "A collection of arguments for invoking Images.\n",
         "properties": {
-          "filter": {
-            "$ref": "#/types/genesiscloud:index/ImagesFilter:ImagesFilter"
-          },
-          "timeouts": {
-            "$ref": "#/types/genesiscloud:index/ImagesTimeouts:ImagesTimeouts"
-          }
+          "filter": { "$ref": "#/types/genesiscloud:index/ImagesFilter:ImagesFilter" },
+          "timeouts": { "$ref": "#/types/genesiscloud:index/ImagesTimeouts:ImagesTimeouts" }
         },
         "type": "object",
         "required": ["filter"]
@@ -1246,19 +992,10 @@
       "outputs": {
         "description": "A collection of values returned by Images.\n",
         "properties": {
-          "filter": {
-            "$ref": "#/types/genesiscloud:index/ImagesFilter:ImagesFilter"
-          },
+          "filter": { "$ref": "#/types/genesiscloud:index/ImagesFilter:ImagesFilter" },
           "id": { "type": "string" },
-          "images": {
-            "items": {
-              "$ref": "#/types/genesiscloud:index/ImagesImage:ImagesImage"
-            },
-            "type": "array"
-          },
-          "timeouts": {
-            "$ref": "#/types/genesiscloud:index/ImagesTimeouts:ImagesTimeouts"
-          }
+          "images": { "items": { "$ref": "#/types/genesiscloud:index/ImagesImage:ImagesImage" }, "type": "array" },
+          "timeouts": { "$ref": "#/types/genesiscloud:index/ImagesTimeouts:ImagesTimeouts" }
         },
         "required": ["filter", "id", "images"],
         "type": "object"
@@ -1266,4 +1003,3 @@
     }
   }
 }
-

@@ -110,6 +110,7 @@
                 "placementOption": "placement_option",
                 "privateIp": "private_ip",
                 "publicIp": "public_ip",
+                "reservationId": "reservation_id",
                 "securityGroupIds": "security_group_ids",
                 "sshKeyIds": "ssh_key_ids",
                 "updatedAt": "updated_at",

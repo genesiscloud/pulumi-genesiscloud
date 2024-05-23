@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     image: "my-image-id",
  *     region: "ARC-IS-HAF-1",
  *     sshKeyIds: ["my-ssh-key-id"],
- *     type: "vcpu-2_memory-4g_disk-80g",
+ *     type: "vcpu-2_memory-4g",
  * });
  * ```
  *
@@ -119,6 +119,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The id of the reservation the instance is associated with.
+     */
+    public readonly reservationId!: pulumi.Output<string | undefined>;
+    /**
      * The security groups of the instance. If not provided will be set to the default security group.
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
@@ -173,6 +177,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["privateIp"] = state ? state.privateIp : undefined;
             resourceInputs["publicIp"] = state ? state.publicIp : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["reservationId"] = state ? state.reservationId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["sshKeyIds"] = state ? state.sshKeyIds : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -200,6 +205,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["placementOption"] = args ? args.placementOption : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["reservationId"] = args ? args.reservationId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["sshKeyIds"] = args ? args.sshKeyIds : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
@@ -285,6 +291,10 @@ export interface InstanceState {
      */
     region?: pulumi.Input<string>;
     /**
+     * The id of the reservation the instance is associated with.
+     */
+    reservationId?: pulumi.Input<string>;
+    /**
      * The security groups of the instance. If not provided will be set to the default security group.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -363,6 +373,10 @@ export interface InstanceArgs {
      * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region: pulumi.Input<string>;
+    /**
+     * The id of the reservation the instance is associated with.
+     */
+    reservationId?: pulumi.Input<string>;
     /**
      * The security groups of the instance. If not provided will be set to the default security group.
      */

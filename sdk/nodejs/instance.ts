@@ -66,6 +66,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly diskSize!: pulumi.Output<number>;
     /**
+     * The dns name of the instance.
+     */
+    public /*out*/ readonly dnsName!: pulumi.Output<string>;
+    /**
      * The floating IP attached to the instance.
      */
     public readonly floatingIpId!: pulumi.Output<string | undefined>;
@@ -166,6 +170,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
+            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
             resourceInputs["floatingIpId"] = state ? state.floatingIpId : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["image"] = state ? state.image : undefined;
@@ -212,6 +217,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["volumeIds"] = args ? args.volumeIds : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["dnsName"] = undefined /*out*/;
             resourceInputs["imageId"] = undefined /*out*/;
             resourceInputs["privateIp"] = undefined /*out*/;
             resourceInputs["publicIp"] = undefined /*out*/;
@@ -237,6 +243,10 @@ export interface InstanceState {
      * The disk size of the instance in GB.
      */
     diskSize?: pulumi.Input<number>;
+    /**
+     * The dns name of the instance.
+     */
+    dnsName?: pulumi.Input<string>;
     /**
      * The floating IP attached to the instance.
      */

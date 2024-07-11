@@ -283,6 +283,7 @@ class _InstanceState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
+                 dns_name: Optional[pulumi.Input[str]] = None,
                  floating_ip_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -306,6 +307,7 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] created_at: The timestamp when this image was created in RFC 3339.
         :param pulumi.Input[int] disk_size: The disk size of the instance in GB.
+        :param pulumi.Input[str] dns_name: The dns name of the instance.
         :param pulumi.Input[str] floating_ip_id: The floating IP attached to the instance.
         :param pulumi.Input[str] hostname: The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
                attribute is configured and changes, Terraform will destroy and recreate the resource.
@@ -341,6 +343,8 @@ class _InstanceState:
             pulumi.set(__self__, "created_at", created_at)
         if disk_size is not None:
             pulumi.set(__self__, "disk_size", disk_size)
+        if dns_name is not None:
+            pulumi.set(__self__, "dns_name", dns_name)
         if floating_ip_id is not None:
             pulumi.set(__self__, "floating_ip_id", floating_ip_id)
         if hostname is not None:
@@ -403,6 +407,18 @@ class _InstanceState:
     @disk_size.setter
     def disk_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dns name of the instance.
+        """
+        return pulumi.get(self, "dns_name")
+
+    @dns_name.setter
+    def dns_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_name", value)
 
     @property
     @pulumi.getter(name="floatingIpId")
@@ -803,6 +819,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["volume_ids"] = volume_ids
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["dns_name"] = None
             __props__.__dict__["image_id"] = None
             __props__.__dict__["private_ip"] = None
             __props__.__dict__["public_ip"] = None
@@ -822,6 +839,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
+            dns_name: Optional[pulumi.Input[str]] = None,
             floating_ip_id: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             image: Optional[pulumi.Input[str]] = None,
@@ -850,6 +868,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The timestamp when this image was created in RFC 3339.
         :param pulumi.Input[int] disk_size: The disk size of the instance in GB.
+        :param pulumi.Input[str] dns_name: The dns name of the instance.
         :param pulumi.Input[str] floating_ip_id: The floating IP attached to the instance.
         :param pulumi.Input[str] hostname: The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
                attribute is configured and changes, Terraform will destroy and recreate the resource.
@@ -887,6 +906,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["disk_size"] = disk_size
+        __props__.__dict__["dns_name"] = dns_name
         __props__.__dict__["floating_ip_id"] = floating_ip_id
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["image"] = image
@@ -923,6 +943,14 @@ class Instance(pulumi.CustomResource):
         The disk size of the instance in GB.
         """
         return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> pulumi.Output[str]:
+        """
+        The dns name of the instance.
+        """
+        return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter(name="floatingIpId")

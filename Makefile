@@ -12,13 +12,13 @@ VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 
-VERSION         := v0.0.26
+VERSION         := v0.0.27
 
 TESTPARALLELISM := 4
 
 WORKING_DIR     := $(shell pwd)
 
-.PHONY: development provider build_sdks build_nodejs build_go build_python build_dotnet cleanup 
+.PHONY: development provider build_sdks build_nodejs build_go build_python build_dotnet cleanup
 
 development:: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
 
@@ -102,4 +102,3 @@ install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk
 
 test::
 	cd examples && go test -v -tags=all -parallel ${TESTPARALLELISM} -timeout 2h
-

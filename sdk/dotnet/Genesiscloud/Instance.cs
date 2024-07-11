@@ -59,6 +59,12 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Output<int> DiskSize { get; private set; } = null!;
 
         /// <summary>
+        /// The dns name of the instance.
+        /// </summary>
+        [Output("dnsName")]
+        public Output<string> DnsName { get; private set; } = null!;
+
+        /// <summary>
         /// The floating IP attached to the instance.
         /// </summary>
         [Output("floatingIpId")]
@@ -378,6 +384,12 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
+
+        /// <summary>
+        /// The dns name of the instance.
+        /// </summary>
+        [Input("dnsName")]
+        public Input<string>? DnsName { get; set; }
 
         /// <summary>
         /// The floating IP attached to the instance.

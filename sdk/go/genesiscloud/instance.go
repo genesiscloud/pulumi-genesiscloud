@@ -59,6 +59,8 @@ type Instance struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The disk size of the instance in GB.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
+	// The dns name of the instance.
+	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// The floating IP attached to the instance.
 	FloatingIpId pulumi.StringPtrOutput `pulumi:"floatingIpId"`
 	// The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
@@ -160,6 +162,8 @@ type instanceState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The disk size of the instance in GB.
 	DiskSize *int `pulumi:"diskSize"`
+	// The dns name of the instance.
+	DnsName *string `pulumi:"dnsName"`
 	// The floating IP attached to the instance.
 	FloatingIpId *string `pulumi:"floatingIpId"`
 	// The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
@@ -216,6 +220,8 @@ type InstanceState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The disk size of the instance in GB.
 	DiskSize pulumi.IntPtrInput
+	// The dns name of the instance.
+	DnsName pulumi.StringPtrInput
 	// The floating IP attached to the instance.
 	FloatingIpId pulumi.StringPtrInput
 	// The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
@@ -455,6 +461,11 @@ func (o InstanceOutput) CreatedAt() pulumi.StringOutput {
 // The disk size of the instance in GB.
 func (o InstanceOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+// The dns name of the instance.
+func (o InstanceOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
 }
 
 // The floating IP attached to the instance.

@@ -22,8 +22,6 @@ class SnapshotArgs:
                  timeouts: Optional[pulumi.Input['SnapshotTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Snapshot resource.
-        :param pulumi.Input[str] instance_id: The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource.
         :param pulumi.Input[str] name: The human-readable name for the snapshot.
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
         """
@@ -38,10 +36,6 @@ class SnapshotArgs:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
-        """
-        The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -96,8 +90,6 @@ class _SnapshotState:
         """
         Input properties used for looking up and filtering Snapshot resources.
         :param pulumi.Input[str] created_at: The timestamp when this snapshot was created in RFC 3339.
-        :param pulumi.Input[str] instance_id: The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource.
         :param pulumi.Input[str] name: The human-readable name for the snapshot.
         :param pulumi.Input[str] region: The region identifier.
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
@@ -136,10 +128,6 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -224,7 +212,7 @@ class Snapshot(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  retain_on_delete: Optional[pulumi.Input[bool]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['SnapshotTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Snapshot resource
@@ -246,13 +234,11 @@ class Snapshot(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance_id: The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource.
         :param pulumi.Input[str] name: The human-readable name for the snapshot.
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
         """
@@ -282,7 +268,7 @@ class Snapshot(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
@@ -303,7 +289,7 @@ class Snapshot(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  retain_on_delete: Optional[pulumi.Input[bool]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['SnapshotTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -340,7 +326,7 @@ class Snapshot(pulumi.CustomResource):
             retain_on_delete: Optional[pulumi.Input[bool]] = None,
             size: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['SnapshotTimeoutsArgs']]] = None) -> 'Snapshot':
+            timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None) -> 'Snapshot':
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -349,8 +335,6 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The timestamp when this snapshot was created in RFC 3339.
-        :param pulumi.Input[str] instance_id: The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource.
         :param pulumi.Input[str] name: The human-readable name for the snapshot.
         :param pulumi.Input[str] region: The region identifier.
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
@@ -382,10 +366,6 @@ class Snapshot(pulumi.CustomResource):
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
-        """
-        The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @property

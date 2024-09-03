@@ -23,10 +23,6 @@ class FloatingIpArgs:
                  timeouts: Optional[pulumi.Input['FloatingIpTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a FloatingIp resource.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        :param pulumi.Input[str] version: The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["ipv4"].
         :param pulumi.Input[str] description: The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the floating IP.
         """
@@ -42,10 +38,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -55,10 +47,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
-        """
-        The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource. - The value must be one of: ["ipv4"].
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -119,12 +107,8 @@ class _FloatingIpState:
         :param pulumi.Input[str] ip_address: The IP address of the floating IP.
         :param pulumi.Input[bool] is_public: Whether the floating IP is public or private. - Sets the default value "true" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the floating IP.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] status: The floating IP status.
         :param pulumi.Input[str] updated_at: The timestamp when this image was last updated in RFC 3339.
-        :param pulumi.Input[str] version: The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["ipv4"].
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -210,10 +194,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -256,10 +236,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
-        """
-        The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource. - The value must be one of: ["ipv4"].
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -275,7 +251,7 @@ class FloatingIp(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['FloatingIpTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['FloatingIpTimeoutsArgs', 'FloatingIpTimeoutsArgsDict']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -296,17 +272,13 @@ class FloatingIp(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/floatingIp:FloatingIp example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/floatingIp:FloatingIp example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the floating IP.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        :param pulumi.Input[str] version: The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["ipv4"].
         """
         ...
     @overload
@@ -332,7 +304,7 @@ class FloatingIp(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/floatingIp:FloatingIp example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/floatingIp:FloatingIp example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
@@ -353,7 +325,7 @@ class FloatingIp(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['FloatingIpTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['FloatingIpTimeoutsArgs', 'FloatingIpTimeoutsArgsDict']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -395,7 +367,7 @@ class FloatingIp(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['FloatingIpTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['FloatingIpTimeoutsArgs', 'FloatingIpTimeoutsArgsDict']]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'FloatingIp':
         """
@@ -410,12 +382,8 @@ class FloatingIp(pulumi.CustomResource):
         :param pulumi.Input[str] ip_address: The IP address of the floating IP.
         :param pulumi.Input[bool] is_public: Whether the floating IP is public or private. - Sets the default value "true" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the floating IP.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] status: The floating IP status.
         :param pulumi.Input[str] updated_at: The timestamp when this image was last updated in RFC 3339.
-        :param pulumi.Input[str] version: The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["ipv4"].
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -476,10 +444,6 @@ class FloatingIp(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        """
         return pulumi.get(self, "region")
 
     @property
@@ -506,9 +470,5 @@ class FloatingIp(pulumi.CustomResource):
     @property
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
-        """
-        The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource. - The value must be one of: ["ipv4"].
-        """
         return pulumi.get(self, "version")
 

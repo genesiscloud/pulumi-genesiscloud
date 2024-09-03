@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+ * $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
  * ```
  */
 export class Snapshot extends pulumi.CustomResource {
@@ -62,10 +62,6 @@ export class Snapshot extends pulumi.CustomResource {
      * The timestamp when this snapshot was created in RFC 3339.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    /**
-     * The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource.
-     */
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * The human-readable name for the snapshot.
@@ -137,10 +133,6 @@ export interface SnapshotState {
      * The timestamp when this snapshot was created in RFC 3339.
      */
     createdAt?: pulumi.Input<string>;
-    /**
-     * The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource.
-     */
     instanceId?: pulumi.Input<string>;
     /**
      * The human-readable name for the snapshot.
@@ -169,10 +161,6 @@ export interface SnapshotState {
  * The set of arguments for constructing a Snapshot resource.
  */
 export interface SnapshotArgs {
-    /**
-     * The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource.
-     */
     instanceId: pulumi.Input<string>;
     /**
      * The human-readable name for the snapshot.

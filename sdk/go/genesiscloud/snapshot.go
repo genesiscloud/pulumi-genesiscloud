@@ -48,17 +48,13 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
-//
+// $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
 // ```
 type Snapshot struct {
 	pulumi.CustomResourceState
 
 	// The timestamp when this snapshot was created in RFC 3339.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource.
+	CreatedAt  pulumi.StringOutput `pulumi:"createdAt"`
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The human-readable name for the snapshot.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -107,9 +103,7 @@ func GetSnapshot(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Snapshot resources.
 type snapshotState struct {
 	// The timestamp when this snapshot was created in RFC 3339.
-	CreatedAt *string `pulumi:"createdAt"`
-	// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource.
+	CreatedAt  *string `pulumi:"createdAt"`
 	InstanceId *string `pulumi:"instanceId"`
 	// The human-readable name for the snapshot.
 	Name *string `pulumi:"name"`
@@ -126,9 +120,7 @@ type snapshotState struct {
 
 type SnapshotState struct {
 	// The timestamp when this snapshot was created in RFC 3339.
-	CreatedAt pulumi.StringPtrInput
-	// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource.
+	CreatedAt  pulumi.StringPtrInput
 	InstanceId pulumi.StringPtrInput
 	// The human-readable name for the snapshot.
 	Name pulumi.StringPtrInput
@@ -148,8 +140,6 @@ func (SnapshotState) ElementType() reflect.Type {
 }
 
 type snapshotArgs struct {
-	// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource.
 	InstanceId string `pulumi:"instanceId"`
 	// The human-readable name for the snapshot.
 	Name *string `pulumi:"name"`
@@ -160,8 +150,6 @@ type snapshotArgs struct {
 
 // The set of arguments for constructing a Snapshot resource.
 type SnapshotArgs struct {
-	// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource.
 	InstanceId pulumi.StringInput
 	// The human-readable name for the snapshot.
 	Name pulumi.StringPtrInput
@@ -262,8 +250,6 @@ func (o SnapshotOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-// resource.
 func (o SnapshotOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

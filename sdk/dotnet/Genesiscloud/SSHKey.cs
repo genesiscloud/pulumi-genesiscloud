@@ -34,7 +34,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import genesiscloud:index/sSHKey:SSHKey example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+    /// $ pulumi import genesiscloud:index/sSHKey:SSHKey example 18efeec8-94f0-4776-8ff2-5e9b49c74608
     /// ```
     /// </summary>
     [GenesiscloudResourceType("genesiscloud:index/sSHKey:SSHKey")]
@@ -58,9 +58,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
-        /// </summary>
         [Output("publicKey")]
         public Output<string> PublicKey { get; private set; } = null!;
 
@@ -120,9 +117,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
-        /// </summary>
         [Input("publicKey", required: true)]
         public Input<string> PublicKey { get; set; } = null!;
 
@@ -155,9 +149,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
-        /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
 

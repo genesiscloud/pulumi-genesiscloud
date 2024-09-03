@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as genesiscloud from "@genesiscloud/pulumi-genesiscloud";
  *
  * const example = new genesiscloud.Volume("example", {
- *     region: "ARC-IS-HAF-1",
+ *     region: "NORD-NO-KRS-1",
  *     size: 50,
  *     type: "hdd",
  * });
@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import genesiscloud:index/volume:Volume example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+ * $ pulumi import genesiscloud:index/volume:Volume example 18efeec8-94f0-4776-8ff2-5e9b49c74608
  * ```
  */
 export class Volume extends pulumi.CustomResource {
@@ -69,8 +69,8 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -78,8 +78,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly retainOnDelete!: pulumi.Output<boolean>;
     /**
-     * The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-     * recreate the resource. - The value must be at least 1.
+     * The storage size of this volume given in GiB. - The value must be at least 1.
      */
     public readonly size!: pulumi.Output<number>;
     /**
@@ -88,8 +87,8 @@ export class Volume extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.VolumeTimeouts | undefined>;
     /**
-     * The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource. - The value must be one of: ["hdd" "ssd"].
+     * The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+     * must be one of: ["hdd" "ssd"].
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -158,8 +157,8 @@ export interface VolumeState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region?: pulumi.Input<string>;
     /**
@@ -167,8 +166,7 @@ export interface VolumeState {
      */
     retainOnDelete?: pulumi.Input<boolean>;
     /**
-     * The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-     * recreate the resource. - The value must be at least 1.
+     * The storage size of this volume given in GiB. - The value must be at least 1.
      */
     size?: pulumi.Input<number>;
     /**
@@ -177,8 +175,8 @@ export interface VolumeState {
     status?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.VolumeTimeouts>;
     /**
-     * The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource. - The value must be one of: ["hdd" "ssd"].
+     * The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+     * must be one of: ["hdd" "ssd"].
      */
     type?: pulumi.Input<string>;
 }
@@ -196,8 +194,8 @@ export interface VolumeArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region: pulumi.Input<string>;
     /**
@@ -205,14 +203,13 @@ export interface VolumeArgs {
      */
     retainOnDelete?: pulumi.Input<boolean>;
     /**
-     * The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-     * recreate the resource. - The value must be at least 1.
+     * The storage size of this volume given in GiB. - The value must be at least 1.
      */
     size: pulumi.Input<number>;
     timeouts?: pulumi.Input<inputs.VolumeTimeouts>;
     /**
-     * The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource. - The value must be one of: ["hdd" "ssd"].
+     * The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+     * must be one of: ["hdd" "ssd"].
      */
     type: pulumi.Input<string>;
 }

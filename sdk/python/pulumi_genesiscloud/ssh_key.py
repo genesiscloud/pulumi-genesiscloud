@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -21,7 +26,7 @@ class SSHKeyArgs:
                  timeouts: Optional[pulumi.Input['SSHKeyTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a SSHKey resource.
-        :param pulumi.Input[str] public_key: SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+        :param pulumi.Input[str] public_key: SSH public key. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] name: The human-readable name for the SSH key.
         """
         pulumi.set(__self__, "public_key", public_key)
@@ -34,7 +39,7 @@ class SSHKeyArgs:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Input[str]:
         """
-        SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+        SSH public key. - If the value of this attribute changes, the resource will be replaced.
         """
         return pulumi.get(self, "public_key")
 
@@ -77,7 +82,7 @@ class _SSHKeyState:
         :param pulumi.Input[str] created_at: The timestamp when this SSH key was created in RFC 3339.
         :param pulumi.Input[str] fingerprint: The fingerprint of the SSH key.
         :param pulumi.Input[str] name: The human-readable name for the SSH key.
-        :param pulumi.Input[str] public_key: SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+        :param pulumi.Input[str] public_key: SSH public key. - If the value of this attribute changes, the resource will be replaced.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -130,7 +135,7 @@ class _SSHKeyState:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
         """
-        SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+        SSH public key. - If the value of this attribute changes, the resource will be replaced.
         """
         return pulumi.get(self, "public_key")
 
@@ -155,7 +160,7 @@ class SSHKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['SSHKeyTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SSHKeyTimeoutsArgs', 'SSHKeyTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         SSH key resource
@@ -172,13 +177,13 @@ class SSHKey(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/sSHKey:SSHKey example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/sSHKey:SSHKey example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The human-readable name for the SSH key.
-        :param pulumi.Input[str] public_key: SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+        :param pulumi.Input[str] public_key: SSH public key. - If the value of this attribute changes, the resource will be replaced.
         """
         ...
     @overload
@@ -201,7 +206,7 @@ class SSHKey(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/sSHKey:SSHKey example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/sSHKey:SSHKey example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
@@ -221,7 +226,7 @@ class SSHKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['SSHKeyTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SSHKeyTimeoutsArgs', 'SSHKeyTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -252,7 +257,7 @@ class SSHKey(pulumi.CustomResource):
             fingerprint: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             public_key: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['SSHKeyTimeoutsArgs']]] = None) -> 'SSHKey':
+            timeouts: Optional[pulumi.Input[Union['SSHKeyTimeoutsArgs', 'SSHKeyTimeoutsArgsDict']]] = None) -> 'SSHKey':
         """
         Get an existing SSHKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -263,7 +268,7 @@ class SSHKey(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The timestamp when this SSH key was created in RFC 3339.
         :param pulumi.Input[str] fingerprint: The fingerprint of the SSH key.
         :param pulumi.Input[str] name: The human-readable name for the SSH key.
-        :param pulumi.Input[str] public_key: SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+        :param pulumi.Input[str] public_key: SSH public key. - If the value of this attribute changes, the resource will be replaced.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -304,7 +309,7 @@ class SSHKey(pulumi.CustomResource):
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Output[str]:
         """
-        SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+        SSH public key. - If the value of this attribute changes, the resource will be replaced.
         """
         return pulumi.get(self, "public_key")
 

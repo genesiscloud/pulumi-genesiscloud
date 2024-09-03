@@ -56,7 +56,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"genesiscloud_instance":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Instance")},
+			"genesiscloud_instance": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Instance")},
+			"genesiscloud_instance_status": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstanceStatus"),
+				ComputeID: tfbridge.DelegateIDField("instance_id", "genesiscloud", "https://github.com/genesiscloud/pulumi-genesiscloud")},
 			"genesiscloud_security_group": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecurityGroup")},
 			"genesiscloud_snapshot":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Snapshot")},
 			"genesiscloud_ssh_key":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SSHKey")},

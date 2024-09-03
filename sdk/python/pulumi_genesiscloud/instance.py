@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,29 +40,26 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] image: The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
                image slug in this format `<image-slug>:<version>`. Learn more about images
-               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-               recreate the resource.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, the resource will be
+               replaced.
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] type: The instance type identifier. Learn more about instance types
-               [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-               Terraform will destroy and recreate the resource.
+               [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes, the
+               resource will be replaced.
         :param pulumi.Input[int] disk_size: The disk size of the instance in GB.
         :param pulumi.Input[str] floating_ip_id: The floating IP attached to the instance.
-        :param pulumi.Input[str] hostname: The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-               attribute is configured and changes, Terraform will destroy and recreate the resource.
         :param pulumi.Input['InstanceMetadataArgs'] metadata: Option to provide metadata. Currently supported is `startup_script`.
         :param pulumi.Input[str] name: The human-readable name for the instance.
         :param pulumi.Input[str] password: The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
                **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-               SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-               length must be at least 16.
+               SSH key-pair. - If the value of this attribute changes, the resource will be replaced. - The string length must be at
+               least 16.
         :param pulumi.Input[str] placement_option: The placement option identifier in which instances are physically located relative to each other within a zone. For
-               example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+               example A or B. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] reservation_id: The id of the reservation the instance is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security groups of the instance. If not provided will be set to the default security group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: The volumes of the instance.
         """
         pulumi.set(__self__, "image", image)
@@ -94,8 +96,8 @@ class InstanceArgs:
         """
         The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
         image slug in this format `<image-slug>:<version>`. Learn more about images
-        [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-        recreate the resource.
+        [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, the resource will be
+        replaced.
         """
         return pulumi.get(self, "image")
 
@@ -107,8 +109,8 @@ class InstanceArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -121,8 +123,8 @@ class InstanceArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The instance type identifier. Learn more about instance types
-        [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-        Terraform will destroy and recreate the resource.
+        [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes, the
+        resource will be replaced.
         """
         return pulumi.get(self, "type")
 
@@ -157,10 +159,6 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-        attribute is configured and changes, Terraform will destroy and recreate the resource.
-        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -197,8 +195,8 @@ class InstanceArgs:
         """
         The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
         **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-        SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-        length must be at least 16.
+        SSH key-pair. - If the value of this attribute changes, the resource will be replaced. - The string length must be at
+        least 16.
         """
         return pulumi.get(self, "password")
 
@@ -211,7 +209,7 @@ class InstanceArgs:
     def placement_option(self) -> Optional[pulumi.Input[str]]:
         """
         The placement option identifier in which instances are physically located relative to each other within a zone. For
-        example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+        example A or B. - If the value of this attribute changes, the resource will be replaced.
         """
         return pulumi.get(self, "placement_option")
 
@@ -247,8 +245,7 @@ class InstanceArgs:
     @pulumi.getter(name="sshKeyIds")
     def ssh_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource.
+        The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
         """
         return pulumi.get(self, "ssh_key_ids")
 
@@ -309,33 +306,30 @@ class _InstanceState:
         :param pulumi.Input[int] disk_size: The disk size of the instance in GB.
         :param pulumi.Input[str] dns_name: The dns name of the instance.
         :param pulumi.Input[str] floating_ip_id: The floating IP attached to the instance.
-        :param pulumi.Input[str] hostname: The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-               attribute is configured and changes, Terraform will destroy and recreate the resource.
         :param pulumi.Input[str] image: The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
                image slug in this format `<image-slug>:<version>`. Learn more about images
-               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-               recreate the resource.
+               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, the resource will be
+               replaced.
         :param pulumi.Input[str] image_id: The resulting image ID of the instance.
         :param pulumi.Input['InstanceMetadataArgs'] metadata: Option to provide metadata. Currently supported is `startup_script`.
         :param pulumi.Input[str] name: The human-readable name for the instance.
         :param pulumi.Input[str] password: The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
                **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-               SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-               length must be at least 16.
+               SSH key-pair. - If the value of this attribute changes, the resource will be replaced. - The string length must be at
+               least 16.
         :param pulumi.Input[str] placement_option: The placement option identifier in which instances are physically located relative to each other within a zone. For
-               example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+               example A or B. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] private_ip: The private IPv4 IP-Address (IPv4 address).
         :param pulumi.Input[str] public_ip: The public IPv4 IP-Address (IPv4 address).
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] reservation_id: The id of the reservation the instance is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security groups of the instance. If not provided will be set to the default security group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] status: The instance status.
         :param pulumi.Input[str] type: The instance type identifier. Learn more about instance types
-               [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-               Terraform will destroy and recreate the resource.
+               [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes, the
+               resource will be replaced.
         :param pulumi.Input[str] updated_at: The timestamp when this image was last updated in RFC 3339.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: The volumes of the instance.
         """
@@ -435,10 +429,6 @@ class _InstanceState:
     @property
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
-        """
-        The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-        attribute is configured and changes, Terraform will destroy and recreate the resource.
-        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -451,8 +441,8 @@ class _InstanceState:
         """
         The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
         image slug in this format `<image-slug>:<version>`. Learn more about images
-        [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-        recreate the resource.
+        [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, the resource will be
+        replaced.
         """
         return pulumi.get(self, "image")
 
@@ -502,8 +492,8 @@ class _InstanceState:
         """
         The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
         **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-        SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-        length must be at least 16.
+        SSH key-pair. - If the value of this attribute changes, the resource will be replaced. - The string length must be at
+        least 16.
         """
         return pulumi.get(self, "password")
 
@@ -516,7 +506,7 @@ class _InstanceState:
     def placement_option(self) -> Optional[pulumi.Input[str]]:
         """
         The placement option identifier in which instances are physically located relative to each other within a zone. For
-        example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+        example A or B. - If the value of this attribute changes, the resource will be replaced.
         """
         return pulumi.get(self, "placement_option")
 
@@ -552,8 +542,8 @@ class _InstanceState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -589,8 +579,7 @@ class _InstanceState:
     @pulumi.getter(name="sshKeyIds")
     def ssh_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource.
+        The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
         """
         return pulumi.get(self, "ssh_key_ids")
 
@@ -624,8 +613,8 @@ class _InstanceState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The instance type identifier. Learn more about instance types
-        [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-        Terraform will destroy and recreate the resource.
+        [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes, the
+        resource will be replaced.
         """
         return pulumi.get(self, "type")
 
@@ -667,7 +656,7 @@ class Instance(pulumi.CustomResource):
                  floating_ip_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['InstanceMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  placement_option: Optional[pulumi.Input[str]] = None,
@@ -675,7 +664,7 @@ class Instance(pulumi.CustomResource):
                  reservation_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['InstanceTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['InstanceTimeoutsArgs', 'InstanceTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -689,8 +678,8 @@ class Instance(pulumi.CustomResource):
         import pulumi_genesiscloud as genesiscloud
 
         example = genesiscloud.Instance("example",
-            image="my-image-id",
-            region="ARC-IS-HAF-1",
+            image="ubuntu:22.04",
+            region="NORD-NO-KRS-1",
             ssh_key_ids=["my-ssh-key-id"],
             type="vcpu-2_memory-4g")
         ```
@@ -698,36 +687,33 @@ class Instance(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/instance:Instance example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/instance:Instance example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] disk_size: The disk size of the instance in GB.
         :param pulumi.Input[str] floating_ip_id: The floating IP attached to the instance.
-        :param pulumi.Input[str] hostname: The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-               attribute is configured and changes, Terraform will destroy and recreate the resource.
         :param pulumi.Input[str] image: The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
                image slug in this format `<image-slug>:<version>`. Learn more about images
-               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-               recreate the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceMetadataArgs']] metadata: Option to provide metadata. Currently supported is `startup_script`.
+               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, the resource will be
+               replaced.
+        :param pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']] metadata: Option to provide metadata. Currently supported is `startup_script`.
         :param pulumi.Input[str] name: The human-readable name for the instance.
         :param pulumi.Input[str] password: The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
                **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-               SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-               length must be at least 16.
+               SSH key-pair. - If the value of this attribute changes, the resource will be replaced. - The string length must be at
+               least 16.
         :param pulumi.Input[str] placement_option: The placement option identifier in which instances are physically located relative to each other within a zone. For
-               example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               example A or B. - If the value of this attribute changes, the resource will be replaced.
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] reservation_id: The id of the reservation the instance is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security groups of the instance. If not provided will be set to the default security group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] type: The instance type identifier. Learn more about instance types
-               [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-               Terraform will destroy and recreate the resource.
+               [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes, the
+               resource will be replaced.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: The volumes of the instance.
         """
         ...
@@ -746,8 +732,8 @@ class Instance(pulumi.CustomResource):
         import pulumi_genesiscloud as genesiscloud
 
         example = genesiscloud.Instance("example",
-            image="my-image-id",
-            region="ARC-IS-HAF-1",
+            image="ubuntu:22.04",
+            region="NORD-NO-KRS-1",
             ssh_key_ids=["my-ssh-key-id"],
             type="vcpu-2_memory-4g")
         ```
@@ -755,7 +741,7 @@ class Instance(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/instance:Instance example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/instance:Instance example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
@@ -777,7 +763,7 @@ class Instance(pulumi.CustomResource):
                  floating_ip_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['InstanceMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  placement_option: Optional[pulumi.Input[str]] = None,
@@ -785,7 +771,7 @@ class Instance(pulumi.CustomResource):
                  reservation_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['InstanceTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['InstanceTimeoutsArgs', 'InstanceTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -844,7 +830,7 @@ class Instance(pulumi.CustomResource):
             hostname: Optional[pulumi.Input[str]] = None,
             image: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
-            metadata: Optional[pulumi.Input[pulumi.InputType['InstanceMetadataArgs']]] = None,
+            metadata: Optional[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             placement_option: Optional[pulumi.Input[str]] = None,
@@ -855,7 +841,7 @@ class Instance(pulumi.CustomResource):
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['InstanceTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['InstanceTimeoutsArgs', 'InstanceTimeoutsArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Instance':
@@ -870,33 +856,30 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] disk_size: The disk size of the instance in GB.
         :param pulumi.Input[str] dns_name: The dns name of the instance.
         :param pulumi.Input[str] floating_ip_id: The floating IP attached to the instance.
-        :param pulumi.Input[str] hostname: The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-               attribute is configured and changes, Terraform will destroy and recreate the resource.
         :param pulumi.Input[str] image: The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
                image slug in this format `<image-slug>:<version>`. Learn more about images
-               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-               recreate the resource.
+               [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, the resource will be
+               replaced.
         :param pulumi.Input[str] image_id: The resulting image ID of the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceMetadataArgs']] metadata: Option to provide metadata. Currently supported is `startup_script`.
+        :param pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']] metadata: Option to provide metadata. Currently supported is `startup_script`.
         :param pulumi.Input[str] name: The human-readable name for the instance.
         :param pulumi.Input[str] password: The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
                **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-               SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-               length must be at least 16.
+               SSH key-pair. - If the value of this attribute changes, the resource will be replaced. - The string length must be at
+               least 16.
         :param pulumi.Input[str] placement_option: The placement option identifier in which instances are physically located relative to each other within a zone. For
-               example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+               example A or B. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] private_ip: The private IPv4 IP-Address (IPv4 address).
         :param pulumi.Input[str] public_ip: The public IPv4 IP-Address (IPv4 address).
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] reservation_id: The id of the reservation the instance is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security groups of the instance. If not provided will be set to the default security group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] status: The instance status.
         :param pulumi.Input[str] type: The instance type identifier. Learn more about instance types
-               [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-               Terraform will destroy and recreate the resource.
+               [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes, the
+               resource will be replaced.
         :param pulumi.Input[str] updated_at: The timestamp when this image was last updated in RFC 3339.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volume_ids: The volumes of the instance.
         """
@@ -963,10 +946,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Output[str]:
-        """
-        The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-        attribute is configured and changes, Terraform will destroy and recreate the resource.
-        """
         return pulumi.get(self, "hostname")
 
     @property
@@ -975,8 +954,8 @@ class Instance(pulumi.CustomResource):
         """
         The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
         image slug in this format `<image-slug>:<version>`. Learn more about images
-        [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-        recreate the resource.
+        [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, the resource will be
+        replaced.
         """
         return pulumi.get(self, "image")
 
@@ -1010,8 +989,8 @@ class Instance(pulumi.CustomResource):
         """
         The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
         **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-        SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-        length must be at least 16.
+        SSH key-pair. - If the value of this attribute changes, the resource will be replaced. - The string length must be at
+        least 16.
         """
         return pulumi.get(self, "password")
 
@@ -1020,7 +999,7 @@ class Instance(pulumi.CustomResource):
     def placement_option(self) -> pulumi.Output[str]:
         """
         The placement option identifier in which instances are physically located relative to each other within a zone. For
-        example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+        example A or B. - If the value of this attribute changes, the resource will be replaced.
         """
         return pulumi.get(self, "placement_option")
 
@@ -1044,8 +1023,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -1069,8 +1048,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sshKeyIds")
     def ssh_key_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource.
+        The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
         """
         return pulumi.get(self, "ssh_key_ids")
 
@@ -1092,8 +1070,8 @@ class Instance(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The instance type identifier. Learn more about instance types
-        [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-        Terraform will destroy and recreate the resource.
+        [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes, the
+        resource will be replaced.
         """
         return pulumi.get(self, "type")
 

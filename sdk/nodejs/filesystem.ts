@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import genesiscloud:index/filesystem:Filesystem example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+ * $ pulumi import genesiscloud:index/filesystem:Filesystem example 18efeec8-94f0-4776-8ff2-5e9b49c74608
  * ```
  */
 export class Filesystem extends pulumi.CustomResource {
@@ -78,8 +78,8 @@ export class Filesystem extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-     * destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
+     * replaced. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -96,8 +96,8 @@ export class Filesystem extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.FilesystemTimeouts | undefined>;
     /**
-     * The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource. - The value must be one of: ["vast"].
+     * The storage type of the filesystem. - If the value of this attribute changes, the resource will be replaced. - The value
+     * must be one of: ["vast"].
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -178,8 +178,8 @@ export interface FilesystemState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-     * destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
+     * replaced. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region?: pulumi.Input<string>;
     /**
@@ -196,8 +196,8 @@ export interface FilesystemState {
     status?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.FilesystemTimeouts>;
     /**
-     * The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource. - The value must be one of: ["vast"].
+     * The storage type of the filesystem. - If the value of this attribute changes, the resource will be replaced. - The value
+     * must be one of: ["vast"].
      */
     type?: pulumi.Input<string>;
 }
@@ -215,8 +215,8 @@ export interface FilesystemArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-     * destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
+     * replaced. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region: pulumi.Input<string>;
     /**
@@ -229,8 +229,8 @@ export interface FilesystemArgs {
     size: pulumi.Input<number>;
     timeouts?: pulumi.Input<inputs.FilesystemTimeouts>;
     /**
-     * The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource. - The value must be one of: ["vast"].
+     * The storage type of the filesystem. - If the value of this attribute changes, the resource will be replaced. - The value
+     * must be one of: ["vast"].
      */
     type: pulumi.Input<string>;
 }

@@ -37,7 +37,7 @@ import (
 //			}
 //			_, err = genesiscloud.Images(ctx, &genesiscloud.ImagesArgs{
 //				Filter: genesiscloud.ImagesFilter{
-//					Region: pulumi.StringRef("ARC-IS-HAF-1"),
+//					Region: pulumi.StringRef("NORD-NO-KRS-1"),
 //					Type:   "snapshot",
 //				},
 //			}, nil)
@@ -83,14 +83,20 @@ type ImagesResult struct {
 
 func ImagesOutput(ctx *pulumi.Context, args ImagesOutputArgs, opts ...pulumi.InvokeOption) ImagesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ImagesResult, error) {
+		ApplyT(func(v interface{}) (ImagesResultOutput, error) {
 			args := v.(ImagesArgs)
-			r, err := Images(ctx, &args, opts...)
-			var s ImagesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv ImagesResult
+			secret, err := ctx.InvokePackageRaw("genesiscloud:index/images:Images", args, &rv, "", opts...)
+			if err != nil {
+				return ImagesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ImagesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ImagesResultOutput), nil
+			}
+			return output, nil
 		}).(ImagesResultOutput)
 }
 

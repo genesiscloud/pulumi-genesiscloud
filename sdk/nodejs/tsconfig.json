@@ -20,6 +20,7 @@
         "images.ts",
         "index.ts",
         "instance.ts",
+        "instanceStatus.ts",
         "provider.ts",
         "securityGroup.ts",
         "snapshot.ts",

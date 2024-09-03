@@ -16,8 +16,8 @@ import * as utilities from "./utilities";
  * import * as genesiscloud from "@genesiscloud/pulumi-genesiscloud";
  *
  * const example = new genesiscloud.Instance("example", {
- *     image: "my-image-id",
- *     region: "ARC-IS-HAF-1",
+ *     image: "ubuntu:22.04",
+ *     region: "NORD-NO-KRS-1",
  *     sshKeyIds: ["my-ssh-key-id"],
  *     type: "vcpu-2_memory-4g",
  * });
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import genesiscloud:index/instance:Instance example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+ * $ pulumi import genesiscloud:index/instance:Instance example 18efeec8-94f0-4776-8ff2-5e9b49c74608
  * ```
  */
 export class Instance extends pulumi.CustomResource {
@@ -73,16 +73,12 @@ export class Instance extends pulumi.CustomResource {
      * The floating IP attached to the instance.
      */
     public readonly floatingIpId!: pulumi.Output<string | undefined>;
-    /**
-     * The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-     * attribute is configured and changes, Terraform will destroy and recreate the resource.
-     */
     public readonly hostname!: pulumi.Output<string>;
     /**
      * The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
      * image slug in this format `<image-slug>:<version>`. Learn more about images
-     * [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-     * recreate the resource.
+     * [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, the resource will be
+     * replaced.
      */
     public readonly image!: pulumi.Output<string>;
     /**
@@ -90,7 +86,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly imageId!: pulumi.Output<string>;
     /**
-     * Option to provide metadata. Currently supported is `startup_script`.
+     * Option to provide metadata. Currently supported is `startupScript`.
      */
     public readonly metadata!: pulumi.Output<outputs.InstanceMetadata | undefined>;
     /**
@@ -99,14 +95,14 @@ export class Instance extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
-     * **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-     * SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-     * length must be at least 16.
+     * **Please Note**: Only one of `sshKeys` or `password` can be provided. Password is less secure - we recommend you use an
+     * SSH key-pair. - If the value of this attribute changes, the resource will be replaced. - The string length must be at
+     * least 16.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
      * The placement option identifier in which instances are physically located relative to each other within a zone. For
-     * example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+     * example A or B. - If the value of this attribute changes, the resource will be replaced.
      */
     public readonly placementOption!: pulumi.Output<string>;
     /**
@@ -118,8 +114,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly publicIp!: pulumi.Output<string>;
     /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -131,8 +127,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
-     * The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource.
+     * The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
      */
     public readonly sshKeyIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -142,8 +137,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly timeouts!: pulumi.Output<outputs.InstanceTimeouts | undefined>;
     /**
      * The instance type identifier. Learn more about instance types
-     * [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-     * Terraform will destroy and recreate the resource.
+     * [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes, the
+     * resource will be replaced.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -251,16 +246,12 @@ export interface InstanceState {
      * The floating IP attached to the instance.
      */
     floatingIpId?: pulumi.Input<string>;
-    /**
-     * The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-     * attribute is configured and changes, Terraform will destroy and recreate the resource.
-     */
     hostname?: pulumi.Input<string>;
     /**
      * The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
      * image slug in this format `<image-slug>:<version>`. Learn more about images
-     * [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-     * recreate the resource.
+     * [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, the resource will be
+     * replaced.
      */
     image?: pulumi.Input<string>;
     /**
@@ -268,7 +259,7 @@ export interface InstanceState {
      */
     imageId?: pulumi.Input<string>;
     /**
-     * Option to provide metadata. Currently supported is `startup_script`.
+     * Option to provide metadata. Currently supported is `startupScript`.
      */
     metadata?: pulumi.Input<inputs.InstanceMetadata>;
     /**
@@ -277,14 +268,14 @@ export interface InstanceState {
     name?: pulumi.Input<string>;
     /**
      * The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
-     * **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-     * SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-     * length must be at least 16.
+     * **Please Note**: Only one of `sshKeys` or `password` can be provided. Password is less secure - we recommend you use an
+     * SSH key-pair. - If the value of this attribute changes, the resource will be replaced. - The string length must be at
+     * least 16.
      */
     password?: pulumi.Input<string>;
     /**
      * The placement option identifier in which instances are physically located relative to each other within a zone. For
-     * example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+     * example A or B. - If the value of this attribute changes, the resource will be replaced.
      */
     placementOption?: pulumi.Input<string>;
     /**
@@ -296,8 +287,8 @@ export interface InstanceState {
      */
     publicIp?: pulumi.Input<string>;
     /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region?: pulumi.Input<string>;
     /**
@@ -309,8 +300,7 @@ export interface InstanceState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource.
+     * The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
      */
     sshKeyIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -320,8 +310,8 @@ export interface InstanceState {
     timeouts?: pulumi.Input<inputs.InstanceTimeouts>;
     /**
      * The instance type identifier. Learn more about instance types
-     * [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-     * Terraform will destroy and recreate the resource.
+     * [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes, the
+     * resource will be replaced.
      */
     type?: pulumi.Input<string>;
     /**
@@ -346,20 +336,16 @@ export interface InstanceArgs {
      * The floating IP attached to the instance.
      */
     floatingIpId?: pulumi.Input<string>;
-    /**
-     * The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-     * attribute is configured and changes, Terraform will destroy and recreate the resource.
-     */
     hostname?: pulumi.Input<string>;
     /**
      * The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
      * image slug in this format `<image-slug>:<version>`. Learn more about images
-     * [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-     * recreate the resource.
+     * [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, the resource will be
+     * replaced.
      */
     image: pulumi.Input<string>;
     /**
-     * Option to provide metadata. Currently supported is `startup_script`.
+     * Option to provide metadata. Currently supported is `startupScript`.
      */
     metadata?: pulumi.Input<inputs.InstanceMetadata>;
     /**
@@ -368,19 +354,19 @@ export interface InstanceArgs {
     name?: pulumi.Input<string>;
     /**
      * The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
-     * **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-     * SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-     * length must be at least 16.
+     * **Please Note**: Only one of `sshKeys` or `password` can be provided. Password is less secure - we recommend you use an
+     * SSH key-pair. - If the value of this attribute changes, the resource will be replaced. - The string length must be at
+     * least 16.
      */
     password?: pulumi.Input<string>;
     /**
      * The placement option identifier in which instances are physically located relative to each other within a zone. For
-     * example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+     * example A or B. - If the value of this attribute changes, the resource will be replaced.
      */
     placementOption?: pulumi.Input<string>;
     /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region: pulumi.Input<string>;
     /**
@@ -392,15 +378,14 @@ export interface InstanceArgs {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource.
+     * The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
      */
     sshKeyIds?: pulumi.Input<pulumi.Input<string>[]>;
     timeouts?: pulumi.Input<inputs.InstanceTimeouts>;
     /**
      * The instance type identifier. Learn more about instance types
-     * [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-     * Terraform will destroy and recreate the resource.
+     * [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes, the
+     * resource will be replaced.
      */
     type: pulumi.Input<string>;
     /**

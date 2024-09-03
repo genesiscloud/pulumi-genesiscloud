@@ -43,9 +43,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import genesiscloud:index/sSHKey:SSHKey example 18efeec8-94f0-4776-8ff2-5e9b49c74608
-//
+// $ pulumi import genesiscloud:index/sSHKey:SSHKey example 18efeec8-94f0-4776-8ff2-5e9b49c74608
 // ```
 type SSHKey struct {
 	pulumi.CustomResourceState
@@ -56,7 +54,7 @@ type SSHKey struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The human-readable name for the SSH key.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+	// SSH public key. - If the value of this attribute changes, the resource will be replaced.
 	PublicKey pulumi.StringOutput     `pulumi:"publicKey"`
 	Timeouts  SSHKeyTimeoutsPtrOutput `pulumi:"timeouts"`
 }
@@ -100,7 +98,7 @@ type sshkeyState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The human-readable name for the SSH key.
 	Name *string `pulumi:"name"`
-	// SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+	// SSH public key. - If the value of this attribute changes, the resource will be replaced.
 	PublicKey *string         `pulumi:"publicKey"`
 	Timeouts  *SSHKeyTimeouts `pulumi:"timeouts"`
 }
@@ -112,7 +110,7 @@ type SSHKeyState struct {
 	Fingerprint pulumi.StringPtrInput
 	// The human-readable name for the SSH key.
 	Name pulumi.StringPtrInput
-	// SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+	// SSH public key. - If the value of this attribute changes, the resource will be replaced.
 	PublicKey pulumi.StringPtrInput
 	Timeouts  SSHKeyTimeoutsPtrInput
 }
@@ -124,7 +122,7 @@ func (SSHKeyState) ElementType() reflect.Type {
 type sshkeyArgs struct {
 	// The human-readable name for the SSH key.
 	Name *string `pulumi:"name"`
-	// SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+	// SSH public key. - If the value of this attribute changes, the resource will be replaced.
 	PublicKey string          `pulumi:"publicKey"`
 	Timeouts  *SSHKeyTimeouts `pulumi:"timeouts"`
 }
@@ -133,7 +131,7 @@ type sshkeyArgs struct {
 type SSHKeyArgs struct {
 	// The human-readable name for the SSH key.
 	Name pulumi.StringPtrInput
-	// SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+	// SSH public key. - If the value of this attribute changes, the resource will be replaced.
 	PublicKey pulumi.StringInput
 	Timeouts  SSHKeyTimeoutsPtrInput
 }
@@ -240,7 +238,7 @@ func (o SSHKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SSHKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+// SSH public key. - If the value of this attribute changes, the resource will be replaced.
 func (o SSHKeyOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *SSHKey) pulumi.StringOutput { return v.PublicKey }).(pulumi.StringOutput)
 }

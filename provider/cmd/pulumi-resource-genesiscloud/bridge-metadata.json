@@ -26,6 +26,9 @@
                     }
                 }
             },
+            "genesiscloud_instance_status": {
+                "current": "genesiscloud:index/instanceStatus:InstanceStatus"
+            },
             "genesiscloud_security_group": {
                 "current": "genesiscloud:index/securityGroup:SecurityGroup",
                 "fields": {

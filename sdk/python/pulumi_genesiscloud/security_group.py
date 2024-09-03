@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,8 +28,8 @@ class SecurityGroupArgs:
                  timeouts: Optional[pulumi.Input['SecurityGroupTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a SecurityGroup resource.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] description: The human-readable description for the security group. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the security group.
         """
@@ -41,8 +46,8 @@ class SecurityGroupArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -108,8 +113,8 @@ class _SecurityGroupState:
         :param pulumi.Input[str] created_at: The timestamp when this security group was created in RFC 3339.
         :param pulumi.Input[str] description: The human-readable description for the security group. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the security group.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] status: The security group status.
         """
         if created_at is not None:
@@ -167,8 +172,8 @@ class _SecurityGroupState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -215,8 +220,8 @@ class SecurityGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupRuleArgs']]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['SecurityGroupTimeoutsArgs']]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupRuleArgs', 'SecurityGroupRuleArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SecurityGroupTimeoutsArgs', 'SecurityGroupTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Security group resource
@@ -224,15 +229,15 @@ class SecurityGroup(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/securityGroup:SecurityGroup example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/securityGroup:SecurityGroup example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the security group. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the security group.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         ...
     @overload
@@ -246,7 +251,7 @@ class SecurityGroup(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/securityGroup:SecurityGroup example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/securityGroup:SecurityGroup example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
@@ -267,8 +272,8 @@ class SecurityGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupRuleArgs']]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['SecurityGroupTimeoutsArgs']]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupRuleArgs', 'SecurityGroupRuleArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SecurityGroupTimeoutsArgs', 'SecurityGroupTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -303,9 +308,9 @@ class SecurityGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupRuleArgs', 'SecurityGroupRuleArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['SecurityGroupTimeoutsArgs']]] = None) -> 'SecurityGroup':
+            timeouts: Optional[pulumi.Input[Union['SecurityGroupTimeoutsArgs', 'SecurityGroupTimeoutsArgsDict']]] = None) -> 'SecurityGroup':
         """
         Get an existing SecurityGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -316,8 +321,8 @@ class SecurityGroup(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The timestamp when this security group was created in RFC 3339.
         :param pulumi.Input[str] description: The human-readable description for the security group. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the security group.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] status: The security group status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -361,8 +366,8 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 

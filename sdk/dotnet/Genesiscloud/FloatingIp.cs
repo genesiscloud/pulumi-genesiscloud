@@ -25,8 +25,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     /// {
     ///     var floatingIp = new Genesiscloud.FloatingIp("floatingIp", new()
     ///     {
-    ///         Description = "The description for you terraform floating IP.",
-    ///         Region = "ARC-IS-HAF-1",
+    ///         Region = "NORD-NO-KRS-1",
     ///         Version = "ipv4",
     ///     });
     /// 
@@ -36,7 +35,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import genesiscloud:index/floatingIp:FloatingIp example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+    /// $ pulumi import genesiscloud:index/floatingIp:FloatingIp example 18efeec8-94f0-4776-8ff2-5e9b49c74608
     /// ```
     /// </summary>
     [GenesiscloudResourceType("genesiscloud:index/floatingIp:FloatingIp")]
@@ -73,8 +72,8 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        /// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        /// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -95,8 +94,8 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource. - The value must be one of: ["ipv4"].
+        /// The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
+        /// must be one of: ["ipv4"].
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -161,8 +160,8 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        /// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        /// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -171,8 +170,8 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Input<Inputs.FloatingIpTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource. - The value must be one of: ["ipv4"].
+        /// The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
+        /// must be one of: ["ipv4"].
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -216,8 +215,8 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        /// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        /// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -238,8 +237,8 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource. - The value must be one of: ["ipv4"].
+        /// The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
+        /// must be one of: ["ipv4"].
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

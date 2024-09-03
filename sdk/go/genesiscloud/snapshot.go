@@ -48,17 +48,14 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
-//
+// $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
 // ```
 type Snapshot struct {
 	pulumi.CustomResourceState
 
 	// The timestamp when this snapshot was created in RFC 3339.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource.
+	// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The human-readable name for the snapshot.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -66,7 +63,7 @@ type Snapshot struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolOutput `pulumi:"retainOnDelete"`
-	// The storage size of this snapshot given in bytes.
+	// The storage size of this snapshot given in GiB.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The snapshot status.
 	Status   pulumi.StringOutput       `pulumi:"status"`
@@ -108,8 +105,7 @@ func GetSnapshot(ctx *pulumi.Context,
 type snapshotState struct {
 	// The timestamp when this snapshot was created in RFC 3339.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource.
+	// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
 	InstanceId *string `pulumi:"instanceId"`
 	// The human-readable name for the snapshot.
 	Name *string `pulumi:"name"`
@@ -117,7 +113,7 @@ type snapshotState struct {
 	Region *string `pulumi:"region"`
 	// Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
-	// The storage size of this snapshot given in bytes.
+	// The storage size of this snapshot given in GiB.
 	Size *int `pulumi:"size"`
 	// The snapshot status.
 	Status   *string           `pulumi:"status"`
@@ -127,8 +123,7 @@ type snapshotState struct {
 type SnapshotState struct {
 	// The timestamp when this snapshot was created in RFC 3339.
 	CreatedAt pulumi.StringPtrInput
-	// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource.
+	// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
 	InstanceId pulumi.StringPtrInput
 	// The human-readable name for the snapshot.
 	Name pulumi.StringPtrInput
@@ -136,7 +131,7 @@ type SnapshotState struct {
 	Region pulumi.StringPtrInput
 	// Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
-	// The storage size of this snapshot given in bytes.
+	// The storage size of this snapshot given in GiB.
 	Size pulumi.IntPtrInput
 	// The snapshot status.
 	Status   pulumi.StringPtrInput
@@ -148,8 +143,7 @@ func (SnapshotState) ElementType() reflect.Type {
 }
 
 type snapshotArgs struct {
-	// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource.
+	// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
 	InstanceId string `pulumi:"instanceId"`
 	// The human-readable name for the snapshot.
 	Name *string `pulumi:"name"`
@@ -160,8 +154,7 @@ type snapshotArgs struct {
 
 // The set of arguments for constructing a Snapshot resource.
 type SnapshotArgs struct {
-	// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource.
+	// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
 	InstanceId pulumi.StringInput
 	// The human-readable name for the snapshot.
 	Name pulumi.StringPtrInput
@@ -262,8 +255,7 @@ func (o SnapshotOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-// resource.
+// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
 func (o SnapshotOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -283,7 +275,7 @@ func (o SnapshotOutput) RetainOnDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.BoolOutput { return v.RetainOnDelete }).(pulumi.BoolOutput)
 }
 
-// The storage size of this snapshot given in bytes.
+// The storage size of this snapshot given in GiB.
 func (o SnapshotOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }

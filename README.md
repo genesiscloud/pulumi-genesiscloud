@@ -1,4 +1,4 @@
-# Genesis Cloud Resource Provider
+# Genesis Cloud Resource Provider 2
 
 The Genesis Cloud Resource Provider lets you manage [Genesis Cloud](http://genesiscloud.com) resources.
 

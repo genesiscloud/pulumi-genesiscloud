@@ -37,7 +37,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import genesiscloud:index/filesystem:Filesystem example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+    /// $ pulumi import genesiscloud:index/filesystem:Filesystem example 18efeec8-94f0-4776-8ff2-5e9b49c74608
     /// ```
     /// </summary>
     [GenesiscloudResourceType("genesiscloud:index/filesystem:Filesystem")]
@@ -73,10 +73,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-        /// destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -101,10 +97,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Output("timeouts")]
         public Output<Outputs.FilesystemTimeouts?> Timeouts { get; private set; } = null!;
 
-        /// <summary>
-        /// The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource. - The value must be one of: ["vast"].
-        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -167,10 +159,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-        /// destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
@@ -189,10 +177,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("timeouts")]
         public Input<Inputs.FilesystemTimeoutsArgs>? Timeouts { get; set; }
 
-        /// <summary>
-        /// The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource. - The value must be one of: ["vast"].
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -240,10 +224,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-        /// destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -268,10 +248,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("timeouts")]
         public Input<Inputs.FilesystemTimeoutsGetArgs>? Timeouts { get; set; }
 
-        /// <summary>
-        /// The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource. - The value must be one of: ["vast"].
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

@@ -96,6 +96,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 		},
+		DocRules: &tfbridge.DocRuleInfo{EditRules: editRules},
 	}
 
 	// These are new API's that you may opt to use to automatically compute resource

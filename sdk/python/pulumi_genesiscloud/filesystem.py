@@ -25,11 +25,7 @@ class FilesystemArgs:
                  timeouts: Optional[pulumi.Input['FilesystemTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Filesystem resource.
-        :param pulumi.Input[str] region: The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-               destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[int] size: The storage size of this filesystem given in GiB. - The value must be at least 1.
-        :param pulumi.Input[str] type: The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["vast"].
         :param pulumi.Input[str] description: The human-readable description for the filesystem. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the filesystem.
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
@@ -49,10 +45,6 @@ class FilesystemArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-        destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -74,10 +66,6 @@ class FilesystemArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource. - The value must be one of: ["vast"].
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -151,13 +139,9 @@ class _FilesystemState:
         :param pulumi.Input[str] mount_base_path: The base path on the server under which the mount point can be accessed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mount_endpoint_ranges: The start and end IP of the mount endpoint range. Expressed as a array with two entries.
         :param pulumi.Input[str] name: The human-readable name for the filesystem.
-        :param pulumi.Input[str] region: The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-               destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
         :param pulumi.Input[int] size: The storage size of this filesystem given in GiB. - The value must be at least 1.
         :param pulumi.Input[str] status: The filesystem status.
-        :param pulumi.Input[str] type: The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["vast"].
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -245,10 +229,6 @@ class _FilesystemState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-        destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -303,10 +283,6 @@ class _FilesystemState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource. - The value must be one of: ["vast"].
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -324,7 +300,7 @@ class Filesystem(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  retain_on_delete: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['FilesystemTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['FilesystemTimeoutsArgs', 'FilesystemTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -346,19 +322,15 @@ class Filesystem(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/filesystem:Filesystem example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/filesystem:Filesystem example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the filesystem. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the filesystem.
-        :param pulumi.Input[str] region: The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-               destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
         :param pulumi.Input[int] size: The storage size of this filesystem given in GiB. - The value must be at least 1.
-        :param pulumi.Input[str] type: The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["vast"].
         """
         ...
     @overload
@@ -385,7 +357,7 @@ class Filesystem(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/filesystem:Filesystem example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/filesystem:Filesystem example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
@@ -408,7 +380,7 @@ class Filesystem(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  retain_on_delete: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['FilesystemTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['FilesystemTimeoutsArgs', 'FilesystemTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -455,7 +427,7 @@ class Filesystem(pulumi.CustomResource):
             retain_on_delete: Optional[pulumi.Input[bool]] = None,
             size: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['FilesystemTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['FilesystemTimeoutsArgs', 'FilesystemTimeoutsArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Filesystem':
         """
         Get an existing Filesystem resource's state with the given name, id, and optional extra
@@ -469,13 +441,9 @@ class Filesystem(pulumi.CustomResource):
         :param pulumi.Input[str] mount_base_path: The base path on the server under which the mount point can be accessed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mount_endpoint_ranges: The start and end IP of the mount endpoint range. Expressed as a array with two entries.
         :param pulumi.Input[str] name: The human-readable name for the filesystem.
-        :param pulumi.Input[str] region: The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-               destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
         :param pulumi.Input[int] size: The storage size of this filesystem given in GiB. - The value must be at least 1.
         :param pulumi.Input[str] status: The filesystem status.
-        :param pulumi.Input[str] type: The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["vast"].
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -537,10 +505,6 @@ class Filesystem(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-        destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        """
         return pulumi.get(self, "region")
 
     @property
@@ -575,9 +539,5 @@ class Filesystem(pulumi.CustomResource):
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
-        """
-        The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource. - The value must be one of: ["vast"].
-        """
         return pulumi.get(self, "type")
 

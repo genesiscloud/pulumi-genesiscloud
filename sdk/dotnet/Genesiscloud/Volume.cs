@@ -36,7 +36,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import genesiscloud:index/volume:Volume example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+    /// $ pulumi import genesiscloud:index/volume:Volume example 18efeec8-94f0-4776-8ff2-5e9b49c74608
     /// ```
     /// </summary>
     [GenesiscloudResourceType("genesiscloud:index/volume:Volume")]
@@ -60,10 +60,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -73,10 +69,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Output("retainOnDelete")]
         public Output<bool> RetainOnDelete { get; private set; } = null!;
 
-        /// <summary>
-        /// The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-        /// recreate the resource. - The value must be at least 1.
-        /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
@@ -89,10 +81,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Output("timeouts")]
         public Output<Outputs.VolumeTimeouts?> Timeouts { get; private set; } = null!;
 
-        /// <summary>
-        /// The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource. - The value must be one of: ["hdd" "ssd"].
-        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -155,10 +143,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
@@ -168,20 +152,12 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("retainOnDelete")]
         public Input<bool>? RetainOnDelete { get; set; }
 
-        /// <summary>
-        /// The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-        /// recreate the resource. - The value must be at least 1.
-        /// </summary>
         [Input("size", required: true)]
         public Input<int> Size { get; set; } = null!;
 
         [Input("timeouts")]
         public Input<Inputs.VolumeTimeoutsArgs>? Timeouts { get; set; }
 
-        /// <summary>
-        /// The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource. - The value must be one of: ["hdd" "ssd"].
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -211,10 +187,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -224,10 +196,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("retainOnDelete")]
         public Input<bool>? RetainOnDelete { get; set; }
 
-        /// <summary>
-        /// The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-        /// recreate the resource. - The value must be at least 1.
-        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
@@ -240,10 +208,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("timeouts")]
         public Input<Inputs.VolumeTimeoutsGetArgs>? Timeouts { get; set; }
 
-        /// <summary>
-        /// The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource. - The value must be one of: ["hdd" "ssd"].
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

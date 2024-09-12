@@ -46,9 +46,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import genesiscloud:index/filesystem:Filesystem example 18efeec8-94f0-4776-8ff2-5e9b49c74608
-//
+// $ pulumi import genesiscloud:index/filesystem:Filesystem example 18efeec8-94f0-4776-8ff2-5e9b49c74608
 // ```
 type Filesystem struct {
 	pulumi.CustomResourceState
@@ -62,9 +60,7 @@ type Filesystem struct {
 	// The start and end IP of the mount endpoint range. Expressed as a array with two entries.
 	MountEndpointRanges pulumi.StringArrayOutput `pulumi:"mountEndpointRanges"`
 	// The human-readable name for the filesystem.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-	// destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	Name   pulumi.StringOutput `pulumi:"name"`
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolOutput `pulumi:"retainOnDelete"`
@@ -73,9 +69,7 @@ type Filesystem struct {
 	// The filesystem status.
 	Status   pulumi.StringOutput         `pulumi:"status"`
 	Timeouts FilesystemTimeoutsPtrOutput `pulumi:"timeouts"`
-	// The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource. - The value must be one of: ["vast"].
-	Type pulumi.StringOutput `pulumi:"type"`
+	Type     pulumi.StringOutput         `pulumi:"type"`
 }
 
 // NewFilesystem registers a new resource with the given unique name, arguments, and options.
@@ -126,9 +120,7 @@ type filesystemState struct {
 	// The start and end IP of the mount endpoint range. Expressed as a array with two entries.
 	MountEndpointRanges []string `pulumi:"mountEndpointRanges"`
 	// The human-readable name for the filesystem.
-	Name *string `pulumi:"name"`
-	// The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-	// destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
@@ -137,9 +129,7 @@ type filesystemState struct {
 	// The filesystem status.
 	Status   *string             `pulumi:"status"`
 	Timeouts *FilesystemTimeouts `pulumi:"timeouts"`
-	// The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource. - The value must be one of: ["vast"].
-	Type *string `pulumi:"type"`
+	Type     *string             `pulumi:"type"`
 }
 
 type FilesystemState struct {
@@ -152,9 +142,7 @@ type FilesystemState struct {
 	// The start and end IP of the mount endpoint range. Expressed as a array with two entries.
 	MountEndpointRanges pulumi.StringArrayInput
 	// The human-readable name for the filesystem.
-	Name pulumi.StringPtrInput
-	// The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-	// destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
@@ -163,9 +151,7 @@ type FilesystemState struct {
 	// The filesystem status.
 	Status   pulumi.StringPtrInput
 	Timeouts FilesystemTimeoutsPtrInput
-	// The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource. - The value must be one of: ["vast"].
-	Type pulumi.StringPtrInput
+	Type     pulumi.StringPtrInput
 }
 
 func (FilesystemState) ElementType() reflect.Type {
@@ -176,18 +162,14 @@ type filesystemArgs struct {
 	// The human-readable description for the filesystem. - Sets the default value "" if the attribute is not set.
 	Description *string `pulumi:"description"`
 	// The human-readable name for the filesystem.
-	Name *string `pulumi:"name"`
-	// The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-	// destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-	Region string `pulumi:"region"`
+	Name   *string `pulumi:"name"`
+	Region string  `pulumi:"region"`
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
 	// The storage size of this filesystem given in GiB. - The value must be at least 1.
 	Size     int                 `pulumi:"size"`
 	Timeouts *FilesystemTimeouts `pulumi:"timeouts"`
-	// The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource. - The value must be one of: ["vast"].
-	Type string `pulumi:"type"`
+	Type     string              `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Filesystem resource.
@@ -195,18 +177,14 @@ type FilesystemArgs struct {
 	// The human-readable description for the filesystem. - Sets the default value "" if the attribute is not set.
 	Description pulumi.StringPtrInput
 	// The human-readable name for the filesystem.
-	Name pulumi.StringPtrInput
-	// The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-	// destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringInput
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
 	// The storage size of this filesystem given in GiB. - The value must be at least 1.
 	Size     pulumi.IntInput
 	Timeouts FilesystemTimeoutsPtrInput
-	// The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource. - The value must be one of: ["vast"].
-	Type pulumi.StringInput
+	Type     pulumi.StringInput
 }
 
 func (FilesystemArgs) ElementType() reflect.Type {
@@ -321,8 +299,6 @@ func (o FilesystemOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filesystem) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The identifier for the region this filesystem exists in. - If the value of this attribute changes, Terraform will
-// destroy and recreate the resource. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 func (o FilesystemOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filesystem) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -346,8 +322,6 @@ func (o FilesystemOutput) Timeouts() FilesystemTimeoutsPtrOutput {
 	return o.ApplyT(func(v *Filesystem) FilesystemTimeoutsPtrOutput { return v.Timeouts }).(FilesystemTimeoutsPtrOutput)
 }
 
-// The storage type of the filesystem. - If the value of this attribute changes, Terraform will destroy and recreate the
-// resource. - The value must be one of: ["vast"].
 func (o FilesystemOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filesystem) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

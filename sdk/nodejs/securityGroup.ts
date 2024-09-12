@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import genesiscloud:index/securityGroup:SecurityGroup example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+ * $ pulumi import genesiscloud:index/securityGroup:SecurityGroup example 18efeec8-94f0-4776-8ff2-5e9b49c74608
  * ```
  */
 export class SecurityGroup extends pulumi.CustomResource {
@@ -55,10 +55,6 @@ export class SecurityGroup extends pulumi.CustomResource {
      * The human-readable name for the security group.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-     */
     public readonly region!: pulumi.Output<string>;
     public readonly rules!: pulumi.Output<outputs.SecurityGroupRule[]>;
     /**
@@ -124,10 +120,6 @@ export interface SecurityGroupState {
      * The human-readable name for the security group.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-     */
     region?: pulumi.Input<string>;
     rules?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRule>[]>;
     /**
@@ -149,10 +141,6 @@ export interface SecurityGroupArgs {
      * The human-readable name for the security group.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-     */
     region: pulumi.Input<string>;
     rules: pulumi.Input<pulumi.Input<inputs.SecurityGroupRule>[]>;
     timeouts?: pulumi.Input<inputs.SecurityGroupTimeouts>;

@@ -70,8 +70,8 @@ class AwaitableImagesResult(ImagesResult):
             timeouts=self.timeouts)
 
 
-def images(filter: Optional[pulumi.InputType['ImagesFilterArgs']] = None,
-           timeouts: Optional[pulumi.InputType['ImagesTimeoutsArgs']] = None,
+def images(filter: Optional[Union['ImagesFilterArgs', 'ImagesFilterArgsDict']] = None,
+           timeouts: Optional[Union['ImagesTimeoutsArgs', 'ImagesTimeoutsArgsDict']] = None,
            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableImagesResult:
     """
     Images data source
@@ -82,16 +82,16 @@ def images(filter: Optional[pulumi.InputType['ImagesFilterArgs']] = None,
     import pulumi
     import pulumi_genesiscloud as genesiscloud
 
-    cloud_images = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
-        type="cloud-image",
-    ))
-    snapshots = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
-        region="ARC-IS-HAF-1",
-        type="snapshot",
-    ))
-    preconfigured_images = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
-        type="preconfigured",
-    ))
+    cloud_images = genesiscloud.images(filter={
+        "type": "cloud-image",
+    })
+    snapshots = genesiscloud.images(filter={
+        "region": "ARC-IS-HAF-1",
+        "type": "snapshot",
+    })
+    preconfigured_images = genesiscloud.images(filter={
+        "type": "preconfigured",
+    })
     ```
     """
     __args__ = dict()
@@ -108,8 +108,8 @@ def images(filter: Optional[pulumi.InputType['ImagesFilterArgs']] = None,
 
 
 @_utilities.lift_output_func(images)
-def images_output(filter: Optional[pulumi.Input[pulumi.InputType['ImagesFilterArgs']]] = None,
-                  timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['ImagesTimeoutsArgs']]]] = None,
+def images_output(filter: Optional[pulumi.Input[Union['ImagesFilterArgs', 'ImagesFilterArgsDict']]] = None,
+                  timeouts: Optional[pulumi.Input[Optional[Union['ImagesTimeoutsArgs', 'ImagesTimeoutsArgsDict']]]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[ImagesResult]:
     """
     Images data source
@@ -120,16 +120,16 @@ def images_output(filter: Optional[pulumi.Input[pulumi.InputType['ImagesFilterAr
     import pulumi
     import pulumi_genesiscloud as genesiscloud
 
-    cloud_images = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
-        type="cloud-image",
-    ))
-    snapshots = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
-        region="ARC-IS-HAF-1",
-        type="snapshot",
-    ))
-    preconfigured_images = genesiscloud.images(filter=genesiscloud.ImagesFilterArgs(
-        type="preconfigured",
-    ))
+    cloud_images = genesiscloud.images(filter={
+        "type": "cloud-image",
+    })
+    snapshots = genesiscloud.images(filter={
+        "region": "ARC-IS-HAF-1",
+        "type": "snapshot",
+    })
+    preconfigured_images = genesiscloud.images(filter={
+        "type": "preconfigured",
+    })
     ```
     """
     ...

@@ -40,7 +40,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import genesiscloud:index/instance:Instance example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+    /// $ pulumi import genesiscloud:index/instance:Instance example 18efeec8-94f0-4776-8ff2-5e9b49c74608
     /// ```
     /// </summary>
     [GenesiscloudResourceType("genesiscloud:index/instance:Instance")]
@@ -70,19 +70,9 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Output("floatingIpId")]
         public Output<string?> FloatingIpId { get; private set; } = null!;
 
-        /// <summary>
-        /// The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-        /// attribute is configured and changes, Terraform will destroy and recreate the resource.
-        /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
 
-        /// <summary>
-        /// The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
-        /// image slug in this format `&lt;image-slug&gt;:&lt;version&gt;`. Learn more about images
-        /// [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-        /// recreate the resource.
-        /// </summary>
         [Output("image")]
         public Output<string> Image { get; private set; } = null!;
 
@@ -104,19 +94,9 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
-        /// **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-        /// SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-        /// length must be at least 16.
-        /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
-        /// <summary>
-        /// The placement option identifier in which instances are physically located relative to each other within a zone. For
-        /// example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
-        /// </summary>
         [Output("placementOption")]
         public Output<string> PlacementOption { get; private set; } = null!;
 
@@ -132,10 +112,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Output("publicIp")]
         public Output<string> PublicIp { get; private set; } = null!;
 
-        /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -151,10 +127,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
-        /// <summary>
-        /// The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource.
-        /// </summary>
         [Output("sshKeyIds")]
         public Output<ImmutableArray<string>> SshKeyIds { get; private set; } = null!;
 
@@ -167,11 +139,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Output("timeouts")]
         public Output<Outputs.InstanceTimeouts?> Timeouts { get; private set; } = null!;
 
-        /// <summary>
-        /// The instance type identifier. Learn more about instance types
-        /// [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-        /// Terraform will destroy and recreate the resource.
-        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -250,19 +217,9 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("floatingIpId")]
         public Input<string>? FloatingIpId { get; set; }
 
-        /// <summary>
-        /// The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-        /// attribute is configured and changes, Terraform will destroy and recreate the resource.
-        /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
-        /// <summary>
-        /// The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
-        /// image slug in this format `&lt;image-slug&gt;:&lt;version&gt;`. Learn more about images
-        /// [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-        /// recreate the resource.
-        /// </summary>
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
 
@@ -280,13 +237,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
 
         [Input("password")]
         private Input<string>? _password;
-
-        /// <summary>
-        /// The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
-        /// **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-        /// SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-        /// length must be at least 16.
-        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -297,17 +247,9 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
             }
         }
 
-        /// <summary>
-        /// The placement option identifier in which instances are physically located relative to each other within a zone. For
-        /// example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
-        /// </summary>
         [Input("placementOption")]
         public Input<string>? PlacementOption { get; set; }
 
-        /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
@@ -331,11 +273,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
 
         [Input("sshKeyIds")]
         private InputList<string>? _sshKeyIds;
-
-        /// <summary>
-        /// The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource.
-        /// </summary>
         public InputList<string> SshKeyIds
         {
             get => _sshKeyIds ?? (_sshKeyIds = new InputList<string>());
@@ -345,11 +282,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("timeouts")]
         public Input<Inputs.InstanceTimeoutsArgs>? Timeouts { get; set; }
 
-        /// <summary>
-        /// The instance type identifier. Learn more about instance types
-        /// [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-        /// Terraform will destroy and recreate the resource.
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -397,19 +329,9 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("floatingIpId")]
         public Input<string>? FloatingIpId { get; set; }
 
-        /// <summary>
-        /// The hostname of your instance. If not provided will be initially set to the `name` attribute. - If the value of this
-        /// attribute is configured and changes, Terraform will destroy and recreate the resource.
-        /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
-        /// <summary>
-        /// The source image id, image slug or snapshot id of the instance. The image version can also specified together with the
-        /// image slug in this format `&lt;image-slug&gt;:&lt;version&gt;`. Learn more about images
-        /// [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, Terraform will destroy and
-        /// recreate the resource.
-        /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
 
@@ -433,13 +355,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
 
         [Input("password")]
         private Input<string>? _password;
-
-        /// <summary>
-        /// The password to access the instance. Your password must have upper and lower chars, digits and length between 8-72.
-        /// **Please Note**: Only one of `ssh_keys` or `password` can be provided. Password is less secure - we recommend you use an
-        /// SSH key-pair. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The string
-        /// length must be at least 16.
-        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -450,10 +365,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
             }
         }
 
-        /// <summary>
-        /// The placement option identifier in which instances are physically located relative to each other within a zone. For
-        /// example A or B. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
-        /// </summary>
         [Input("placementOption")]
         public Input<string>? PlacementOption { get; set; }
 
@@ -469,10 +380,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("publicIp")]
         public Input<string>? PublicIp { get; set; }
 
-        /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -496,11 +403,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
 
         [Input("sshKeyIds")]
         private InputList<string>? _sshKeyIds;
-
-        /// <summary>
-        /// The ssh keys of the instance. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource.
-        /// </summary>
         public InputList<string> SshKeyIds
         {
             get => _sshKeyIds ?? (_sshKeyIds = new InputList<string>());
@@ -516,11 +418,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         [Input("timeouts")]
         public Input<Inputs.InstanceTimeoutsGetArgs>? Timeouts { get; set; }
 
-        /// <summary>
-        /// The instance type identifier. Learn more about instance types
-        /// [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes,
-        /// Terraform will destroy and recreate the resource.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

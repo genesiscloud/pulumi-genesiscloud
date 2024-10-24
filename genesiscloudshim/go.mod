@@ -7,7 +7,7 @@ toolchain go1.23.1
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
 
 require (
-	github.com/genesiscloud/terraform-provider-genesiscloud v1.1.10-0.20241022212603-eae223e224b7
+	github.com/genesiscloud/terraform-provider-genesiscloud v1.1.10
 	github.com/hashicorp/terraform-plugin-framework v1.12.0
 )
 
@@ -15,7 +15,7 @@ require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/apapsch/go-jsonmerge/v2 v2.0.0 // indirect
 	github.com/fatih/color v1.18.0 // indirect
-	github.com/genesiscloud/genesiscloud-go v1.0.10-0.20241022190226-71944b796e82 // indirect
+	github.com/genesiscloud/genesiscloud-go v1.0.11 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect

@@ -8,6 +8,7 @@ require (
 	github.com/genesiscloud/terraform-provider-genesiscloud/genesiscloudshim v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.46.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.93.1
+	github.com/pulumi/pulumi/sdk/v3 v3.137.0
 )
 
 require (
@@ -156,7 +157,6 @@ require (
 	github.com/pulumi/pulumi-java/pkg v0.16.1 // indirect
 	github.com/pulumi/pulumi-yaml v1.11.1 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.137.0 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.137.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.13.1 // indirect

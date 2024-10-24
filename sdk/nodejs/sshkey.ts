@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import genesiscloud:index/sSHKey:SSHKey example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+ * $ pulumi import genesiscloud:index/sSHKey:SSHKey example 18efeec8-94f0-4776-8ff2-5e9b49c74608
  * ```
  */
 export class SSHKey extends pulumi.CustomResource {
@@ -65,7 +65,7 @@ export class SSHKey extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+     * SSH public key. - If the value of this attribute changes, the resource will be replaced.
      */
     public readonly publicKey!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.SSHKeyTimeouts | undefined>;
@@ -121,7 +121,7 @@ export interface SSHKeyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+     * SSH public key. - If the value of this attribute changes, the resource will be replaced.
      */
     publicKey?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.SSHKeyTimeouts>;
@@ -136,7 +136,7 @@ export interface SSHKeyArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * SSH public key. - If the value of this attribute changes, Terraform will destroy and recreate the resource.
+     * SSH public key. - If the value of this attribute changes, the resource will be replaced.
      */
     publicKey: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.SSHKeyTimeouts>;

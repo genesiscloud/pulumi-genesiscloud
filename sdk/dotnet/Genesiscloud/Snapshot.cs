@@ -39,7 +39,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+    /// $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
     /// ```
     /// </summary>
     [GenesiscloudResourceType("genesiscloud:index/snapshot:Snapshot")]
@@ -52,8 +52,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource.
+        /// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -77,7 +76,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Output<bool> RetainOnDelete { get; private set; } = null!;
 
         /// <summary>
-        /// The storage size of this snapshot given in bytes.
+        /// The storage size of this snapshot given in GiB.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
@@ -139,8 +138,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource.
+        /// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -175,8 +173,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-        /// resource.
+        /// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -200,7 +197,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Input<bool>? RetainOnDelete { get; set; }
 
         /// <summary>
-        /// The storage size of this snapshot given in bytes.
+        /// The storage size of this snapshot given in GiB.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

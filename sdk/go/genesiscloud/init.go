@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FloatingIp{}
 	case "genesiscloud:index/instance:Instance":
 		r = &Instance{}
+	case "genesiscloud:index/instanceStatus:InstanceStatus":
+		r = &InstanceStatus{}
 	case "genesiscloud:index/sSHKey:SSHKey":
 		r = &SSHKey{}
 	case "genesiscloud:index/securityGroup:SecurityGroup":
@@ -79,6 +81,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"genesiscloud",
 		"index/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"genesiscloud",
+		"index/instanceStatus",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -25,6 +25,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { InstanceStatusArgs, InstanceStatusState } from "./instanceStatus";
+export type InstanceStatus = import("./instanceStatus").InstanceStatus;
+export const InstanceStatus: typeof import("./instanceStatus").InstanceStatus = null as any;
+utilities.lazyLoad(exports, ["InstanceStatus"], () => require("./instanceStatus"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
@@ -70,6 +75,8 @@ const _module = {
                 return new FloatingIp(name, <any>undefined, { urn })
             case "genesiscloud:index/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "genesiscloud:index/instanceStatus:InstanceStatus":
+                return new InstanceStatus(name, <any>undefined, { urn })
             case "genesiscloud:index/sSHKey:SSHKey":
                 return new SSHKey(name, <any>undefined, { urn })
             case "genesiscloud:index/securityGroup:SecurityGroup":
@@ -86,6 +93,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("genesiscloud", "index/filesystem", _module)
 pulumi.runtime.registerResourceModule("genesiscloud", "index/floatingIp", _module)
 pulumi.runtime.registerResourceModule("genesiscloud", "index/instance", _module)
+pulumi.runtime.registerResourceModule("genesiscloud", "index/instanceStatus", _module)
 pulumi.runtime.registerResourceModule("genesiscloud", "index/sSHKey", _module)
 pulumi.runtime.registerResourceModule("genesiscloud", "index/securityGroup", _module)
 pulumi.runtime.registerResourceModule("genesiscloud", "index/snapshot", _module)

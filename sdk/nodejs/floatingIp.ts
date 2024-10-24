@@ -16,8 +16,7 @@ import * as utilities from "./utilities";
  * import * as genesiscloud from "@genesiscloud/pulumi-genesiscloud";
  *
  * const floatingIp = new genesiscloud.FloatingIp("floatingIp", {
- *     description: "The description for you terraform floating IP.",
- *     region: "ARC-IS-HAF-1",
+ *     region: "NORD-NO-KRS-1",
  *     version: "ipv4",
  * });
  * ```
@@ -25,7 +24,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import genesiscloud:index/floatingIp:FloatingIp example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+ * $ pulumi import genesiscloud:index/floatingIp:FloatingIp example 18efeec8-94f0-4776-8ff2-5e9b49c74608
  * ```
  */
 export class FloatingIp extends pulumi.CustomResource {
@@ -77,8 +76,8 @@ export class FloatingIp extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -91,8 +90,8 @@ export class FloatingIp extends pulumi.CustomResource {
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource. - The value must be one of: ["ipv4"].
+     * The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
+     * must be one of: ["ipv4"].
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -168,8 +167,8 @@ export interface FloatingIpState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region?: pulumi.Input<string>;
     /**
@@ -182,8 +181,8 @@ export interface FloatingIpState {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource. - The value must be one of: ["ipv4"].
+     * The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
+     * must be one of: ["ipv4"].
      */
     version?: pulumi.Input<string>;
 }
@@ -201,14 +200,14 @@ export interface FloatingIpArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-     * value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.FloatingIpTimeouts>;
     /**
-     * The version of the floating IP. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource. - The value must be one of: ["ipv4"].
+     * The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
+     * must be one of: ["ipv4"].
      */
     version: pulumi.Input<string>;
 }

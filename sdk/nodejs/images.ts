@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * });
  * const snapshots = genesiscloud.Images({
  *     filter: {
- *         region: "ARC-IS-HAF-1",
+ *         region: "NORD-NO-KRS-1",
  *         type: "snapshot",
  *     },
  * });
@@ -34,7 +34,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function images(args: ImagesArgs, opts?: pulumi.InvokeOptions): Promise<ImagesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("genesiscloud:index/images:Images", {
         "filter": args.filter,
@@ -75,7 +74,7 @@ export interface ImagesResult {
  * });
  * const snapshots = genesiscloud.Images({
  *     filter: {
- *         region: "ARC-IS-HAF-1",
+ *         region: "NORD-NO-KRS-1",
  *         type: "snapshot",
  *     },
  * });
@@ -87,7 +86,11 @@ export interface ImagesResult {
  * ```
  */
 export function imagesOutput(args: ImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ImagesResult> {
-    return pulumi.output(args).apply((a: any) => images(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("genesiscloud:index/images:Images", {
+        "filter": args.filter,
+        "timeouts": args.timeouts,
+    }, opts);
 }
 
 /**

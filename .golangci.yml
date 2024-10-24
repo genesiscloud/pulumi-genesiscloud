@@ -1,5 +1,7 @@
 linters:
   enable:
+    - gosimple
+    - staticcheck
     - errcheck
     - goconst
     - gofmt
@@ -7,16 +9,15 @@ linters:
     - govet
     - ineffassign
     - lll
-    - megacheck
     - misspell
     - nakedret
     - revive
     - unconvert
     - unused
   enable-all: false
-issues:
-  exclude:
-    - schema.go
-    - pulumiManifest.go
 run:
   timeout: 20m
+issues:
+  exclude-files:
+    - schema.go
+    - pulumiManifest.go

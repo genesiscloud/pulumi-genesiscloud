@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := genesiscloud.NewVolume(ctx, "example", &genesiscloud.VolumeArgs{
-//				Region: pulumi.String("ARC-IS-HAF-1"),
+//				Region: pulumi.String("NORD-NO-KRS-1"),
 //				Size:   pulumi.Int(50),
 //				Type:   pulumi.String("hdd"),
 //			})
@@ -45,9 +45,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import genesiscloud:index/volume:Volume example 18efeec8-94f0-4776-8ff2-5e9b49c74608
-//
+// $ pulumi import genesiscloud:index/volume:Volume example 18efeec8-94f0-4776-8ff2-5e9b49c74608
 // ```
 type Volume struct {
 	pulumi.CustomResourceState
@@ -58,19 +56,18 @@ type Volume struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The human-readable name for the volume.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolOutput `pulumi:"retainOnDelete"`
-	// The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-	// recreate the resource. - The value must be at least 1.
+	// The storage size of this volume given in GiB. - The value must be at least 1.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The volume status.
 	Status   pulumi.StringOutput     `pulumi:"status"`
 	Timeouts VolumeTimeoutsPtrOutput `pulumi:"timeouts"`
-	// The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource. - The value must be one of: ["hdd" "ssd"].
+	// The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+	// must be one of: ["hdd" "ssd"].
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -119,19 +116,18 @@ type volumeState struct {
 	Description *string `pulumi:"description"`
 	// The human-readable name for the volume.
 	Name *string `pulumi:"name"`
-	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region *string `pulumi:"region"`
 	// Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
-	// The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-	// recreate the resource. - The value must be at least 1.
+	// The storage size of this volume given in GiB. - The value must be at least 1.
 	Size *int `pulumi:"size"`
 	// The volume status.
 	Status   *string         `pulumi:"status"`
 	Timeouts *VolumeTimeouts `pulumi:"timeouts"`
-	// The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource. - The value must be one of: ["hdd" "ssd"].
+	// The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+	// must be one of: ["hdd" "ssd"].
 	Type *string `pulumi:"type"`
 }
 
@@ -142,19 +138,18 @@ type VolumeState struct {
 	Description pulumi.StringPtrInput
 	// The human-readable name for the volume.
 	Name pulumi.StringPtrInput
-	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringPtrInput
 	// Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
-	// The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-	// recreate the resource. - The value must be at least 1.
+	// The storage size of this volume given in GiB. - The value must be at least 1.
 	Size pulumi.IntPtrInput
 	// The volume status.
 	Status   pulumi.StringPtrInput
 	Timeouts VolumeTimeoutsPtrInput
-	// The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource. - The value must be one of: ["hdd" "ssd"].
+	// The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+	// must be one of: ["hdd" "ssd"].
 	Type pulumi.StringPtrInput
 }
 
@@ -167,17 +162,16 @@ type volumeArgs struct {
 	Description *string `pulumi:"description"`
 	// The human-readable name for the volume.
 	Name *string `pulumi:"name"`
-	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region string `pulumi:"region"`
 	// Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
-	// The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-	// recreate the resource. - The value must be at least 1.
+	// The storage size of this volume given in GiB. - The value must be at least 1.
 	Size     int             `pulumi:"size"`
 	Timeouts *VolumeTimeouts `pulumi:"timeouts"`
-	// The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource. - The value must be one of: ["hdd" "ssd"].
+	// The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+	// must be one of: ["hdd" "ssd"].
 	Type string `pulumi:"type"`
 }
 
@@ -187,17 +181,16 @@ type VolumeArgs struct {
 	Description pulumi.StringPtrInput
 	// The human-readable name for the volume.
 	Name pulumi.StringPtrInput
-	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringInput
 	// Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
-	// The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-	// recreate the resource. - The value must be at least 1.
+	// The storage size of this volume given in GiB. - The value must be at least 1.
 	Size     pulumi.IntInput
 	Timeouts VolumeTimeoutsPtrInput
-	// The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-	// resource. - The value must be one of: ["hdd" "ssd"].
+	// The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+	// must be one of: ["hdd" "ssd"].
 	Type pulumi.StringInput
 }
 
@@ -303,8 +296,8 @@ func (o VolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 func (o VolumeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -314,8 +307,7 @@ func (o VolumeOutput) RetainOnDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Volume) pulumi.BoolOutput { return v.RetainOnDelete }).(pulumi.BoolOutput)
 }
 
-// The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-// recreate the resource. - The value must be at least 1.
+// The storage size of this volume given in GiB. - The value must be at least 1.
 func (o VolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Volume) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
@@ -329,8 +321,8 @@ func (o VolumeOutput) Timeouts() VolumeTimeoutsPtrOutput {
 	return o.ApplyT(func(v *Volume) VolumeTimeoutsPtrOutput { return v.Timeouts }).(VolumeTimeoutsPtrOutput)
 }
 
-// The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-// resource. - The value must be one of: ["hdd" "ssd"].
+// The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+// must be one of: ["hdd" "ssd"].
 func (o VolumeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

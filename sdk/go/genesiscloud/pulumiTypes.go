@@ -757,6 +757,8 @@ func (o ImagesTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 }
 
 type InstanceMetadata struct {
+	// A plain text bash script or "cloud-config" file that will be executed after the first instance boot. It is limited to 64 KiB in size. You can use it to configure your instance, e.g. installing the NVIDIA GPU driver. Learn more about [startup scripts and installing the GPU driver](https://support.genesiscloud.com/support/solutions/articles/47001122478).
+	//   - If the value of this attribute changes, the resource will be replaced.
 	StartupScript *string `pulumi:"startupScript"`
 }
 
@@ -772,6 +774,8 @@ type InstanceMetadataInput interface {
 }
 
 type InstanceMetadataArgs struct {
+	// A plain text bash script or "cloud-config" file that will be executed after the first instance boot. It is limited to 64 KiB in size. You can use it to configure your instance, e.g. installing the NVIDIA GPU driver. Learn more about [startup scripts and installing the GPU driver](https://support.genesiscloud.com/support/solutions/articles/47001122478).
+	//   - If the value of this attribute changes, the resource will be replaced.
 	StartupScript pulumi.StringPtrInput `pulumi:"startupScript"`
 }
 
@@ -852,6 +856,8 @@ func (o InstanceMetadataOutput) ToInstanceMetadataPtrOutputWithContext(ctx conte
 	}).(InstanceMetadataPtrOutput)
 }
 
+// A plain text bash script or "cloud-config" file that will be executed after the first instance boot. It is limited to 64 KiB in size. You can use it to configure your instance, e.g. installing the NVIDIA GPU driver. Learn more about [startup scripts and installing the GPU driver](https://support.genesiscloud.com/support/solutions/articles/47001122478).
+//   - If the value of this attribute changes, the resource will be replaced.
 func (o InstanceMetadataOutput) StartupScript() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMetadata) *string { return v.StartupScript }).(pulumi.StringPtrOutput)
 }
@@ -880,12 +886,208 @@ func (o InstanceMetadataPtrOutput) Elem() InstanceMetadataOutput {
 	}).(InstanceMetadataOutput)
 }
 
+// A plain text bash script or "cloud-config" file that will be executed after the first instance boot. It is limited to 64 KiB in size. You can use it to configure your instance, e.g. installing the NVIDIA GPU driver. Learn more about [startup scripts and installing the GPU driver](https://support.genesiscloud.com/support/solutions/articles/47001122478).
+//   - If the value of this attribute changes, the resource will be replaced.
 func (o InstanceMetadataPtrOutput) StartupScript() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceMetadata) *string {
 		if v == nil {
 			return nil
 		}
 		return v.StartupScript
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceStatusTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// InstanceStatusTimeoutsInput is an input type that accepts InstanceStatusTimeoutsArgs and InstanceStatusTimeoutsOutput values.
+// You can construct a concrete instance of `InstanceStatusTimeoutsInput` via:
+//
+//	InstanceStatusTimeoutsArgs{...}
+type InstanceStatusTimeoutsInput interface {
+	pulumi.Input
+
+	ToInstanceStatusTimeoutsOutput() InstanceStatusTimeoutsOutput
+	ToInstanceStatusTimeoutsOutputWithContext(context.Context) InstanceStatusTimeoutsOutput
+}
+
+type InstanceStatusTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (InstanceStatusTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceStatusTimeouts)(nil)).Elem()
+}
+
+func (i InstanceStatusTimeoutsArgs) ToInstanceStatusTimeoutsOutput() InstanceStatusTimeoutsOutput {
+	return i.ToInstanceStatusTimeoutsOutputWithContext(context.Background())
+}
+
+func (i InstanceStatusTimeoutsArgs) ToInstanceStatusTimeoutsOutputWithContext(ctx context.Context) InstanceStatusTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceStatusTimeoutsOutput)
+}
+
+func (i InstanceStatusTimeoutsArgs) ToInstanceStatusTimeoutsPtrOutput() InstanceStatusTimeoutsPtrOutput {
+	return i.ToInstanceStatusTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceStatusTimeoutsArgs) ToInstanceStatusTimeoutsPtrOutputWithContext(ctx context.Context) InstanceStatusTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceStatusTimeoutsOutput).ToInstanceStatusTimeoutsPtrOutputWithContext(ctx)
+}
+
+// InstanceStatusTimeoutsPtrInput is an input type that accepts InstanceStatusTimeoutsArgs, InstanceStatusTimeoutsPtr and InstanceStatusTimeoutsPtrOutput values.
+// You can construct a concrete instance of `InstanceStatusTimeoutsPtrInput` via:
+//
+//	        InstanceStatusTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceStatusTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceStatusTimeoutsPtrOutput() InstanceStatusTimeoutsPtrOutput
+	ToInstanceStatusTimeoutsPtrOutputWithContext(context.Context) InstanceStatusTimeoutsPtrOutput
+}
+
+type instanceStatusTimeoutsPtrType InstanceStatusTimeoutsArgs
+
+func InstanceStatusTimeoutsPtr(v *InstanceStatusTimeoutsArgs) InstanceStatusTimeoutsPtrInput {
+	return (*instanceStatusTimeoutsPtrType)(v)
+}
+
+func (*instanceStatusTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceStatusTimeouts)(nil)).Elem()
+}
+
+func (i *instanceStatusTimeoutsPtrType) ToInstanceStatusTimeoutsPtrOutput() InstanceStatusTimeoutsPtrOutput {
+	return i.ToInstanceStatusTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceStatusTimeoutsPtrType) ToInstanceStatusTimeoutsPtrOutputWithContext(ctx context.Context) InstanceStatusTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceStatusTimeoutsPtrOutput)
+}
+
+type InstanceStatusTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (InstanceStatusTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceStatusTimeouts)(nil)).Elem()
+}
+
+func (o InstanceStatusTimeoutsOutput) ToInstanceStatusTimeoutsOutput() InstanceStatusTimeoutsOutput {
+	return o
+}
+
+func (o InstanceStatusTimeoutsOutput) ToInstanceStatusTimeoutsOutputWithContext(ctx context.Context) InstanceStatusTimeoutsOutput {
+	return o
+}
+
+func (o InstanceStatusTimeoutsOutput) ToInstanceStatusTimeoutsPtrOutput() InstanceStatusTimeoutsPtrOutput {
+	return o.ToInstanceStatusTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceStatusTimeoutsOutput) ToInstanceStatusTimeoutsPtrOutputWithContext(ctx context.Context) InstanceStatusTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceStatusTimeouts) *InstanceStatusTimeouts {
+		return &v
+	}).(InstanceStatusTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o InstanceStatusTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceStatusTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o InstanceStatusTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceStatusTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o InstanceStatusTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceStatusTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o InstanceStatusTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceStatusTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type InstanceStatusTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceStatusTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceStatusTimeouts)(nil)).Elem()
+}
+
+func (o InstanceStatusTimeoutsPtrOutput) ToInstanceStatusTimeoutsPtrOutput() InstanceStatusTimeoutsPtrOutput {
+	return o
+}
+
+func (o InstanceStatusTimeoutsPtrOutput) ToInstanceStatusTimeoutsPtrOutputWithContext(ctx context.Context) InstanceStatusTimeoutsPtrOutput {
+	return o
+}
+
+func (o InstanceStatusTimeoutsPtrOutput) Elem() InstanceStatusTimeoutsOutput {
+	return o.ApplyT(func(v *InstanceStatusTimeouts) InstanceStatusTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceStatusTimeouts
+		return ret
+	}).(InstanceStatusTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o InstanceStatusTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceStatusTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o InstanceStatusTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceStatusTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o InstanceStatusTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceStatusTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o InstanceStatusTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceStatusTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2007,6 +2209,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImagesTimeoutsPtrInput)(nil)).Elem(), ImagesTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMetadataInput)(nil)).Elem(), InstanceMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMetadataPtrInput)(nil)).Elem(), InstanceMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStatusTimeoutsInput)(nil)).Elem(), InstanceStatusTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStatusTimeoutsPtrInput)(nil)).Elem(), InstanceStatusTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTimeoutsInput)(nil)).Elem(), InstanceTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTimeoutsPtrInput)(nil)).Elem(), InstanceTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SSHKeyTimeoutsInput)(nil)).Elem(), SSHKeyTimeoutsArgs{})
@@ -2030,6 +2234,8 @@ func init() {
 	pulumi.RegisterOutputType(ImagesTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMetadataOutput{})
 	pulumi.RegisterOutputType(InstanceMetadataPtrOutput{})
+	pulumi.RegisterOutputType(InstanceStatusTimeoutsOutput{})
+	pulumi.RegisterOutputType(InstanceStatusTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTimeoutsOutput{})
 	pulumi.RegisterOutputType(InstanceTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(SSHKeyTimeoutsOutput{})

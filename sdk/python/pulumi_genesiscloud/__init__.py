@@ -9,6 +9,7 @@ from .filesystem import *
 from .floating_ip import *
 from .images import *
 from .instance import *
+from .instance_status import *
 from .provider import *
 from .security_group import *
 from .snapshot import *
@@ -49,6 +50,14 @@ _utilities.register(
   "fqn": "pulumi_genesiscloud",
   "classes": {
    "genesiscloud:index/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "genesiscloud",
+  "mod": "index/instanceStatus",
+  "fqn": "pulumi_genesiscloud",
+  "classes": {
+   "genesiscloud:index/instanceStatus:InstanceStatus": "InstanceStatus"
   }
  },
  {

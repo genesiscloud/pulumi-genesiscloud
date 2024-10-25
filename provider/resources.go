@@ -9,6 +9,7 @@ import (
 	tfpf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	"github.com/genesiscloud/pulumi-genesiscloud/provider/pkg/version"
 	"github.com/genesiscloud/terraform-provider-genesiscloud/genesiscloudshim"
@@ -29,6 +30,11 @@ var metadata []byte
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	Version := version.Version
+
+	delegateID := func(field resource.PropertyKey) tfbridge.ComputeID {
+		return tfbridge.DelegateIDField(field, "genesiscloud", "https://github.com/genesiscloud/pulumi-genesiscloud")
+	}
+
 	prov := tfbridge.ProviderInfo{
 		P:                 tfpf.ShimProvider(genesiscloudshim.NewProvider(Version)),
 		DisplayName:       "Genesis Cloud",
@@ -56,13 +62,31 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"genesiscloud_instance":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Instance")},
-			"genesiscloud_security_group": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecurityGroup")},
-			"genesiscloud_snapshot":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Snapshot")},
-			"genesiscloud_ssh_key":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SSHKey")},
-			"genesiscloud_volume":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Volume")},
-			"genesiscloud_floating_ip":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FloatingIp")},
-			"genesiscloud_filesystem":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Filesystem")},
+			"genesiscloud_instance": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Instance"),
+			},
+			"genesiscloud_instance_status": {
+				Tok:       tfbridge.MakeResource(mainPkg, mainMod, "InstanceStatus"),
+				ComputeID: delegateID("instance_id"),
+			},
+			"genesiscloud_security_group": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecurityGroup"),
+			},
+			"genesiscloud_snapshot": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Snapshot"),
+			},
+			"genesiscloud_ssh_key": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SSHKey"),
+			},
+			"genesiscloud_volume": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Volume"),
+			},
+			"genesiscloud_floating_ip": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "FloatingIp"),
+			},
+			"genesiscloud_filesystem": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Filesystem"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"genesiscloud_images": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "Images")},

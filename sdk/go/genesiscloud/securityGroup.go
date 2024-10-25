@@ -17,9 +17,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import genesiscloud:index/securityGroup:SecurityGroup example 18efeec8-94f0-4776-8ff2-5e9b49c74608
-//
+// $ pulumi import genesiscloud:index/securityGroup:SecurityGroup example 18efeec8-94f0-4776-8ff2-5e9b49c74608
 // ```
 type SecurityGroup struct {
 	pulumi.CustomResourceState
@@ -30,8 +28,8 @@ type SecurityGroup struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The human-readable name for the security group.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringOutput          `pulumi:"region"`
 	Rules  SecurityGroupRuleArrayOutput `pulumi:"rules"`
 	// The security group status.
@@ -81,8 +79,8 @@ type securityGroupState struct {
 	Description *string `pulumi:"description"`
 	// The human-readable name for the security group.
 	Name *string `pulumi:"name"`
-	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region *string             `pulumi:"region"`
 	Rules  []SecurityGroupRule `pulumi:"rules"`
 	// The security group status.
@@ -97,8 +95,8 @@ type SecurityGroupState struct {
 	Description pulumi.StringPtrInput
 	// The human-readable name for the security group.
 	Name pulumi.StringPtrInput
-	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringPtrInput
 	Rules  SecurityGroupRuleArrayInput
 	// The security group status.
@@ -115,8 +113,8 @@ type securityGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// The human-readable name for the security group.
 	Name *string `pulumi:"name"`
-	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region   string                 `pulumi:"region"`
 	Rules    []SecurityGroupRule    `pulumi:"rules"`
 	Timeouts *SecurityGroupTimeouts `pulumi:"timeouts"`
@@ -128,8 +126,8 @@ type SecurityGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// The human-readable name for the security group.
 	Name pulumi.StringPtrInput
-	// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-	// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region   pulumi.StringInput
 	Rules    SecurityGroupRuleArrayInput
 	Timeouts SecurityGroupTimeoutsPtrInput
@@ -237,8 +235,8 @@ func (o SecurityGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 func (o SecurityGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

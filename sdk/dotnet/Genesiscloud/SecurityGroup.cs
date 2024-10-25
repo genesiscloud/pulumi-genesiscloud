@@ -16,7 +16,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import genesiscloud:index/securityGroup:SecurityGroup example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+    /// $ pulumi import genesiscloud:index/securityGroup:SecurityGroup example 18efeec8-94f0-4776-8ff2-5e9b49c74608
     /// ```
     /// </summary>
     [GenesiscloudResourceType("genesiscloud:index/securityGroup:SecurityGroup")]
@@ -41,8 +41,8 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        /// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        /// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -119,8 +119,8 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        /// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        /// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -163,8 +163,8 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        /// value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        /// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        /// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

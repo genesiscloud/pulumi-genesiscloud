@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,12 +30,11 @@ class VolumeArgs:
                  timeouts: Optional[pulumi.Input['VolumeTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Volume resource.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
-        :param pulumi.Input[int] size: The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-               recreate the resource. - The value must be at least 1.
-        :param pulumi.Input[str] type: The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["hdd" "ssd"].
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[int] size: The storage size of this volume given in GiB. - The value must be at least 1.
+        :param pulumi.Input[str] type: The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+               must be one of: ["hdd" "ssd"].
         :param pulumi.Input[str] description: The human-readable description for the volume. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the volume.
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
@@ -51,8 +55,8 @@ class VolumeArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -64,8 +68,7 @@ class VolumeArgs:
     @pulumi.getter
     def size(self) -> pulumi.Input[int]:
         """
-        The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-        recreate the resource. - The value must be at least 1.
+        The storage size of this volume given in GiB. - The value must be at least 1.
         """
         return pulumi.get(self, "size")
 
@@ -77,8 +80,8 @@ class VolumeArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource. - The value must be one of: ["hdd" "ssd"].
+        The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+        must be one of: ["hdd" "ssd"].
         """
         return pulumi.get(self, "type")
 
@@ -149,14 +152,13 @@ class _VolumeState:
         :param pulumi.Input[str] created_at: The timestamp when this volume was created in RFC 3339.
         :param pulumi.Input[str] description: The human-readable description for the volume. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the volume.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
-        :param pulumi.Input[int] size: The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-               recreate the resource. - The value must be at least 1.
+        :param pulumi.Input[int] size: The storage size of this volume given in GiB. - The value must be at least 1.
         :param pulumi.Input[str] status: The volume status.
-        :param pulumi.Input[str] type: The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["hdd" "ssd"].
+        :param pulumi.Input[str] type: The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+               must be one of: ["hdd" "ssd"].
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -217,8 +219,8 @@ class _VolumeState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -242,8 +244,7 @@ class _VolumeState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-        recreate the resource. - The value must be at least 1.
+        The storage size of this volume given in GiB. - The value must be at least 1.
         """
         return pulumi.get(self, "size")
 
@@ -276,8 +277,8 @@ class _VolumeState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource. - The value must be one of: ["hdd" "ssd"].
+        The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+        must be one of: ["hdd" "ssd"].
         """
         return pulumi.get(self, "type")
 
@@ -296,7 +297,7 @@ class Volume(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  retain_on_delete: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['VolumeTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -309,7 +310,7 @@ class Volume(pulumi.CustomResource):
         import pulumi_genesiscloud as genesiscloud
 
         example = genesiscloud.Volume("example",
-            region="ARC-IS-HAF-1",
+            region="NORD-NO-KRS-1",
             size=50,
             type="hdd")
         ```
@@ -317,20 +318,19 @@ class Volume(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/volume:Volume example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/volume:Volume example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The human-readable description for the volume. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the volume.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
-        :param pulumi.Input[int] size: The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-               recreate the resource. - The value must be at least 1.
-        :param pulumi.Input[str] type: The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["hdd" "ssd"].
+        :param pulumi.Input[int] size: The storage size of this volume given in GiB. - The value must be at least 1.
+        :param pulumi.Input[str] type: The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+               must be one of: ["hdd" "ssd"].
         """
         ...
     @overload
@@ -348,7 +348,7 @@ class Volume(pulumi.CustomResource):
         import pulumi_genesiscloud as genesiscloud
 
         example = genesiscloud.Volume("example",
-            region="ARC-IS-HAF-1",
+            region="NORD-NO-KRS-1",
             size=50,
             type="hdd")
         ```
@@ -356,7 +356,7 @@ class Volume(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import genesiscloud:index/volume:Volume example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+        $ pulumi import genesiscloud:index/volume:Volume example 18efeec8-94f0-4776-8ff2-5e9b49c74608
         ```
 
         :param str resource_name: The name of the resource.
@@ -379,7 +379,7 @@ class Volume(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  retain_on_delete: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['VolumeTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -422,7 +422,7 @@ class Volume(pulumi.CustomResource):
             retain_on_delete: Optional[pulumi.Input[bool]] = None,
             size: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['VolumeTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
@@ -434,14 +434,13 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The timestamp when this volume was created in RFC 3339.
         :param pulumi.Input[str] description: The human-readable description for the volume. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the volume.
-        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-               value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
-        :param pulumi.Input[int] size: The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-               recreate the resource. - The value must be at least 1.
+        :param pulumi.Input[int] size: The storage size of this volume given in GiB. - The value must be at least 1.
         :param pulumi.Input[str] status: The volume status.
-        :param pulumi.Input[str] type: The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-               resource. - The value must be one of: ["hdd" "ssd"].
+        :param pulumi.Input[str] type: The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+               must be one of: ["hdd" "ssd"].
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -486,8 +485,8 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region identifier. - If the value of this attribute changes, Terraform will destroy and recreate the resource. - The
-        value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
+        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -503,8 +502,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[int]:
         """
-        The storage size of this volume given in GiB. - If the value of this attribute changes, Terraform will destroy and
-        recreate the resource. - The value must be at least 1.
+        The storage size of this volume given in GiB. - The value must be at least 1.
         """
         return pulumi.get(self, "size")
 
@@ -525,8 +523,8 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The storage type of the volume. - If the value of this attribute changes, Terraform will destroy and recreate the
-        resource. - The value must be one of: ["hdd" "ssd"].
+        The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
+        must be one of: ["hdd" "ssd"].
         """
         return pulumi.get(self, "type")
 

@@ -15,9 +15,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         /// <summary>
         /// Images data source
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -39,7 +37,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         ///     {
         ///         Filter = new Genesiscloud.Inputs.ImagesFilterInputArgs
         ///         {
-        ///             Region = "ARC-IS-HAF-1",
+        ///             Region = "NORD-NO-KRS-1",
         ///             Type = "snapshot",
         ///         },
         ///     });
@@ -54,8 +52,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<ImagesResult> InvokeAsync(ImagesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<ImagesResult>("genesiscloud:index/images:Images", args ?? new ImagesArgs(), options.WithDefaults());
@@ -63,9 +59,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         /// <summary>
         /// Images data source
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -87,7 +81,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         ///     {
         ///         Filter = new Genesiscloud.Inputs.ImagesFilterInputArgs
         ///         {
-        ///             Region = "ARC-IS-HAF-1",
+        ///             Region = "NORD-NO-KRS-1",
         ///             Type = "snapshot",
         ///         },
         ///     });
@@ -102,8 +96,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<ImagesResult> Invoke(ImagesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<ImagesResult>("genesiscloud:index/images:Images", args ?? new ImagesInvokeArgs(), options.WithDefaults());

@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
+ * $ pulumi import genesiscloud:index/snapshot:Snapshot example 18efeec8-94f0-4776-8ff2-5e9b49c74608
  * ```
  */
 export class Snapshot extends pulumi.CustomResource {
@@ -63,8 +63,7 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource.
+     * The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -80,7 +79,7 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly retainOnDelete!: pulumi.Output<boolean>;
     /**
-     * The storage size of this snapshot given in bytes.
+     * The storage size of this snapshot given in GiB.
      */
     public /*out*/ readonly size!: pulumi.Output<number>;
     /**
@@ -138,8 +137,7 @@ export interface SnapshotState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource.
+     * The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -155,7 +153,7 @@ export interface SnapshotState {
      */
     retainOnDelete?: pulumi.Input<boolean>;
     /**
-     * The storage size of this snapshot given in bytes.
+     * The storage size of this snapshot given in GiB.
      */
     size?: pulumi.Input<number>;
     /**
@@ -170,8 +168,7 @@ export interface SnapshotState {
  */
 export interface SnapshotArgs {
     /**
-     * The id of the instance to snapshot. - If the value of this attribute changes, Terraform will destroy and recreate the
-     * resource.
+     * The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
      */
     instanceId: pulumi.Input<string>;
     /**

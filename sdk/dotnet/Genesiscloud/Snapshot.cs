@@ -13,29 +13,6 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     /// <summary>
     /// Snapshot resource
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Genesiscloud = GenesisCloud.PulumiPackage.Genesiscloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var target = new Genesiscloud.Instance("target");
-    /// 
-    ///     // ...
-    ///     var example = new Genesiscloud.Snapshot("example", new()
-    ///     {
-    ///         InstanceId = target.Id,
-    ///         RetainOnDelete = true,
-    ///     });
-    /// 
-    ///     // optional
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -52,22 +29,23 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-        /// </summary>
-        [Output("instanceId")]
-        public Output<string> InstanceId { get; private set; } = null!;
-
-        /// <summary>
         /// The human-readable name for the snapshot.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The region identifier.
+        /// The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+        /// omitted, the snapshot exists only in the current region.
+        /// </summary>
+        [Output("replicatedRegion")]
+        public Output<string?> ReplicatedRegion { get; private set; } = null!;
 
         /// <summary>
         /// Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
@@ -80,6 +58,20 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+        /// resource will be replaced.
+        /// </summary>
+        [Output("sourceInstanceId")]
+        public Output<string?> SourceInstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+        /// resource will be replaced.
+        /// </summary>
+        [Output("sourceSnapshotId")]
+        public Output<string?> SourceSnapshotId { get; private set; } = null!;
 
         /// <summary>
         /// The snapshot status.
@@ -98,7 +90,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Snapshot(string name, SnapshotArgs args, CustomResourceOptions? options = null)
+        public Snapshot(string name, SnapshotArgs? args = null, CustomResourceOptions? options = null)
             : base("genesiscloud:index/snapshot:Snapshot", name, args ?? new SnapshotArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -138,22 +130,43 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
     public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-        /// </summary>
-        [Input("instanceId", required: true)]
-        public Input<string> InstanceId { get; set; } = null!;
-
-        /// <summary>
         /// The human-readable name for the snapshot.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+        /// omitted, the snapshot exists only in the current region.
+        /// </summary>
+        [Input("replicatedRegion")]
+        public Input<string>? ReplicatedRegion { get; set; }
+
+        /// <summary>
         /// Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
         /// </summary>
         [Input("retainOnDelete")]
         public Input<bool>? RetainOnDelete { get; set; }
+
+        /// <summary>
+        /// The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+        /// resource will be replaced.
+        /// </summary>
+        [Input("sourceInstanceId")]
+        public Input<string>? SourceInstanceId { get; set; }
+
+        /// <summary>
+        /// The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+        /// resource will be replaced.
+        /// </summary>
+        [Input("sourceSnapshotId")]
+        public Input<string>? SourceSnapshotId { get; set; }
 
         [Input("timeouts")]
         public Input<Inputs.SnapshotTimeoutsArgs>? Timeouts { get; set; }
@@ -173,22 +186,23 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-        /// </summary>
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
-
-        /// <summary>
         /// The human-readable name for the snapshot.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The region identifier.
+        /// The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+        /// omitted, the snapshot exists only in the current region.
+        /// </summary>
+        [Input("replicatedRegion")]
+        public Input<string>? ReplicatedRegion { get; set; }
 
         /// <summary>
         /// Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
@@ -201,6 +215,20 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
+
+        /// <summary>
+        /// The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+        /// resource will be replaced.
+        /// </summary>
+        [Input("sourceInstanceId")]
+        public Input<string>? SourceInstanceId { get; set; }
+
+        /// <summary>
+        /// The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+        /// resource will be replaced.
+        /// </summary>
+        [Input("sourceSnapshotId")]
+        public Input<string>? SourceSnapshotId { get; set; }
 
         /// <summary>
         /// The snapshot status.

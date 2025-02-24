@@ -86,7 +86,7 @@ type Instance struct {
 	// The public IPv4 IP-Address (IPv4 address).
 	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The id of the reservation the instance is associated with.
 	ReservationId pulumi.StringPtrOutput `pulumi:"reservationId"`
@@ -186,7 +186,7 @@ type instanceState struct {
 	// The public IPv4 IP-Address (IPv4 address).
 	PublicIp *string `pulumi:"publicIp"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region *string `pulumi:"region"`
 	// The id of the reservation the instance is associated with.
 	ReservationId *string `pulumi:"reservationId"`
@@ -241,7 +241,7 @@ type InstanceState struct {
 	// The public IPv4 IP-Address (IPv4 address).
 	PublicIp pulumi.StringPtrInput
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringPtrInput
 	// The id of the reservation the instance is associated with.
 	ReservationId pulumi.StringPtrInput
@@ -290,7 +290,7 @@ type instanceArgs struct {
 	// example A or B. - If the value of this attribute changes, the resource will be replaced.
 	PlacementOption *string `pulumi:"placementOption"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region string `pulumi:"region"`
 	// The id of the reservation the instance is associated with.
 	ReservationId *string `pulumi:"reservationId"`
@@ -332,7 +332,7 @@ type InstanceArgs struct {
 	// example A or B. - If the value of this attribute changes, the resource will be replaced.
 	PlacementOption pulumi.StringPtrInput
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringInput
 	// The id of the reservation the instance is associated with.
 	ReservationId pulumi.StringPtrInput
@@ -508,7 +508,7 @@ func (o InstanceOutput) PublicIp() pulumi.StringOutput {
 }
 
 // The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

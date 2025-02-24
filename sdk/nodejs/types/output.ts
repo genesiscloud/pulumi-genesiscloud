@@ -46,12 +46,12 @@ export interface FloatingIpTimeouts {
 export interface ImagesFilter {
     /**
      * Filter by the region identifier.
-     *   - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     *   - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region?: string;
     /**
      * Filter by the kind of image.
-     *   - The value must be one of: ["base-os" "cloud-image" "preconfigured" "snapshot"].
+     *   - The value must be one of: ["cloud-image"].
      */
     type: string;
 }

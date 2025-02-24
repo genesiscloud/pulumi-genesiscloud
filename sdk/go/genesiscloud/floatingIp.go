@@ -60,7 +60,7 @@ type FloatingIp struct {
 	// The human-readable name for the floating IP.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The floating IP status.
 	Status   pulumi.StringOutput         `pulumi:"status"`
@@ -119,7 +119,7 @@ type floatingIpState struct {
 	// The human-readable name for the floating IP.
 	Name *string `pulumi:"name"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region *string `pulumi:"region"`
 	// The floating IP status.
 	Status   *string             `pulumi:"status"`
@@ -143,7 +143,7 @@ type FloatingIpState struct {
 	// The human-readable name for the floating IP.
 	Name pulumi.StringPtrInput
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringPtrInput
 	// The floating IP status.
 	Status   pulumi.StringPtrInput
@@ -165,7 +165,7 @@ type floatingIpArgs struct {
 	// The human-readable name for the floating IP.
 	Name *string `pulumi:"name"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region   string              `pulumi:"region"`
 	Timeouts *FloatingIpTimeouts `pulumi:"timeouts"`
 	// The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
@@ -180,7 +180,7 @@ type FloatingIpArgs struct {
 	// The human-readable name for the floating IP.
 	Name pulumi.StringPtrInput
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region   pulumi.StringInput
 	Timeouts FloatingIpTimeoutsPtrInput
 	// The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
@@ -301,7 +301,7 @@ func (o FloatingIpOutput) Name() pulumi.StringOutput {
 }
 
 // The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 func (o FloatingIpOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FloatingIp) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

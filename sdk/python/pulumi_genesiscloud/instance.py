@@ -43,7 +43,7 @@ class InstanceArgs:
                [here](https://developers.genesiscloud.com/images). - If the value of this attribute changes, the resource will be
                replaced.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] type: The instance type identifier. Learn more about instance types
                [here](https://developers.genesiscloud.com/instances#instance-types). - If the value of this attribute changes, the
                resource will be replaced.
@@ -110,7 +110,7 @@ class InstanceArgs:
     def region(self) -> pulumi.Input[str]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -322,7 +322,7 @@ class _InstanceState:
         :param pulumi.Input[str] private_ip: The private IPv4 IP-Address (IPv4 address).
         :param pulumi.Input[str] public_ip: The public IPv4 IP-Address (IPv4 address).
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] reservation_id: The id of the reservation the instance is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security groups of the instance. If not provided will be set to the default security group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
@@ -543,7 +543,7 @@ class _InstanceState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -707,7 +707,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] placement_option: The placement option identifier in which instances are physically located relative to each other within a zone. For
                example A or B. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] reservation_id: The id of the reservation the instance is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security groups of the instance. If not provided will be set to the default security group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
@@ -872,7 +872,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip: The private IPv4 IP-Address (IPv4 address).
         :param pulumi.Input[str] public_ip: The public IPv4 IP-Address (IPv4 address).
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] reservation_id: The id of the reservation the instance is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security groups of the instance. If not provided will be set to the default security group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_key_ids: The ssh keys of the instance. - If the value of this attribute changes, the resource will be replaced.
@@ -1024,7 +1024,7 @@ class Instance(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 

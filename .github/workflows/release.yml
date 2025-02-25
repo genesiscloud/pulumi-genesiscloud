@@ -60,7 +60,7 @@ jobs:
           - 1.23.x
   publish_sdk:
     name: Publish SDKs
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04 # TODO: upgrade to latest
     needs: publish_binary
     steps:
       - name: Checkout Repo

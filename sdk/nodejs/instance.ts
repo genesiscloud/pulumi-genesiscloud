@@ -115,7 +115,7 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly publicIp!: pulumi.Output<string>;
     /**
      * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -288,7 +288,7 @@ export interface InstanceState {
     publicIp?: pulumi.Input<string>;
     /**
      * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region?: pulumi.Input<string>;
     /**
@@ -366,7 +366,7 @@ export interface InstanceArgs {
     placementOption?: pulumi.Input<string>;
     /**
      * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region: pulumi.Input<string>;
     /**

@@ -130,7 +130,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
 
         /// <summary>
         /// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        /// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        /// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -297,7 +297,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
 
         /// <summary>
         /// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        /// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        /// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -457,7 +457,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud
 
         /// <summary>
         /// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        /// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        /// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -29,7 +29,7 @@ class FloatingIpArgs:
         """
         The set of arguments for constructing a FloatingIp resource.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] version: The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
                must be one of: ["ipv4"].
         :param pulumi.Input[str] description: The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
@@ -49,7 +49,7 @@ class FloatingIpArgs:
     def region(self) -> pulumi.Input[str]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -125,7 +125,7 @@ class _FloatingIpState:
         :param pulumi.Input[bool] is_public: Whether the floating IP is public or private. - Sets the default value "true" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the floating IP.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] status: The floating IP status.
         :param pulumi.Input[str] updated_at: The timestamp when this image was last updated in RFC 3339.
         :param pulumi.Input[str] version: The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
@@ -217,7 +217,7 @@ class _FloatingIpState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -308,7 +308,7 @@ class FloatingIp(pulumi.CustomResource):
         :param pulumi.Input[str] description: The human-readable description set for the floating IP. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the floating IP.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] version: The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
                must be one of: ["ipv4"].
         """
@@ -414,7 +414,7 @@ class FloatingIp(pulumi.CustomResource):
         :param pulumi.Input[bool] is_public: Whether the floating IP is public or private. - Sets the default value "true" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the floating IP.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] status: The floating IP status.
         :param pulumi.Input[str] updated_at: The timestamp when this image was last updated in RFC 3339.
         :param pulumi.Input[str] version: The version of the floating IP. - If the value of this attribute changes, the resource will be replaced. - The value
@@ -481,7 +481,7 @@ class FloatingIp(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 

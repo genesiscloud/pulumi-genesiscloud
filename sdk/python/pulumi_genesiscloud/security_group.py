@@ -29,7 +29,7 @@ class SecurityGroupArgs:
         """
         The set of arguments for constructing a SecurityGroup resource.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] description: The human-readable description for the security group. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the security group.
         """
@@ -47,7 +47,7 @@ class SecurityGroupArgs:
     def region(self) -> pulumi.Input[str]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -114,7 +114,7 @@ class _SecurityGroupState:
         :param pulumi.Input[str] description: The human-readable description for the security group. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the security group.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] status: The security group status.
         """
         if created_at is not None:
@@ -173,7 +173,7 @@ class _SecurityGroupState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -237,7 +237,7 @@ class SecurityGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The human-readable description for the security group. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the security group.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         ...
     @overload
@@ -322,7 +322,7 @@ class SecurityGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The human-readable description for the security group. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the security group.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[str] status: The security group status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -367,7 +367,7 @@ class SecurityGroup(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 

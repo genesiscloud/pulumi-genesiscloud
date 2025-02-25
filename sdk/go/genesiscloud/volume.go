@@ -57,7 +57,7 @@ type Volume struct {
 	// The human-readable name for the volume.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolOutput `pulumi:"retainOnDelete"`
@@ -117,7 +117,7 @@ type volumeState struct {
 	// The human-readable name for the volume.
 	Name *string `pulumi:"name"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region *string `pulumi:"region"`
 	// Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
@@ -139,7 +139,7 @@ type VolumeState struct {
 	// The human-readable name for the volume.
 	Name pulumi.StringPtrInput
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringPtrInput
 	// Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
@@ -163,7 +163,7 @@ type volumeArgs struct {
 	// The human-readable name for the volume.
 	Name *string `pulumi:"name"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region string `pulumi:"region"`
 	// Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
@@ -182,7 +182,7 @@ type VolumeArgs struct {
 	// The human-readable name for the volume.
 	Name pulumi.StringPtrInput
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringInput
 	// Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
@@ -297,7 +297,7 @@ func (o VolumeOutput) Name() pulumi.StringOutput {
 }
 
 // The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-// of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
 func (o VolumeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

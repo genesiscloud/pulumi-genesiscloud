@@ -79,7 +79,7 @@ export class Filesystem extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
-     * replaced. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * replaced. - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -179,7 +179,7 @@ export interface FilesystemState {
     name?: pulumi.Input<string>;
     /**
      * The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
-     * replaced. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * replaced. - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region?: pulumi.Input<string>;
     /**
@@ -216,7 +216,7 @@ export interface FilesystemArgs {
     name?: pulumi.Input<string>;
     /**
      * The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
-     * replaced. - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * replaced. - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region: pulumi.Input<string>;
     /**

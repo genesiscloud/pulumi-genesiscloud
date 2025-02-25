@@ -21,35 +21,39 @@ __all__ = ['SnapshotArgs', 'Snapshot']
 @pulumi.input_type
 class SnapshotArgs:
     def __init__(__self__, *,
-                 instance_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 replicated_region: Optional[pulumi.Input[str]] = None,
                  retain_on_delete: Optional[pulumi.Input[bool]] = None,
+                 source_instance_id: Optional[pulumi.Input[str]] = None,
+                 source_snapshot_id: Optional[pulumi.Input[str]] = None,
                  timeouts: Optional[pulumi.Input['SnapshotTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Snapshot resource.
-        :param pulumi.Input[str] instance_id: The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] name: The human-readable name for the snapshot.
+        :param pulumi.Input[str] region: The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
+        :param pulumi.Input[str] replicated_region: Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+               omitted, the snapshot exists only in the current region.
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
+        :param pulumi.Input[str] source_instance_id: The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+               resource will be replaced.
+        :param pulumi.Input[str] source_snapshot_id: The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+               resource will be replaced.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if replicated_region is not None:
+            pulumi.set(__self__, "replicated_region", replicated_region)
         if retain_on_delete is not None:
             pulumi.set(__self__, "retain_on_delete", retain_on_delete)
+        if source_instance_id is not None:
+            pulumi.set(__self__, "source_instance_id", source_instance_id)
+        if source_snapshot_id is not None:
+            pulumi.set(__self__, "source_snapshot_id", source_snapshot_id)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
-
-    @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> pulumi.Input[str]:
-        """
-        The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-        """
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter
@@ -64,6 +68,31 @@ class SnapshotArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="replicatedRegion")
+    def replicated_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+        omitted, the snapshot exists only in the current region.
+        """
+        return pulumi.get(self, "replicated_region")
+
+    @replicated_region.setter
+    def replicated_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replicated_region", value)
+
+    @property
     @pulumi.getter(name="retainOnDelete")
     def retain_on_delete(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -74,6 +103,32 @@ class SnapshotArgs:
     @retain_on_delete.setter
     def retain_on_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "retain_on_delete", value)
+
+    @property
+    @pulumi.getter(name="sourceInstanceId")
+    def source_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+        resource will be replaced.
+        """
+        return pulumi.get(self, "source_instance_id")
+
+    @source_instance_id.setter
+    def source_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instance_id", value)
+
+    @property
+    @pulumi.getter(name="sourceSnapshotId")
+    def source_snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+        resource will be replaced.
+        """
+        return pulumi.get(self, "source_snapshot_id")
+
+    @source_snapshot_id.setter
+    def source_snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_snapshot_id", value)
 
     @property
     @pulumi.getter
@@ -89,35 +144,46 @@ class SnapshotArgs:
 class _SnapshotState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 replicated_region: Optional[pulumi.Input[str]] = None,
                  retain_on_delete: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[int]] = None,
+                 source_instance_id: Optional[pulumi.Input[str]] = None,
+                 source_snapshot_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  timeouts: Optional[pulumi.Input['SnapshotTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
         :param pulumi.Input[str] created_at: The timestamp when this snapshot was created in RFC 3339.
-        :param pulumi.Input[str] instance_id: The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] name: The human-readable name for the snapshot.
-        :param pulumi.Input[str] region: The region identifier.
+        :param pulumi.Input[str] region: The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
+        :param pulumi.Input[str] replicated_region: Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+               omitted, the snapshot exists only in the current region.
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
         :param pulumi.Input[int] size: The storage size of this snapshot given in GiB.
+        :param pulumi.Input[str] source_instance_id: The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+               resource will be replaced.
+        :param pulumi.Input[str] source_snapshot_id: The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+               resource will be replaced.
         :param pulumi.Input[str] status: The snapshot status.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
-        if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if replicated_region is not None:
+            pulumi.set(__self__, "replicated_region", replicated_region)
         if retain_on_delete is not None:
             pulumi.set(__self__, "retain_on_delete", retain_on_delete)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if source_instance_id is not None:
+            pulumi.set(__self__, "source_instance_id", source_instance_id)
+        if source_snapshot_id is not None:
+            pulumi.set(__self__, "source_snapshot_id", source_snapshot_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if timeouts is not None:
@@ -136,18 +202,6 @@ class _SnapshotState:
         pulumi.set(self, "created_at", value)
 
     @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-        """
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_id", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -163,13 +217,26 @@ class _SnapshotState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region identifier.
+        The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
         """
         return pulumi.get(self, "region")
 
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="replicatedRegion")
+    def replicated_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+        omitted, the snapshot exists only in the current region.
+        """
+        return pulumi.get(self, "replicated_region")
+
+    @replicated_region.setter
+    def replicated_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replicated_region", value)
 
     @property
     @pulumi.getter(name="retainOnDelete")
@@ -194,6 +261,32 @@ class _SnapshotState:
     @size.setter
     def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="sourceInstanceId")
+    def source_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+        resource will be replaced.
+        """
+        return pulumi.get(self, "source_instance_id")
+
+    @source_instance_id.setter
+    def source_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instance_id", value)
+
+    @property
+    @pulumi.getter(name="sourceSnapshotId")
+    def source_snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+        resource will be replaced.
+        """
+        return pulumi.get(self, "source_snapshot_id")
+
+    @source_snapshot_id.setter
+    def source_snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_snapshot_id", value)
 
     @property
     @pulumi.getter
@@ -222,27 +315,16 @@ class Snapshot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 replicated_region: Optional[pulumi.Input[str]] = None,
                  retain_on_delete: Optional[pulumi.Input[bool]] = None,
+                 source_instance_id: Optional[pulumi.Input[str]] = None,
+                 source_snapshot_id: Optional[pulumi.Input[str]] = None,
                  timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Snapshot resource
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_genesiscloud as genesiscloud
-
-        target = genesiscloud.Instance("target")
-        # ...
-        example = genesiscloud.Snapshot("example",
-            instance_id=target.id,
-            retain_on_delete=True)
-        # optional
-        ```
 
         ## Import
 
@@ -252,32 +334,24 @@ class Snapshot(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance_id: The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] name: The human-readable name for the snapshot.
+        :param pulumi.Input[str] region: The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
+        :param pulumi.Input[str] replicated_region: Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+               omitted, the snapshot exists only in the current region.
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
+        :param pulumi.Input[str] source_instance_id: The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+               resource will be replaced.
+        :param pulumi.Input[str] source_snapshot_id: The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+               resource will be replaced.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SnapshotArgs,
+                 args: Optional[SnapshotArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Snapshot resource
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_genesiscloud as genesiscloud
-
-        target = genesiscloud.Instance("target")
-        # ...
-        example = genesiscloud.Snapshot("example",
-            instance_id=target.id,
-            retain_on_delete=True)
-        # optional
-        ```
 
         ## Import
 
@@ -300,9 +374,12 @@ class Snapshot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 replicated_region: Optional[pulumi.Input[str]] = None,
                  retain_on_delete: Optional[pulumi.Input[bool]] = None,
+                 source_instance_id: Optional[pulumi.Input[str]] = None,
+                 source_snapshot_id: Optional[pulumi.Input[str]] = None,
                  timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -313,14 +390,14 @@ class Snapshot(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SnapshotArgs.__new__(SnapshotArgs)
 
-            if instance_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_id'")
-            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["region"] = region
+            __props__.__dict__["replicated_region"] = replicated_region
             __props__.__dict__["retain_on_delete"] = retain_on_delete
+            __props__.__dict__["source_instance_id"] = source_instance_id
+            __props__.__dict__["source_snapshot_id"] = source_snapshot_id
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["created_at"] = None
-            __props__.__dict__["region"] = None
             __props__.__dict__["size"] = None
             __props__.__dict__["status"] = None
         super(Snapshot, __self__).__init__(
@@ -334,11 +411,13 @@ class Snapshot(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[str]] = None,
-            instance_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            replicated_region: Optional[pulumi.Input[str]] = None,
             retain_on_delete: Optional[pulumi.Input[bool]] = None,
             size: Optional[pulumi.Input[int]] = None,
+            source_instance_id: Optional[pulumi.Input[str]] = None,
+            source_snapshot_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None) -> 'Snapshot':
         """
@@ -349,11 +428,16 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The timestamp when this snapshot was created in RFC 3339.
-        :param pulumi.Input[str] instance_id: The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
         :param pulumi.Input[str] name: The human-readable name for the snapshot.
-        :param pulumi.Input[str] region: The region identifier.
+        :param pulumi.Input[str] region: The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
+        :param pulumi.Input[str] replicated_region: Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+               omitted, the snapshot exists only in the current region.
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
         :param pulumi.Input[int] size: The storage size of this snapshot given in GiB.
+        :param pulumi.Input[str] source_instance_id: The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+               resource will be replaced.
+        :param pulumi.Input[str] source_snapshot_id: The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+               resource will be replaced.
         :param pulumi.Input[str] status: The snapshot status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -361,11 +445,13 @@ class Snapshot(pulumi.CustomResource):
         __props__ = _SnapshotState.__new__(_SnapshotState)
 
         __props__.__dict__["created_at"] = created_at
-        __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["name"] = name
         __props__.__dict__["region"] = region
+        __props__.__dict__["replicated_region"] = replicated_region
         __props__.__dict__["retain_on_delete"] = retain_on_delete
         __props__.__dict__["size"] = size
+        __props__.__dict__["source_instance_id"] = source_instance_id
+        __props__.__dict__["source_snapshot_id"] = source_snapshot_id
         __props__.__dict__["status"] = status
         __props__.__dict__["timeouts"] = timeouts
         return Snapshot(resource_name, opts=opts, __props__=__props__)
@@ -379,14 +465,6 @@ class Snapshot(pulumi.CustomResource):
         return pulumi.get(self, "created_at")
 
     @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> pulumi.Output[str]:
-        """
-        The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-        """
-        return pulumi.get(self, "instance_id")
-
-    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -398,9 +476,18 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region identifier.
+        The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="replicatedRegion")
+    def replicated_region(self) -> pulumi.Output[Optional[str]]:
+        """
+        Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+        omitted, the snapshot exists only in the current region.
+        """
+        return pulumi.get(self, "replicated_region")
 
     @property
     @pulumi.getter(name="retainOnDelete")
@@ -417,6 +504,24 @@ class Snapshot(pulumi.CustomResource):
         The storage size of this snapshot given in GiB.
         """
         return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="sourceInstanceId")
+    def source_instance_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+        resource will be replaced.
+        """
+        return pulumi.get(self, "source_instance_id")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotId")
+    def source_snapshot_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+        resource will be replaced.
+        """
+        return pulumi.get(self, "source_snapshot_id")
 
     @property
     @pulumi.getter

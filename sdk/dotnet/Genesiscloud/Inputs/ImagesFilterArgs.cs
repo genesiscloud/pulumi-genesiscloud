@@ -15,14 +15,14 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud.Inputs
     {
         /// <summary>
         /// Filter by the region identifier.
-        ///   - The value must be one of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        ///   - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
         /// Filter by the kind of image.
-        ///   - The value must be one of: ["base-os" "cloud-image" "preconfigured" "snapshot"].
+        ///   - The value must be one of: ["cloud-image"].
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

@@ -7,43 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/genesiscloud/pulumi-genesiscloud/sdk/go/genesiscloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Snapshot resource
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/genesiscloud/pulumi-genesiscloud/sdk/go/genesiscloud"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			target, err := genesiscloud.NewInstance(ctx, "target", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = genesiscloud.NewSnapshot(ctx, "example", &genesiscloud.SnapshotArgs{
-//				InstanceId:     target.ID(),
-//				RetainOnDelete: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
@@ -55,16 +23,23 @@ type Snapshot struct {
 
 	// The timestamp when this snapshot was created in RFC 3339.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The human-readable name for the snapshot.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The region identifier.
+	// The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+	// omitted, the snapshot exists only in the current region.
+	ReplicatedRegion pulumi.StringPtrOutput `pulumi:"replicatedRegion"`
 	// Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolOutput `pulumi:"retainOnDelete"`
 	// The storage size of this snapshot given in GiB.
 	Size pulumi.IntOutput `pulumi:"size"`
+	// The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+	// resource will be replaced.
+	SourceInstanceId pulumi.StringPtrOutput `pulumi:"sourceInstanceId"`
+	// The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+	// resource will be replaced.
+	SourceSnapshotId pulumi.StringPtrOutput `pulumi:"sourceSnapshotId"`
 	// The snapshot status.
 	Status   pulumi.StringOutput       `pulumi:"status"`
 	Timeouts SnapshotTimeoutsPtrOutput `pulumi:"timeouts"`
@@ -74,12 +49,9 @@ type Snapshot struct {
 func NewSnapshot(ctx *pulumi.Context,
 	name string, args *SnapshotArgs, opts ...pulumi.ResourceOption) (*Snapshot, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SnapshotArgs{}
 	}
 
-	if args.InstanceId == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Snapshot
 	err := ctx.RegisterResource("genesiscloud:index/snapshot:Snapshot", name, args, &resource, opts...)
@@ -105,16 +77,23 @@ func GetSnapshot(ctx *pulumi.Context,
 type snapshotState struct {
 	// The timestamp when this snapshot was created in RFC 3339.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-	InstanceId *string `pulumi:"instanceId"`
 	// The human-readable name for the snapshot.
 	Name *string `pulumi:"name"`
-	// The region identifier.
+	// The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
 	Region *string `pulumi:"region"`
+	// Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+	// omitted, the snapshot exists only in the current region.
+	ReplicatedRegion *string `pulumi:"replicatedRegion"`
 	// Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
 	// The storage size of this snapshot given in GiB.
 	Size *int `pulumi:"size"`
+	// The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+	// resource will be replaced.
+	SourceInstanceId *string `pulumi:"sourceInstanceId"`
+	// The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+	// resource will be replaced.
+	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
 	// The snapshot status.
 	Status   *string           `pulumi:"status"`
 	Timeouts *SnapshotTimeouts `pulumi:"timeouts"`
@@ -123,16 +102,23 @@ type snapshotState struct {
 type SnapshotState struct {
 	// The timestamp when this snapshot was created in RFC 3339.
 	CreatedAt pulumi.StringPtrInput
-	// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-	InstanceId pulumi.StringPtrInput
 	// The human-readable name for the snapshot.
 	Name pulumi.StringPtrInput
-	// The region identifier.
+	// The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
 	Region pulumi.StringPtrInput
+	// Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+	// omitted, the snapshot exists only in the current region.
+	ReplicatedRegion pulumi.StringPtrInput
 	// Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
 	// The storage size of this snapshot given in GiB.
 	Size pulumi.IntPtrInput
+	// The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+	// resource will be replaced.
+	SourceInstanceId pulumi.StringPtrInput
+	// The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+	// resource will be replaced.
+	SourceSnapshotId pulumi.StringPtrInput
 	// The snapshot status.
 	Status   pulumi.StringPtrInput
 	Timeouts SnapshotTimeoutsPtrInput
@@ -143,24 +129,42 @@ func (SnapshotState) ElementType() reflect.Type {
 }
 
 type snapshotArgs struct {
-	// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-	InstanceId string `pulumi:"instanceId"`
 	// The human-readable name for the snapshot.
 	Name *string `pulumi:"name"`
+	// The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
+	Region *string `pulumi:"region"`
+	// Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+	// omitted, the snapshot exists only in the current region.
+	ReplicatedRegion *string `pulumi:"replicatedRegion"`
 	// Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
-	RetainOnDelete *bool             `pulumi:"retainOnDelete"`
-	Timeouts       *SnapshotTimeouts `pulumi:"timeouts"`
+	RetainOnDelete *bool `pulumi:"retainOnDelete"`
+	// The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+	// resource will be replaced.
+	SourceInstanceId *string `pulumi:"sourceInstanceId"`
+	// The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+	// resource will be replaced.
+	SourceSnapshotId *string           `pulumi:"sourceSnapshotId"`
+	Timeouts         *SnapshotTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a Snapshot resource.
 type SnapshotArgs struct {
-	// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-	InstanceId pulumi.StringInput
 	// The human-readable name for the snapshot.
 	Name pulumi.StringPtrInput
+	// The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
+	Region pulumi.StringPtrInput
+	// Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+	// omitted, the snapshot exists only in the current region.
+	ReplicatedRegion pulumi.StringPtrInput
 	// Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
-	Timeouts       SnapshotTimeoutsPtrInput
+	// The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+	// resource will be replaced.
+	SourceInstanceId pulumi.StringPtrInput
+	// The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+	// resource will be replaced.
+	SourceSnapshotId pulumi.StringPtrInput
+	Timeouts         SnapshotTimeoutsPtrInput
 }
 
 func (SnapshotArgs) ElementType() reflect.Type {
@@ -255,19 +259,20 @@ func (o SnapshotOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The id of the instance to snapshot. - If the value of this attribute changes, the resource will be replaced.
-func (o SnapshotOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
-}
-
 // The human-readable name for the snapshot.
 func (o SnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region identifier.
+// The region identifier. Should only be explicity specified when using the 'source_snapshot_id'.
 func (o SnapshotOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Target region for snapshot replication. When specified, also creates a copy of the snapshot in the given region. If
+// omitted, the snapshot exists only in the current region.
+func (o SnapshotOutput) ReplicatedRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.ReplicatedRegion }).(pulumi.StringPtrOutput)
 }
 
 // Flag to retain the snapshot when the resource is deleted. - Sets the default value "false" if the attribute is not set.
@@ -278,6 +283,18 @@ func (o SnapshotOutput) RetainOnDelete() pulumi.BoolOutput {
 // The storage size of this snapshot given in GiB.
 func (o SnapshotOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The id of the source instance from which this snapshot was derived. - If the value of this attribute changes, the
+// resource will be replaced.
+func (o SnapshotOutput) SourceInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.SourceInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The id of the source snapshot from which this snapsot was derived. - If the value of this attribute changes, the
+// resource will be replaced.
+func (o SnapshotOutput) SourceSnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.SourceSnapshotId }).(pulumi.StringPtrOutput)
 }
 
 // The snapshot status.

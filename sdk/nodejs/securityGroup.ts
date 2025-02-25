@@ -57,7 +57,7 @@ export class SecurityGroup extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     public readonly region!: pulumi.Output<string>;
     public readonly rules!: pulumi.Output<outputs.SecurityGroupRule[]>;
@@ -126,7 +126,7 @@ export interface SecurityGroupState {
     name?: pulumi.Input<string>;
     /**
      * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region?: pulumi.Input<string>;
     rules?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRule>[]>;
@@ -151,7 +151,7 @@ export interface SecurityGroupArgs {
     name?: pulumi.Input<string>;
     /**
      * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-     * of: ["ARC-IS-HAF-1" "EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
      */
     region: pulumi.Input<string>;
     rules: pulumi.Input<pulumi.Input<inputs.SecurityGroupRule>[]>;

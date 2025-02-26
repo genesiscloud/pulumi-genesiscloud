@@ -68,8 +68,8 @@ require (
 	github.com/ettle/strcase v0.2.0 // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
-	github.com/genesiscloud/genesiscloud-go v1.0.14 // indirect
-	github.com/genesiscloud/terraform-provider-genesiscloud v1.1.11 // indirect
+	github.com/genesiscloud/genesiscloud-go v1.0.15 // indirect
+	github.com/genesiscloud/terraform-provider-genesiscloud v1.1.12 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.6.0 // indirect
 	github.com/go-git/go-git/v5 v5.12.0 // indirect

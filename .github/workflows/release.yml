@@ -3,6 +3,7 @@ on:
   push:
     tags:
       - v*.*.*
+
 env:
   # THIS GITHUB_TOKEN IS A REQUIREMENT TO BE ABLE TO WRITE TO GH RELEASES
   GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
@@ -54,7 +55,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         goversion:
           - 1.23.x
@@ -123,7 +124,7 @@ jobs:
         with:
           sdk: ${{ matrix.language }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         language:
           - nodejs

@@ -62,7 +62,8 @@ type Filesystem struct {
 	// The human-readable name for the filesystem.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
-	// replaced. - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// replaced. - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1"
+	// "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolOutput `pulumi:"retainOnDelete"`
@@ -126,7 +127,8 @@ type filesystemState struct {
 	// The human-readable name for the filesystem.
 	Name *string `pulumi:"name"`
 	// The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
-	// replaced. - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// replaced. - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1"
+	// "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region *string `pulumi:"region"`
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
@@ -152,7 +154,8 @@ type FilesystemState struct {
 	// The human-readable name for the filesystem.
 	Name pulumi.StringPtrInput
 	// The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
-	// replaced. - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// replaced. - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1"
+	// "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringPtrInput
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
@@ -176,7 +179,8 @@ type filesystemArgs struct {
 	// The human-readable name for the filesystem.
 	Name *string `pulumi:"name"`
 	// The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
-	// replaced. - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// replaced. - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1"
+	// "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region string `pulumi:"region"`
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete *bool `pulumi:"retainOnDelete"`
@@ -195,7 +199,8 @@ type FilesystemArgs struct {
 	// The human-readable name for the filesystem.
 	Name pulumi.StringPtrInput
 	// The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
-	// replaced. - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// replaced. - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1"
+	// "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringInput
 	// Flag to retain the filesystem when the resource is deleted - Sets the default value "false" if the attribute is not set.
 	RetainOnDelete pulumi.BoolPtrInput
@@ -320,7 +325,8 @@ func (o FilesystemOutput) Name() pulumi.StringOutput {
 }
 
 // The identifier for the region this filesystem exists in. - If the value of this attribute changes, the resource will be
-// replaced. - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+// replaced. - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1"
+// "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 func (o FilesystemOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filesystem) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

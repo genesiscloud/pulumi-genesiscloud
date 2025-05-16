@@ -16,7 +16,7 @@ namespace GenesisCloud.PulumiPackage.Genesiscloud.Outputs
     {
         /// <summary>
         /// Filter by the region identifier.
-        ///   - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        ///   - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
         /// </summary>
         public readonly string? Region;
         /// <summary>

@@ -237,7 +237,7 @@ if not MYPY:
         region: NotRequired[str]
         """
         Filter by the region identifier.
-          - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+          - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
         """
 elif False:
     ImagesFilterArgsDict: TypeAlias = Mapping[str, Any]
@@ -251,7 +251,7 @@ class ImagesFilterArgs:
         :param str type: Filter by the kind of image.
                  - The value must be one of: ["cloud-image"].
         :param str region: Filter by the region identifier.
-                 - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+                 - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
         """
         pulumi.set(__self__, "type", type)
         if region is not None:
@@ -275,7 +275,7 @@ class ImagesFilterArgs:
     def region(self) -> Optional[str]:
         """
         Filter by the region identifier.
-          - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+          - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 

@@ -31,7 +31,7 @@ class VolumeArgs:
         """
         The set of arguments for constructing a Volume resource.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[int] size: The storage size of this volume given in GiB. - The value must be at least 1.
         :param pulumi.Input[str] type: The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
                must be one of: ["hdd" "ssd"].
@@ -56,7 +56,7 @@ class VolumeArgs:
     def region(self) -> pulumi.Input[str]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -153,7 +153,7 @@ class _VolumeState:
         :param pulumi.Input[str] description: The human-readable description for the volume. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the volume.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
         :param pulumi.Input[int] size: The storage size of this volume given in GiB. - The value must be at least 1.
         :param pulumi.Input[str] status: The volume status.
@@ -220,7 +220,7 @@ class _VolumeState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 
@@ -326,7 +326,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] description: The human-readable description for the volume. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the volume.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
         :param pulumi.Input[int] size: The storage size of this volume given in GiB. - The value must be at least 1.
         :param pulumi.Input[str] type: The storage type of the volume. - If the value of this attribute changes, the resource will be replaced. - The value
@@ -435,7 +435,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] description: The human-readable description for the volume. - Sets the default value "" if the attribute is not set.
         :param pulumi.Input[str] name: The human-readable name for the volume.
         :param pulumi.Input[str] region: The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-               of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+               of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
         :param pulumi.Input[bool] retain_on_delete: Flag to retain the volume when the resource is deleted - Sets the default value "false" if the attribute is not set.
         :param pulumi.Input[int] size: The storage size of this volume given in GiB. - The value must be at least 1.
         :param pulumi.Input[str] status: The volume status.
@@ -486,7 +486,7 @@ class Volume(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-        of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+        of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
         """
         return pulumi.get(self, "region")
 

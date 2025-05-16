@@ -77,7 +77,7 @@ export class FloatingIp extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-     * of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -168,7 +168,7 @@ export interface FloatingIpState {
     name?: pulumi.Input<string>;
     /**
      * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-     * of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
      */
     region?: pulumi.Input<string>;
     /**
@@ -201,7 +201,7 @@ export interface FloatingIpArgs {
     name?: pulumi.Input<string>;
     /**
      * The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-     * of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     * of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
      */
     region: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.FloatingIpTimeouts>;

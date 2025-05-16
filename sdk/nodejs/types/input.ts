@@ -46,7 +46,7 @@ export interface FloatingIpTimeouts {
 export interface ImagesFilter {
     /**
      * Filter by the region identifier.
-     *   - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     *   - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
      */
     region?: string;
     /**
@@ -59,7 +59,7 @@ export interface ImagesFilter {
 export interface ImagesFilterArgs {
     /**
      * Filter by the region identifier.
-     *   - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+     *   - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
      */
     region?: pulumi.Input<string>;
     /**

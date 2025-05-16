@@ -29,7 +29,7 @@ type SecurityGroup struct {
 	// The human-readable name for the security group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringOutput          `pulumi:"region"`
 	Rules  SecurityGroupRuleArrayOutput `pulumi:"rules"`
 	// The security group status.
@@ -80,7 +80,7 @@ type securityGroupState struct {
 	// The human-readable name for the security group.
 	Name *string `pulumi:"name"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region *string             `pulumi:"region"`
 	Rules  []SecurityGroupRule `pulumi:"rules"`
 	// The security group status.
@@ -96,7 +96,7 @@ type SecurityGroupState struct {
 	// The human-readable name for the security group.
 	Name pulumi.StringPtrInput
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringPtrInput
 	Rules  SecurityGroupRuleArrayInput
 	// The security group status.
@@ -114,7 +114,7 @@ type securityGroupArgs struct {
 	// The human-readable name for the security group.
 	Name *string `pulumi:"name"`
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region   string                 `pulumi:"region"`
 	Rules    []SecurityGroupRule    `pulumi:"rules"`
 	Timeouts *SecurityGroupTimeouts `pulumi:"timeouts"`
@@ -127,7 +127,7 @@ type SecurityGroupArgs struct {
 	// The human-readable name for the security group.
 	Name pulumi.StringPtrInput
 	// The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-	// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	// of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region   pulumi.StringInput
 	Rules    SecurityGroupRuleArrayInput
 	Timeouts SecurityGroupTimeoutsPtrInput
@@ -236,7 +236,7 @@ func (o SecurityGroupOutput) Name() pulumi.StringOutput {
 }
 
 // The region identifier. - If the value of this attribute changes, the resource will be replaced. - The value must be one
-// of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+// of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 func (o SecurityGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

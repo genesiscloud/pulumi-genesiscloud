@@ -403,7 +403,7 @@ func (o FloatingIpTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 
 type ImagesFilter struct {
 	// Filter by the region identifier.
-	//   - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	//   - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region *string `pulumi:"region"`
 	// Filter by the kind of image.
 	//   - The value must be one of: ["cloud-image"].
@@ -423,7 +423,7 @@ type ImagesFilterInput interface {
 
 type ImagesFilterArgs struct {
 	// Filter by the region identifier.
-	//   - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+	//   - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Filter by the kind of image.
 	//   - The value must be one of: ["cloud-image"].
@@ -457,7 +457,7 @@ func (o ImagesFilterOutput) ToImagesFilterOutputWithContext(ctx context.Context)
 }
 
 // Filter by the region identifier.
-//   - The value must be one of: ["EUC-DE-MUC-1" "NORD-NO-KRS-1"].
+//   - The value must be one of: ["EUC-DE-MUC-1" "EUW-GB-MNC-1" "EUW-NL-AMS-1" "NA-CA-FTS-1" "NA-CA-MNZ-1" "NA-CA-PRG-1" "NORD-NO-KRS-1"].
 func (o ImagesFilterOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImagesFilter) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
